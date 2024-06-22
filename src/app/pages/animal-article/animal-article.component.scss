@@ -1,0 +1,16 @@
+@use "colors" as *;
+
+h1 {
+    font-family: more-sugar;
+    font-weight: 400;
+    font-size: 3.8rem;
+    color: $primary-d2;
+}
+
+.animal-article-card {
+    display: flex;
+
+    img {
+        width: 300px;
+    }
+}

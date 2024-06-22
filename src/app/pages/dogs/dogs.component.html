@@ -1,0 +1,22 @@
+@if (pageContent$ | async; as pageContent) {
+<app-hero [images]="pageContent.hero" />
+
+<div class="wrapper vbox gap-3">
+    <app-article [sections]="pageContent.article"/>
+    
+    <div class="hbox gap-3 wrap">
+        <button (click)="showAll()" [class.active]="activeFilters.size == 0" class="bubble">Alle Hunde</button>
+        <button (click)="toggleFilter('small')" [class.active]="isFilterActive('small')" class="bubble">kleine Hunde</button>
+        <button (click)="toggleFilter('middle')" [class.active]="isFilterActive('middle')" class="bubble">mittlere Hunde</button>
+        <button (click)="toggleFilter('large')" [class.active]="isFilterActive('large')" class="bubble">große Hunde</button>
+        <button (click)="toggleFilter('male')" [class.active]="isFilterActive('male')" class="bubble">Rüden</button>
+        <button (click)="toggleFilter('female')" [class.active]="isFilterActive('female')" class="bubble">Hündinnen</button>
+        <button (click)="toggleFilter('old')" [class.active]="isFilterActive('old')" class="bubble">Senioren</button>
+        <button (click)="toggleFilter('puppies')" [class.active]="isFilterActive('puppies')" class="bubble">Welpen</button>
+    </div>
+
+    <app-animal-list [query]="query" [isVisibleFunction]="getIsVisibleFunction()"/>
+
+</div>
+
+}

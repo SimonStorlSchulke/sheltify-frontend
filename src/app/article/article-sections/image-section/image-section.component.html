@@ -1,0 +1,9 @@
+<section class="wrapper {{sectionData.__component}}">
+aaaa
+    @if(sectionData.images.length == 1) {
+        <img [alt]="sectionData.images[0].alternativeText" [src]="sectionData.images[0] | strapiImage">
+    } @else {
+        <gallery [items]="galleryImages" />
+    }
+
+</section>

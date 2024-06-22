@@ -1,0 +1,31 @@
+@use "colors" as *;
+
+app-article {
+    h1, h2 {
+        font-family: more-sugar;
+        color: $primary-d2;
+        font-weight: 400;
+    }
+
+    h1 {
+        font-size: 3.8rem;
+    }
+
+    h2 {
+        font-size: 2.4rem;
+    }
+
+    h3 {
+        font-size: 1.85rem;
+        font-weight: 300;
+    }
+
+    h4, h5, h6 {
+        font-size: 1.4rem;
+        font-weight: 400;
+    }
+
+    p {
+        min-height: 1.5rem;   
+    }
+}

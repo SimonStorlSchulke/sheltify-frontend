@@ -1,0 +1,57 @@
+@use "colors" as *;
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0 24px;
+    gap: 24px;
+    height: 96px;
+    background-color: #fff ;
+    font-family: more-sugar;
+    font-size: 1.25rem;
+
+    img {
+        height: 73px;
+    }
+
+    a {
+        &:hover {
+            color: $primary-d3;
+        }
+
+        &.active {
+            color: $primary-d3;
+        }
+    }
+}
+
+@media (max-width: 1000px) {
+    nav {
+    flex-direction: column;
+    }
+}
+
+.dropdown-container {
+    .dropdown-button {
+        cursor: pointer;
+    }
+    .dropdown-content {
+        opacity: 0;
+        position: absolute;
+        z-index: 1;
+        background-color: $accent;
+        display: flex;
+        flex-direction: column;
+        
+        a {
+            padding: 8px 12px;
+        }
+    }
+    &.open .dropdown-content {
+        opacity: 1;
+    } 
+    &:has(.active) {
+        color: $primary-d3
+    }
+}

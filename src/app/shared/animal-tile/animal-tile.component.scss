@@ -1,0 +1,75 @@
+@use "colors" as *;
+
+.animal-tile {
+    width: 280px;
+    height: 320px;
+    transition: transform 0.23s;
+    display: block;
+    background-color: $accent;
+    position: relative;
+
+    img {
+        width: 100%;
+        height: 280px;
+        object-fit: cover;
+    }
+
+    &:hover {
+        transform: scale(1.03);
+    }
+
+    .name-row {
+        margin-left: -1.5rem;
+    }
+
+    .gender-icon {
+        width: 1.6rem;
+        height: 1.6rem;
+    }
+
+    .bubbles {
+        position: absolute;
+        bottom: 50px;
+        left: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: start;
+        font-family: more-sugar;
+        color: #fff;
+
+        span {
+            background-color: $primary-d1;
+            border-radius: 40px;
+            padding: 4px 12px;
+
+            &.emergency {
+                background-color: $cto;
+            }
+        }
+    }
+
+    .tile-overlay {
+        position: absolute;
+        top: 0;
+        opacity: 0;
+        transition: opacity 0.25s;
+        background: linear-gradient(transparent, mix($accent, transparent, 60%), mix($accent, transparent, 80%));
+        width: 100%;
+        height: 281px;
+
+        span {
+            overflow: hidden;
+            display: -webkit-box;
+            -webkit-line-clamp: 4;
+            line-clamp: 4;
+            -webkit-box-orient: vertical;
+        }
+    }
+
+    &:hover {
+        .tile-overlay {
+            opacity: 1;
+        }
+    }
+}

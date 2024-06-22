@@ -1,0 +1,53 @@
+@use "colors" as *;
+
+body {
+    font-size: 1.2rem;
+    color: $text;
+}
+
+.text-primary {
+    color: $primary-d2;
+}
+
+.text-secondary {
+    color: $neutral600;
+}
+
+.text-sugar {
+    font-family: more-sugar;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.bold {
+    font-weight: 700;
+}
+
+button {
+    .primary {
+        background-color: $primary;
+        color: #fff;
+    }
+}
+
+.link, article a {
+    color: $cto;
+    transition: color 0.2s;
+
+    &:hover {
+        color: $cto-d2;
+        text-decoration: underline;
+        text-underline-offset: 4px;
+        text-decoration-style: dotted;
+    }
+}
+
+.shadow {
+    box-shadow: 0 0 12px #0005;
+}
+
+.bg-accent {
+    background-color: $accent;
+}

@@ -1,0 +1,19 @@
+@use "colors" as *;
+
+article {
+    display: flex;
+    flex-direction: column;
+}
+
+.section-container:not(:last-child) {
+    margin-bottom: 42px;
+}
+
+.section-heading {
+    hr {
+        border: none;
+        background: $neutral400;
+        height: 1px;
+        margin: 1.5rem 0;
+    }
+}

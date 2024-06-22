@@ -1,0 +1,78 @@
+@use "colors" as *;
+
+button:not(.unstyled) {
+    border: none;
+    border-radius: 100px;
+    font-family: more-sugar;
+    padding: 0.25em 0.7em;
+    cursor: pointer;
+    transition: background-color 0.27s, outline-color 0.27s, color 0.27s, box-shadow 0.3s;
+
+    &:hover {
+        box-shadow: 1px 2px 4px #0000003f;
+    }
+
+    &.small {
+        padding: 0.15em 0.5em;
+        font-size: 1rem;
+    }
+
+    &.primary {
+        background-color: $primary-d1;
+        color: #fff;
+
+        &:hover {
+            background-color: $primary-d3;
+        }
+    }
+
+
+    &.cto {
+        background-color: $cto;
+        color: #fff;
+
+        &:hover {
+            background-color: $cto-d2;
+        }
+    }
+
+    &.secondary {
+        outline: 3px solid $primary-d1;
+        outline-offset: -3px;
+        background-color: transparent;
+        color: $primary-d1;
+
+        &:hover {
+            outline-color: $primary-d3;
+            color: $primary-d3;
+        }
+    }
+
+    &.bubble {
+
+        outline: 3px solid $primary-d1;
+        outline-offset: -3px;
+        background-color: transparent;
+        color: $primary-d1;
+
+        &:hover {
+            outline-color: $primary-d3;
+            color: $primary-d3;
+        }
+
+        &.active {
+            background-color: $primary-d1;
+            color: #fff;
+    
+            &:hover {
+                background-color: $primary-d3;
+            }
+        }
+    }
+}
+
+button.unstyled {
+    border: inherit;
+    background-color: inherit;
+    color: inherit;
+}

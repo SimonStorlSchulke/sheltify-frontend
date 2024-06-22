@@ -1,0 +1,23 @@
+<nav>
+    <img src="assets/img/herzenshunde-logo.png">
+
+    @for(item of items; track $index) {
+
+        @if(item.link) {
+            <a [routerLink]="item.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"> {{item.label}}</a>
+        }
+
+        @if(item.children) {
+            <div class="dropdown-container dropdown-index-{{$index}}" [class.open]="openedDropdownIndex == $index">
+                <button (click)="openedDropdownIndex = $index" class="unstyled dropdown-button dropdown-index-{{$index}}">{{item.label}} v</button>
+                <div class="dropdown-content dropdown-index-{{$index}}">
+                    @for(child of item.children; track $index) {
+                        <a class="dropdown-index-{{$index}}" [routerLink]="child.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"> {{child.label}}</a>
+                    }
+                </div>
+            </div>
+        }
+
+    }
+</nav>
+

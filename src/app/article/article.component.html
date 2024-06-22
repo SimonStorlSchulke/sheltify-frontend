@@ -1,0 +1,28 @@
+<article>
+    @for (section of sections; track $index) {
+        <div class="section-container">
+        @if(section.title) {
+            <div class="wrapper section-heading">
+                @if($index != 0) {
+                    <hr>
+                }
+                <h2>{{section.title}}</h2>
+            </div>
+        }
+            @switch (section.__component) {
+                @case ("article-section.text") {
+                    <app-text-section [sectionData]="$any(section)" />
+                }
+                @case ("article-section.text-with-image-section") {
+                    <app-text-image-section [sectionData]="$any(section)" />
+                }
+                @case ("article-section.hero") {
+                    <app-hero-section [sectionData]="$any(section)" />
+                }
+                @case ("article-section.image") {
+                    <app-image-section [sectionData]="$any(section)" />
+                }
+            }
+        </div>
+    }
+</article>
