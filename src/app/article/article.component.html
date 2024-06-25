@@ -1,28 +1,49 @@
 <article>
-    @for (section of sections; track $index) {
-        <div class="section-container">
-        @if(section.title) {
-            <div class="wrapper section-heading">
-                @if($index != 0) {
-                    <hr>
-                }
-                <h2>{{section.title}}</h2>
-            </div>
-        }
-            @switch (section.__component) {
-                @case ("article-section.text") {
-                    <app-text-section [sectionData]="$any(section)" />
-                }
-                @case ("article-section.text-with-image-section") {
-                    <app-text-image-section [sectionData]="$any(section)" />
-                }
-                @case ("article-section.hero") {
-                    <app-hero-section [sectionData]="$any(section)" />
-                }
-                @case ("article-section.image") {
-                    <app-image-section [sectionData]="$any(section)" />
-                }
-            }
-        </div>
+  @for (section of sections; track $index) {
+    <!-- This is disgusting code but it works -->
+    @if (section.__component == "article-section.row-start") {
+      @if (setRowColumnIndex($any(section))) {}
+      <div
+        class="article-rows wrapper"
+        [attr.data-columns]="columnIndex"
+        [class.text-center]="section.textCentered"
+      ></div>
+    } @else {
+      @if (decrementRowColumnIndex()) {}
     }
+
+    @if (section.__component != "article-section.row-start") {
+      <div class="section-container" [class.bg-accent]="section.background">
+        @if (section.title) {
+          <div class="wrapper section-heading">
+            @if ($index != 0) {
+              <hr />
+            }
+            <h2>{{ section.title }}</h2>
+          </div>
+        }
+
+        @switch (section.__component) {
+          @case ("article-section.text") {
+            <app-text-section [sectionData]="section" />
+          }
+          @case ("article-section.text-with-image-section") {
+            <app-text-image-section [sectionData]="section" />
+          }
+          @case ("article-section.hero") {
+            <app-hero-section [sectionData]="section" />
+          }
+          @case ("article-section.image") {
+            <app-image-section [sectionData]="section" />
+          }
+          @case ("article-section.animal-cards") {
+            <app-animal-cards-section [sectionData]="section" />
+          }
+          @case ("article-section.button-link") {
+            <app-button-link-section [sectionData]="section" />
+          }
+        }
+      </div>
+    }
+  }
 </article>

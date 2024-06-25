@@ -7,10 +7,8 @@ import { StrapiRichTextPipe } from '../strapi-rich-text.pipe';
   standalone: true,
   imports: [StrapiRichTextPipe],
   templateUrl: './text-section.component.html',
-  styleUrl: './text-section.component.scss'
+  styleUrl: './text-section.component.scss',
 })
 export class TextSectionComponent {
-
-    @Input({required: true}) sectionData!: ArticleTextSection;
-
+  @Input({ required: true }) sectionData!: ArticleTextSection;
 }

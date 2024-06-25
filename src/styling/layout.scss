@@ -1,3 +1,5 @@
+@use "variables" as *; 
+
 .vbox,
 .hbox {
     display: flex;
@@ -8,6 +10,10 @@
 
     &.center-items {
         align-items: center;
+    }
+
+    &.end-items {
+        align-items: end;
     }
 
     &.space-between {
@@ -89,7 +95,7 @@
     padding-right: 8px;
 }
 
-.px-2 {
+.px-3 {
     padding-left: 12px;
     padding-right: 12px;
 }
@@ -109,8 +115,32 @@
     padding-bottom: 12px;
 }
 
+.w-100 {
+    width: 100%;
+}
+
+.block {
+    display: block;
+}
+
+.inline-block {
+    display: inline-block;
+}
+
 .wrapper {
     width: min(1200px, calc(100dvw - 64px));
     margin-left: auto;
     margin-right: auto;
+}
+
+@media (max-width: $breakpoint-mobile) {
+    .desktop {
+        display: none !important;
+    }
+}
+
+@media (min-width: calc($breakpoint-mobile + 1px)) {
+    .mobile {
+        display: none !important;
+    }
 }

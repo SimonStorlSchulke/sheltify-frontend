@@ -19,7 +19,7 @@ function renderRichTextNode(node: RichTextNode): string {
             }
             return text;
         case 'link':
-            return `<a href="${node.url}">${renderChildren(node.children)}</a>`;
+            return `<a  ${convertButtonLinks(`href="${node.url}"`)}>${renderChildren(node.children)}</a>`;
         case 'image':
             return `<img src="${node.image?.url}" alt="${node.image?.alternativeText}" width="${node.image?.width}" height="${node.image?.height}" />`;
         case 'list':
@@ -32,6 +32,17 @@ function renderRichTextNode(node: RichTextNode): string {
         default:
             return '';
     }
+}
+
+/** converts `href="https://google.de BUTTON" into href="https://google.de" class="button" */
+function convertButtonLinks(linkUrl: string) {
+  if(linkUrl.includes("-BUTTON-SECONDARY")) {
+    return linkUrl.replace("-BUTTON-SECONDARY", "").replace('href=', 'class="button secondary inline-block" href=');
+  }
+  if(linkUrl.includes("-BUTTON")) {
+    return linkUrl.replace("-BUTTON", "").replace('href=', 'class="button primary inline-block" href=');
+  }
+  return linkUrl;
 }
 
 function renderChildren(children?: RichTextNode[]): string {

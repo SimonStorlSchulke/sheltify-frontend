@@ -1,0 +1,20 @@
+@if(pageData.hero) {
+    <app-hero [images]="[pageData.hero]"/>
+}
+<div class="wrapper vbox gap-3">
+    <app-article [sections]="pageData.article"/>
+</div>
+
+<div class="wrapper vbox gap-3">
+
+
+    <div class="hbox gap-3 wrap">
+        <button (click)="showAll()" [class.active]="activeFilters.size == 0" class="bubble">Alle Artikel</button>
+        <button (click)="toggleFilter('news')" [class.active]="isFilterActive('news')" class="bubble">News</button>
+        <button (click)="toggleFilter('wissen')" [class.active]="isFilterActive('wissen')" class="bubble">Wissenswertes</button>
+    </div>
+
+    @for(newsBlogEntry of pageData.news; track $index) {
+        <app-blog-tile [blog]="newsBlogEntry" />
+    }
+</div>

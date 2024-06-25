@@ -1,4 +1,4 @@
-<nav>
+<nav class="desktop">
     <img src="assets/img/herzenshunde-logo.png">
 
     @for(item of items; track $index) {
@@ -8,16 +8,44 @@
         }
 
         @if(item.children) {
-            <div class="dropdown-container dropdown-index-{{$index}}" [class.open]="openedDropdownIndex == $index">
-                <button (click)="openedDropdownIndex = $index" class="unstyled dropdown-button dropdown-index-{{$index}}">{{item.label}} v</button>
-                <div class="dropdown-content dropdown-index-{{$index}}">
+            <div class="dropdown-container" (mouseleave)="openedDropdownIndex = -1" [class.open]="openedDropdownIndex == $index">
+                <button (mouseenter)="openedDropdownIndex = $index" class="unstyled dropdown-button">{{item.label}} v</button>
+                <div class="dropdown-content">
                     @for(child of item.children; track $index) {
-                        <a class="dropdown-index-{{$index}}" [routerLink]="child.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"> {{child.label}}</a>
+                        <a [routerLink]="child.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"> {{child.label}}</a>
                     }
                 </div>
             </div>
         }
-
     }
 </nav>
 
+<nav class="mobile">
+    <div class="hbox px-3 py-1">
+        <button  (click)="burgerMenuOpen = true" class="burgermenu-button">O</button>
+            <div class="burgermenu-content"  [class.open]="burgerMenuOpen">
+                @for(item of items; track $index) {
+
+                    @if(item.link) {
+                        <a [routerLink]="item.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"
+                        (click)="burgerMenuOpen = false"> {{item.label}}</a>
+                    }
+            
+                    @if(item.children) {
+                        <div class="unstyled dropdown-container dropdown-index-{{$index}}" [class.open]="openedDropdownIndex == $index">
+                            <button (click)="openedDropdownIndex = $index" class="unstyled dropdown-button dropdown-index-{{$index}}">{{item.label}} v</button>
+                                <div class="dropdown-content dropdown-index-{{$index}}">
+                                    @for(child of item.children; track $index) {
+                                        <a (click)="burgerMenuOpen = false" class="dropdown-index-{{$index}}" [routerLink]="child.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"> {{child.label}}</a>
+                                    }
+                                </div>
+                            
+                        </div>
+                    }
+            
+                }
+            </div>
+        <div class="grow-1"></div>
+        <img src="assets/img/herzenshunde-logo.png">
+    </div>
+</nav>

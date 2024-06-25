@@ -1,10 +1,12 @@
 @use "colors" as *;
+@use "variables" as *;
 
+.button:not(.unstyled),
 button:not(.unstyled) {
     border: none;
     border-radius: 100px;
     font-family: more-sugar;
-    padding: 0.25em 0.7em;
+    padding: 0.5em 1.2em;
     cursor: pointer;
     transition: background-color 0.27s, outline-color 0.27s, color 0.27s, box-shadow 0.3s;
 
@@ -14,20 +16,25 @@ button:not(.unstyled) {
 
     &.small {
         padding: 0.15em 0.5em;
-        font-size: 1rem;
+        font-size: $fontsize-small;
+    }
+
+    &.large {
+        padding: 0.7em 1.7em;
+        font-size: $fontsize-h4;
     }
 
     &.primary {
-        background-color: $primary-d1;
+        background-color: $primary;
         color: #fff;
 
         &:hover {
-            background-color: $primary-d3;
+            background-color: $primary;
         }
     }
 
 
-    &.cto {
+    &.cto, &.call-to-action {
         background-color: $cto;
         color: #fff;
 
@@ -37,35 +44,35 @@ button:not(.unstyled) {
     }
 
     &.secondary {
-        outline: 3px solid $primary-d1;
+        outline: 3px solid $primary;
         outline-offset: -3px;
         background-color: transparent;
-        color: $primary-d1;
+        color: $primary;
 
         &:hover {
-            outline-color: $primary-d3;
-            color: $primary-d3;
+            outline-color: $primary;
+            color: $primary;
         }
     }
 
     &.bubble {
 
-        outline: 3px solid $primary-d1;
+        outline: 3px solid $primary;
         outline-offset: -3px;
         background-color: transparent;
-        color: $primary-d1;
+        color: $primary;
 
         &:hover {
-            outline-color: $primary-d3;
-            color: $primary-d3;
+            outline-color: $primary;
+            color: $primary;
         }
 
         &.active {
-            background-color: $primary-d1;
+            background-color: $primary;
             color: #fff;
     
             &:hover {
-                background-color: $primary-d3;
+                background-color: $primary;
             }
         }
     }

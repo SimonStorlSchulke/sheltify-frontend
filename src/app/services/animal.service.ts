@@ -1,7 +1,7 @@
-import { Injectable, inject } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { StrapiService } from './strapi.service';
-import { Animal, StrapiFilter } from '../shared/shared-types';
+import { Animal } from '../shared/shared-types';
 
 
 @Injectable({
@@ -10,13 +10,13 @@ import { Animal, StrapiFilter } from '../shared/shared-types';
 export class AnimalService extends StrapiService {
 
   public getAnimalByName(name: string): Observable<Animal> {
-    return this.getMany<Animal>(
+    return this.get<Animal[]>(
       `animals?filters[name][$eqi]=${name}`)
       .pipe(map(animals => animals[0]))
   }
 
   public getAnimalList(filters: string = ""): Observable<Animal[]> {
     let url = `animals?populate=thumbnail&${filters}`;
-    return this.getMany<Animal>(url)
+    return this.get<Animal[]>(url)
   }
 }

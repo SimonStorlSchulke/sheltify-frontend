@@ -1,11 +1,24 @@
-<section class="wrapper imageposition-{{sectionData.imagePosition}} {{sectionData.__component}}">
-    <div [innerHTML]="  sectionData.text | strapiRichText"></div>
-        @if(sectionData.images) {
-            @if(sectionData.images.length == 1) {
-                <img [alt]="sectionData.images[0].alternativeText" [src]="sectionData.images[0] | strapiImage">
-            }  @else {
-                <gallery [loop]="true" [items]="galleryImages" [bullets]="true" [bulletSize]="12" [autoplay]="true" [autoplayInterval]="7000"/>
-            }
-        
-        }
+<section
+  class="wrapper imageposition-{{ sectionData.imagePosition }} {{
+    sectionData.__component
+  }}"
+>
+  <div [innerHTML]="sectionData.text | strapiRichText"></div>
+  @if (sectionData.images) {
+    @if (sectionData.images.length == 1) {
+      <img
+        [alt]="sectionData.images[0].alternativeText"
+        [src]="sectionData.images[0] | strapiImage"
+      />
+    } @else {
+      <gallery
+        [loop]="true"
+        [items]="galleryImages"
+        [bullets]="true"
+        [bulletSize]="12"
+        [autoplay]="true"
+        [autoplayInterval]="7000"
+      />
+    }
+  }
 </section>

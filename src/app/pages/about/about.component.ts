@@ -1,9 +1,21 @@
 import { Component, inject } from '@angular/core';
 import { HeroComponent } from '../../shared/hero/hero.component';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ResolveFn } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
-import { AboutData } from '../../services/resolvers';
 import { ArticleComponent } from '../../article/article.component';
+import { StrapiImage } from '../../shared/shared-types';
+import { ArticleSection } from '../../article/article-sections/article-section-types';
+import { StrapiService } from '../../services/strapi.service';
+
+
+export type AboutData = {
+  hero: StrapiImage,
+  article: ArticleSection[],
+}
+
+export const aboutResolver: ResolveFn<AboutData> = () => {
+  return inject(StrapiService).get<AboutData>("about-page?populate[hero]=*&populate[article][populate]=*");
+}
 
 @Component({
   selector: 'app-about',

@@ -70,7 +70,7 @@ export class DogsComponent {
 
   query = "filters[animalKind][name][$eqi]=hund"
 
-  pageContent$ = this.animalSv.getOne<{
+  pageContent$ = this.animalSv.get<{
     hero: StrapiImage[],
     article: ArticleTextSection[],
   }>("animals-page?populate=*");

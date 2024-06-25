@@ -1,12 +1,13 @@
 @use "colors" as *;
+@use "variables" as *;
 
 body {
-    font-size: 1.2rem;
+    font-size: $fontsize-default;
     color: $text;
 }
 
 .text-primary {
-    color: $primary-d2;
+    color: $primary;
 }
 
 .text-secondary {

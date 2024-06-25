@@ -1,19 +1,64 @@
 @use "colors" as *;
+@use "variables" as *;
 
 article {
-    display: flex;
-    flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .section-container:not(:last-child) {
-    margin-bottom: 42px;
+  margin-bottom: 42px;
+
+  &.bg-accent {
+    background-color: $accent;
+    padding: 32px 0;
+  }
 }
 
 .section-heading {
-    hr {
-        border: none;
-        background: $neutral400;
-        height: 1px;
-        margin: 1.5rem 0;
+  hr {
+    border: none;
+    background: $neutral400;
+    height: 1px;
+    margin: 1.5rem 0;
+  }
+}
+
+.article-rows {
+  display: flex;
+  gap: 24px;
+}
+
+@media (max-width: 500px) {
+  [data-columns="2"] {
+    flex-direction: column;
+    .section-container {
+      margin-bottom: 24px;
     }
+  }
+}
+
+@media (max-width: 940px) {
+  [data-columns="3"] {
+    flex-direction: column;
+    .section-container {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+@media (max-width: 1100px) {
+  [data-columns="4"] {
+    flex-direction: column;
+    .section-container {
+      margin-bottom: 24px;
+    }
+  }
+}
+
+::ng-deep .article-rows .section-container {
+  flex-grow: 1;
+  .wrapper {
+    width: unset !important;
+  }
 }

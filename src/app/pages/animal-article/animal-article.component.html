@@ -1,19 +1,24 @@
-@if(article) {
-<div class="wrapper">
-    <h1>{{getNameList(article.animals)}}</h1>
+@if (article) {
+  <div class="wrapper">
+    <div class="d-flex">
+      <h1>{{ getTitle() }}</h1>
 
-    @for (animal of article.animals; track animal.id) {
+      @for (animal of article.animals; track animal.id) {
         <div class="animal-article-card">
-            <p>{{animal.animalKind?.name}}</p>
-            <img [alt]="animal.thumbnail?.alternativeText" [src]="animal.thumbnail | strapiImage">
-            <img [alt]="animal.animalKind?.icon?.alternativeText" [src]="animal.animalKind?.icon | strapiImage">
+          <p>{{ animal.animalKind?.name }}</p>
+          <img
+            [alt]="animal.thumbnail?.alternativeText"
+            [src]="animal.thumbnail | strapiImage"
+          />
+          <img
+            [alt]="animal.animalKind?.icon?.alternativeText"
+            [src]="animal.animalKind?.icon | strapiImage"
+          />
         </div>
-
-    }
-</div>
-<app-article [sections]="article.sections" />
-}
-
-@else {
-Tier nicht gefunden
+      }
+    </div>
+  </div>
+  <app-article [sections]="article.sections" />
+} @else {
+  Tier nicht gefunden
 }

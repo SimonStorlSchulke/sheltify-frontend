@@ -1,10 +1,11 @@
 @use "colors" as *;
+@use "variables" as *; 
 
 h1 {
     font-family: more-sugar;
     font-weight: 400;
-    font-size: 3.8rem;
-    color: $primary-d2;
+    font-size: $fontsize-h1;
+    color: $primary;
 }
 
 .animal-article-card {
@@ -12,5 +13,6 @@ h1 {
 
     img {
         width: 300px;
+        object-fit: cover;
     }
 }

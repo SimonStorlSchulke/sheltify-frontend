@@ -1,27 +1,28 @@
 @use "colors" as *;
+@use "variables" as *;
 
 app-article {
     h1, h2 {
         font-family: more-sugar;
-        color: $primary-d2;
+        color: $primary;
         font-weight: 400;
     }
 
     h1 {
-        font-size: 3.8rem;
+        font-size: $fontsize-h1;
     }
 
     h2 {
-        font-size: 2.4rem;
+        font-size: $fontsize-h2;
     }
 
     h3 {
-        font-size: 1.85rem;
+        font-size: $fontsize-h3;
         font-weight: 300;
     }
 
     h4, h5, h6 {
-        font-size: 1.4rem;
+        font-size: $fontsize-h4;
         font-weight: 400;
     }
 

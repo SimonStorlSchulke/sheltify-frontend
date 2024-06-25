@@ -2,14 +2,20 @@ import { Component, inject } from '@angular/core';
 import { Observable, switchMap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { AnimalArticle, AnimalArticleService } from '../../services/animal-article.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
 import { MarkdownPipe } from '../../pipes/markdown.pipe';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TextSectionComponent } from '../../article/article-sections/text-section/text-section.component';
 import { TextImageSectionComponent } from '../../article/article-sections/text-image-section/text-image-section.component';
-import { Animal } from '../../shared/shared-types';
 import { ArticleComponent } from '../../article/article.component';
 import { StrapiImagePipe } from "../../article/article-sections/strapi-image.pipe";
+
+
+export const animalArticleResolver: ResolveFn<AnimalArticle> = (
+  route: ActivatedRouteSnapshot,
+) => {
+  return inject(AnimalArticleService).getArticleByAnimalName(route.paramMap.get('name')!); //todo null savety
+}
 
 @Component({
     selector: 'app-animal-article',
@@ -33,14 +39,14 @@ export class AnimalArticleComponent {
   constructor() {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())
       .subscribe(({ animalArticle }) => {
-        console.log(animalArticle)
         this.article = animalArticle;
       });
   }
 
 
-  protected getNameList(animals: Animal[]): string {
-    const names = animals.map(animal => animal.name);
+  protected getTitle(): string {
+    if(this.article?.title) return this.article.title;
+    const names = this.article?.animals.map(animal => animal.name) ?? [];
     if (names.length == 1) {
       return names[0];
     }

@@ -10,22 +10,25 @@ import { StrapiService } from '../../../services/strapi.service';
   standalone: true,
   imports: [StrapiRichTextPipe, StrapiImagePipe, GalleryModule],
   templateUrl: './text-image-section.component.html',
-  styleUrl: './text-image-section.component.scss'
+  styleUrl: './text-image-section.component.scss',
 })
 export class TextImageSectionComponent implements OnInit {
-  @Input({required: true}) sectionData!: ArticleTextWithImageSection;
+  @Input({ required: true }) sectionData!: ArticleTextWithImageSection;
   strapiSv = inject(StrapiService);
 
   galleryImages: GalleryItem[] = [];
 
   ngOnInit() {
-    if( !this.sectionData.images || this.sectionData.images?.length  < 2) {
+    if (!this.sectionData.images || this.sectionData.images?.length < 2) {
       return;
-    };
-    this.galleryImages = this.sectionData.images.map((strapiImage) => new ImageItem({
-      src: this.strapiSv.getImageFormatUrl(strapiImage, "large"),
-      thumb: this.strapiSv.getImageFormatUrl(strapiImage, "thumbnail"),
-      alt: strapiImage.alternativeText,
-    }));
+    }
+    this.galleryImages = this.sectionData.images.map(
+      (strapiImage) =>
+        new ImageItem({
+          src: this.strapiSv.getImageFormatUrl(strapiImage, 'large'),
+          thumb: this.strapiSv.getImageFormatUrl(strapiImage, 'thumbnail'),
+          alt: strapiImage.alternativeText,
+        }),
+    );
   }
 }

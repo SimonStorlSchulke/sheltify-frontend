@@ -1,15 +1,29 @@
 import { Component, inject } from '@angular/core';
 import { AsyncPipe } from '@angular/common';
-import { HomeData } from '../../services/resolvers';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, ResolveFn } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { StrapiService } from '../../services/strapi.service';
 import { AnimalListComponent } from '../../shared/animal-list/animal-list.component';
+import { ArticleComponent } from '../../article/article.component';
+import { HeroComponent } from '../../shared/hero/hero.component';
+import { ArticleSection } from '../../article/article-sections/article-section-types';
+import { StrapiImage } from '../../shared/shared-types';
+import { AnimalArticleService } from '../../services/animal-article.service';
+
+export type HomeData = {
+  bannerText: string,
+  hero: StrapiImage,
+  article: ArticleSection[],
+}
+
+export const homeResolver: ResolveFn<HomeData> = () => {
+  return inject(AnimalArticleService).getAndInsertAnimalLinks<HomeData>("home?populate[hero]=*&populate[article][populate]=*");
+}
 
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [AsyncPipe, AnimalListComponent],
+  imports: [AsyncPipe, AnimalListComponent, ArticleComponent, HeroComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

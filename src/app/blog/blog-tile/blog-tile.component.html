@@ -1,0 +1,10 @@
+<img [alt]="blog.thumbnail?.alternativeText" [src]="blog.thumbnail | strapiImage : 'original'">
+<div class="tile-content vbox">
+    <h3>{{blog.title}}</h3>
+    <span>{{blog.description}}</span>
+    <div class="grow-1"></div>
+    <div class="hbox space-between end-items w-100">
+        <button class="secondary">Mehr erfahren</button>
+        <span>{{blog.createdAt | date : "dd.MM.yyyy"}}</span>
+    </div>
+</div>

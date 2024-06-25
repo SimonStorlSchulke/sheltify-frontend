@@ -1,58 +1,60 @@
 @use "colors" as *;
 
 section {
-    display: flex;
-    gap: 24px;
+  display: flex;
+  gap: 24px;
 
-    div {
-        flex-basis: 50%;
-        flex-grow: 0;
-    }
+  div {
+    flex-basis: 50%;
+    flex-grow: 0;
+  }
 }
 
 .imageposition-oben {
-    flex-direction: column-reverse;
+  flex-direction: column-reverse;
 }
 
 .imageposition-unten,
 .imageposition-rechts,
 .imageposition-links {
-    flex-direction: column;
+  flex-direction: column;
 
-    gallery {
-        width: 100%;
-    }
+  gallery {
+    width: 100%;
+  }
 }
 
 @media (min-width: 800px) {
-    .imageposition-oben {
-        flex-direction: column-reverse;
-    }
-    
-    .imageposition-rechts {
-        flex-direction: row;
-        align-items: flex-start;
-    
-        img, gallery {
-            width: 60%;
-            min-width: 60%;
-            width: 60%;
-        }
-    }
+  .imageposition-oben {
+    flex-direction: column-reverse;
+  }
 
-    .imageposition-links {
-        flex-direction: row-reverse;
-        align-items: flex-start;
-    
-        img, gallery {
-            min-width: 60%;
-            width: 60%;
-        }
+  .imageposition-rechts {
+    flex-direction: row;
+    align-items: flex-start;
+
+    img,
+    gallery {
+      width: 60%;
+      min-width: 60%;
+      width: 60%;
     }
+  }
+
+  .imageposition-links {
+    flex-direction: row-reverse;
+    align-items: flex-start;
+
+    img,
+    gallery {
+      min-width: 60%;
+      width: 60%;
+    }
+  }
 }
 
 ::ng-deep {
-    .g-slider-content {
-        background: $accent;
-    } 
+  .g-slider-content {
+    background: $accent;
+  }
 }
