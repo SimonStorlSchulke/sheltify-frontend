@@ -7,27 +7,27 @@ export type StrapiSingleResponse<T> = {
   data: T;
 };
 
-const bearer = isDevMode()
-  ? '45ca0b72a2717b2ef748c743ef843c614b26e3bbdb97387bda8807a8a60d7d24dff9e144593c34aa5cb09d789e77296f4678d3dbcba1d473464f4bbf753815e547c70d12374b52c72c444af7826622bee6025ddfbce71140994e1c3db09dc3a03a1bd3b5d883b3342f2a551067ea64325a61721e60047bef3a475712ae2923e0'
-  : '9d30c9f9f2bd767fd3ac7bc35272657c151372dd6fbdc09cb1e81e23f8dd919dd6456c464834a46d684ba6a4744e1dd89eef7eed90742f38c812c423f2d9150dec3986685b47f54d08e32b392e3d6e77c2e8849384fe1682ed6bd7aef1cadb97db1b10e26971d9224abc092088c3675435f4d17c2bcacaecc58a07b2ea1d06c1';
-
-const strapiUrl = '/api/api';
-const apiBaseUrl = 'api/';
-
-const headers = {
-  'Content-Type': 'application/json',
-  Authorization: `Bearer ${bearer}`,
-};
 
 @Injectable({
   providedIn: 'root',
 })
 export class StrapiService {
+  public static readonly bearer = isDevMode()
+    ? '45ca0b72a2717b2ef748c743ef843c614b26e3bbdb97387bda8807a8a60d7d24dff9e144593c34aa5cb09d789e77296f4678d3dbcba1d473464f4bbf753815e547c70d12374b52c72c444af7826622bee6025ddfbce71140994e1c3db09dc3a03a1bd3b5d883b3342f2a551067ea64325a61721e60047bef3a475712ae2923e0'
+    : '9d30c9f9f2bd767fd3ac7bc35272657c151372dd6fbdc09cb1e81e23f8dd919dd6456c464834a46d684ba6a4744e1dd89eef7eed90742f38c812c423f2d9150dec3986685b47f54d08e32b392e3d6e77c2e8849384fe1682ed6bd7aef1cadb97db1b10e26971d9224abc092088c3675435f4d17c2bcacaecc58a07b2ea1d06c1';
+  
+  public static readonly apiBaseUrl = 'api/';
+
+  public static readonly headers = {
+    'Content-Type': 'application/json',
+    Authorization: `Bearer ${StrapiService.bearer}`,
+  };
+
   httpClient = inject(HttpClient);
 
   public get<T>(path: string): Observable<T> {
     return this.httpClient
-      .get(decodeURIComponent(apiBaseUrl + path), { headers: headers })
+      .get(decodeURIComponent(StrapiService.apiBaseUrl + path), { headers: StrapiService.headers })
       .pipe(map((obj) => flattenStrapiObject(obj)));
   }
 
@@ -44,9 +44,9 @@ export class StrapiService {
       );
     }
     let url =
-      apiBaseUrl + path + (path.includes('?') ? '&' : '?') + params.toString();
+    StrapiService.apiBaseUrl + path + (path.includes('?') ? '&' : '?') + params.toString();
     return this.httpClient
-      .get(decodeURIComponent(url), { headers: headers })
+      .get(decodeURIComponent(url), { headers: StrapiService.headers })
       .pipe(map((obj) => JSON.stringify(flattenStrapiObject(obj))));
   }
 

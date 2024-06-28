@@ -1,5 +1,5 @@
 @if (article) {
-  <div class="wrapper">
+  <div class="sui wrapper">
     <div class="d-flex">
       <h1>{{ getTitle() }}</h1>
 
@@ -19,6 +19,9 @@
     </div>
   </div>
   <app-article [sections]="article.sections" />
+  <div class="sui wrapper flex-x jc-center">
+    <a [routerLink]="'/formulare/bewerbung'"><button class="cto">Haben {{getTitle()}} ihr Interesse geweckt?</button></a>
+  </div>
 } @else {
   Tier nicht gefunden
 }

@@ -1,9 +1,16 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { ArticleImageSection } from '../article-section-types';
 import { StrapiRichTextPipe } from '../strapi-rich-text.pipe';
 import { StrapiImagePipe } from '../strapi-image.pipe';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { StrapiService } from '../../../services/strapi.service';
+import { StrapiImage } from '../../../shared/shared-types';
+
+export type ArticleImageSection = {
+  __component: 'article-section.image';
+  title?: string;
+  background?: boolean;
+  images: StrapiImage[];
+};
 
 @Component({
   selector: 'app-image-section',

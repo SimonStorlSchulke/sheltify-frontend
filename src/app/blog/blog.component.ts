@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { StrapiImage } from '../shared/shared-types';
-import { ArticleSection } from '../article/article-sections/article-section-types';
+import { ArticleSection } from '../article/article.component';
 
 export type BlogArticle = {
   title: string,

@@ -4,9 +4,8 @@ import { ActivatedRoute, ResolveFn } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { StrapiService } from '../../services/strapi.service';
 import { AnimalListComponent } from '../../shared/animal-list/animal-list.component';
-import { ArticleComponent } from '../../article/article.component';
+import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { HeroComponent } from '../../shared/hero/hero.component';
-import { ArticleSection } from '../../article/article-sections/article-section-types';
 import { StrapiImage } from '../../shared/shared-types';
 import { AnimalArticleService } from '../../services/animal-article.service';
 

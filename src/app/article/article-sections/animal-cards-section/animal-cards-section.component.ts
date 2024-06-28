@@ -1,11 +1,19 @@
 import { Component, Input, inject } from '@angular/core';
-import { ArticleAnimalCardsSection } from '../article-section-types';
-import { Animal } from '../../../shared/shared-types';
+import { Animal, StrapiImage } from '../../../shared/shared-types';
 import { StrapiService } from '../../../services/strapi.service';
 import { Observable, map } from 'rxjs';
 import { AnimalTileComponent  } from '../../../shared/animal-tile/animal-tile.component';
 import { AsyncPipe } from '@angular/common';
 import { StrapiRichTextPipe } from '../strapi-rich-text.pipe';
+import { RichTextNode } from '../../../services/blockRenderer';
+
+export type ArticleAnimalCardsSection = {
+  __component: 'article-section.animal-cards';
+  title?: string;
+  text: RichTextNode[];
+  background?: boolean;
+  animals: Animal[];
+};
 
 @Component({
   selector: 'app-animal-cards-section',

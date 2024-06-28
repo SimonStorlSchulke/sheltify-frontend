@@ -2,8 +2,7 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 import { AnimalService } from '../../services/animal.service';
 import { AsyncPipe } from '@angular/common';
 import { AnimalTileComponent } from '../../shared/animal-tile/animal-tile.component';
-import { Animal, StrapiFilter, StrapiImage } from '../../shared/shared-types';
-import { ArticleTextSection } from '../../article/article-sections/article-section-types';
+import { Animal } from '../../shared/shared-types';
 import { Observable } from 'rxjs';
 
 @Component({

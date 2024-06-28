@@ -1,6 +1,14 @@
 import { Component, Input, inject } from '@angular/core';
-import { ButtonLinkSection } from '../article-section-types';
 import { StrapiService } from '../../../services/strapi.service';
+
+export type ButtonLinkSection = {
+  __component: 'article-section.button-link';
+  title?: string;
+  background?: boolean;
+  text: string;
+  link: string;
+  type: 'primary' | 'secondary' | 'call-to-action';
+};
 
 @Component({
   selector: 'app-button-link-section',

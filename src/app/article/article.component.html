@@ -4,7 +4,7 @@
     @if (section.__component == "article-section.row-start") {
       @if (setRowColumnIndex($any(section))) {}
       <div
-        class="article-rows wrapper"
+        class="article-rows sui wrapper"
         [attr.data-columns]="columnIndex"
         [class.text-center]="section.textCentered"
       ></div>
@@ -15,7 +15,7 @@
     @if (section.__component != "article-section.row-start") {
       <div class="section-container" [class.bg-accent]="section.background">
         @if (section.title) {
-          <div class="wrapper section-heading">
+          <div class="sui wrapper section-heading">
             @if ($index != 0) {
               <hr />
             }

@@ -1,0 +1,70 @@
+@use "./_variables.scss" as *;
+
+.sui {
+  @for $i from 1 through length($spacers) {
+    $cspacer: nth($spacers, $i);
+
+    &.m-#{$i} {
+      margin: nth($spacers, $i);
+    }
+    &.mx-#{$i} {
+      margin-left: $cspacer;
+      margin-right: $cspacer;
+    }
+    &.my-#{$i} {
+      margin-top: $cspacer;
+      margin-bottom: $cspacer;
+    }
+    &.mb-#{$i} {
+      margin-bottom: $cspacer;
+    }
+    &.mt-#{$i} {
+      margin-top: $cspacer;
+    }
+    &.mr-#{$i} {
+      margin-right: $cspacer;
+    }
+    &.ml-#{$i} {
+      margin-left: $cspacer;
+    }
+
+    &.p-#{$i} {
+        margin: nth($spacers, $i);
+      }
+      &.px-#{$i} {
+        margin-left: $cspacer;
+        margin-right: $cspacer;
+      }
+      &.py-#{$i} {
+        margin-top: $cspacer;
+        margin-bottom: $cspacer;
+      }
+      &.pb-#{$i} {
+        margin-bottom: $cspacer;
+      }
+      &.pt-#{$i} {
+        margin-top: $cspacer;
+      }
+      &.pr-#{$i} {
+        margin-right: $cspacer;
+      }
+      &.pl-#{$i} {
+        margin-left: $cspacer;
+      }
+  }
+
+  @each $p in $percentages {
+    .w-#{$p} {
+        width: #{$p}#{"%"};
+    }
+    .h-#{$p} {
+        height: #{$p}#{"%"};
+    }
+    .w-min-#{$p} {
+        min-width: #{$p}#{"%"};
+    }
+    .h-min-#{$p} {
+        min-height: #{$p}#{"%"};
+    }
+  }
+}

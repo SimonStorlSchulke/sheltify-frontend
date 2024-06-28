@@ -1,0 +1,83 @@
+@use "./_variables.scss" as *;
+
+.sui {
+    &.flex-x {
+        display: flex;
+    }
+
+    &.flex-y {
+        display: flex;
+        flex-direction: column;
+    }
+
+    &.flex-y,
+    &.flex-x {
+        &.ai-center {
+            align-items: center;
+        }
+        &.ai-start {
+            align-items: start;
+        }
+        &.ai-end {
+            align-items: end;
+        }
+        &.jc-center {
+            justify-content: center;
+        }
+        &.js-start {
+            justify-content: start;
+        }
+        &.js-end {
+            justify-content: end;
+        }
+        &.js-space-between {
+            justify-content: space-between;
+        }
+        &.js-space-around {
+            justify-content: space-around;
+        }
+
+        &.wrap {
+            flex-wrap: wrap;
+        }
+    }
+
+    @for $i from 1 through length($spacers) {
+        &.gap-#{$i} {
+            gap: nth($spacers, $i);
+        }
+    }
+
+    &.block {
+        display: block;
+
+    }
+    &.inline-block {
+        display: inline-block;
+    }
+    &.relative {
+        display: inline-block;
+    }
+
+    &.text-center {
+        text-align: center;
+    }
+
+    &.wrapper {
+        width: min(1200px, calc(100dvw - 64px));
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    @media (max-width: $breakpoint-mobile) {
+        &.desktop {
+            display: none !important;
+        }
+    }
+    
+    @media (min-width: calc($breakpoint-mobile + 1px)) {
+        &.mobile {
+            display: none !important;
+        }
+    }
+}

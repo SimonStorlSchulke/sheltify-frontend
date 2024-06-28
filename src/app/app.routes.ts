@@ -7,6 +7,7 @@ import { NewsComponent, newsResolver } from './pages/news/news.component';
 import { HelpComponent, helpResolver } from './pages/help/help.component';
 import { ContactComponent, contactResolver } from './pages/contact/contact.component';
 import { ConveyComponent, conveyResolver } from './pages/convey/convey.component';
+import { ApplyComponent } from './pages/forms/apply/apply.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, resolve: {homeData: homeResolver} },
@@ -17,4 +18,5 @@ export const routes: Routes = [
     { path: 'news', component: NewsComponent, resolve: {newsData: newsResolver} },
     { path: 'kontakt', component: ContactComponent, resolve: {contactData: contactResolver} },
     { path: 'tierartikel/:name', component: AnimalArticleComponent, resolve: {animalArticle: animalArticleResolver} },
+    { path: 'formulare/bewerbung', component: ApplyComponent },
 ];

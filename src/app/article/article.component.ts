@@ -1,14 +1,29 @@
 import { AfterViewInit, Component, Input } from '@angular/core';
-import {
-  ArticleRowStartSection,
-  ArticleSection,
-} from './article-sections/article-section-types';
-import { TextSectionComponent } from './article-sections/text-section/text-section.component';
-import { TextImageSectionComponent } from './article-sections/text-image-section/text-image-section.component';
-import { HeroSectionComponent } from './article-sections/hero-section/hero-section.component';
-import { ImageSectionComponent } from './article-sections/image-section/image-section.component';
-import { AnimalCardsSectionComponent } from './article-sections/animal-cards-section/animal-cards-section.component';
-import { ButtonLinkSectionComponent } from './article-sections/button-link-section/button-link-section.component';
+import { ArticleTextSection, TextSectionComponent } from './article-sections/text-section/text-section.component';
+import { ArticleTextWithImageSection, TextImageSectionComponent } from './article-sections/text-image-section/text-image-section.component';
+import { ArticleHeroSection, HeroSectionComponent } from './article-sections/hero-section/hero-section.component';
+import { ArticleImageSection, ImageSectionComponent } from './article-sections/image-section/image-section.component';
+import { AnimalCardsSectionComponent, ArticleAnimalCardsSection } from './article-sections/animal-cards-section/animal-cards-section.component';
+import { ButtonLinkSection, ButtonLinkSectionComponent } from './article-sections/button-link-section/button-link-section.component';
+
+export type ArticleSection =
+  | ArticleTextSection
+  | ArticleTextWithImageSection
+  | ArticleHeroSection
+  | ArticleAnimalCardsSection
+  | ArticleRowStartSection
+  | ButtonLinkSection
+  | ArticleImageSection;
+
+
+
+export type ArticleRowStartSection = {
+  __component: 'article-section.row-start';
+  title: string;
+  background?: boolean;
+  columns: number;
+  textCentered: boolean;
+};
 
 @Component({
   selector: 'app-article',

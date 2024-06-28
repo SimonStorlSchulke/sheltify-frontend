@@ -1,18 +1,15 @@
 import { Component, inject } from '@angular/core';
 import { AnimalService } from '../../services/animal.service';
 import { AsyncPipe } from '@angular/common';
-import { AnimalTileComponent } from '../../shared/animal-tile/animal-tile.component';
 import { HeroComponent } from '../../shared/hero/hero.component';
-import { Animal, StrapiFilter, StrapiImage } from '../../shared/shared-types';
-import { ArticleTextSection } from '../../article/article-sections/article-section-types';
-import { TextSectionComponent } from '../../article/article-sections/text-section/text-section.component';
-import { ArticleComponent } from '../../article/article.component';
+import { Animal, StrapiImage } from '../../shared/shared-types';
+import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { AnimalListComponent } from '../../shared/animal-list/animal-list.component';
 
 @Component({
   selector: 'app-dogs',
   standalone: true,
-  imports: [AsyncPipe, AnimalListComponent, HeroComponent, TextSectionComponent, ArticleComponent],
+  imports: [AsyncPipe, AnimalListComponent, HeroComponent, ArticleComponent],
   templateUrl: './dogs.component.html',
   styleUrl: './dogs.component.scss'
 })
@@ -72,6 +69,6 @@ export class DogsComponent {
 
   pageContent$ = this.animalSv.get<{
     hero: StrapiImage[],
-    article: ArticleTextSection[],
+    article: ArticleSection[],
   }>("animals-page?populate=*");
 }

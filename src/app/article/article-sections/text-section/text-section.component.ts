@@ -1,6 +1,13 @@
 import { Component, Input } from '@angular/core';
-import { ArticleTextSection } from '../article-section-types';
 import { StrapiRichTextPipe } from '../strapi-rich-text.pipe';
+import { RichTextNode } from '../../../services/blockRenderer';
+
+export type ArticleTextSection = {
+  __component: 'article-section.text';
+  title?: string;
+  background?: boolean;
+  text: RichTextNode[];
+};
 
 @Component({
   selector: 'app-text-section',

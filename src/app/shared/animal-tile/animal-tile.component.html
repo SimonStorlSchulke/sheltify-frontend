@@ -1,10 +1,10 @@
 <a href="/tierartikel/{{animal.name}}" class="animal-tile shadow">
     <img [src]="animalSv.getImageFormatUrl(animal.thumbnail, 'small')" [alt]="animal.thumbnail?.alternativeText">
 
-    <div class="hbox center center-items name-row">
+    <div class="sui flex-x center ai-center name-row">
         <img *ngIf="animal.gender == 'male'" class="gender-icon" src="assets/img/male.png">
         <img *ngIf="animal.gender == 'female'" class="gender-icon" src="assets/img/female.png">
-        <span class="text-sugar text-secondary text-center p-1 px-2">{{animal.name}}</span>
+        <span class="sui text-sugar text-secondary text-center p-1 px-2">{{animal.name}}</span>
     </div>
 
     <div class="bubbles">
@@ -12,7 +12,7 @@
         <span *ngIf="animal.inGermany">in Deutschland</span>
     </div>
 
-    <div class="tile-overlay p-2 vbox end">
+    <div class="tile-overlay p-2 sui flex-y end">
         <span class="description">{{animal.description}}</span>
     </div>
 </a>

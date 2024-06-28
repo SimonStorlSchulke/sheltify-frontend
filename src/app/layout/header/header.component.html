@@ -1,4 +1,4 @@
-<nav class="desktop">
+<nav class="sui desktop">
     <img src="assets/img/herzenshunde-logo.png">
 
     @for(item of items; track $index) {
@@ -20,8 +20,8 @@
     }
 </nav>
 
-<nav class="mobile">
-    <div class="hbox px-3 py-1">
+<nav class="sui mobile">
+    <div class="sui flex-x px-3 py-1">
         <button  (click)="burgerMenuOpen = true" class="burgermenu-button">O</button>
             <div class="burgermenu-content"  [class.open]="burgerMenuOpen">
                 @for(item of items; track $index) {

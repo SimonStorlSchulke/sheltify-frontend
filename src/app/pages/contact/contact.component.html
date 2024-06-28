@@ -1,4 +1,15 @@
-<app-hero [images]="[contactData.hero]"/>
-<div class="wrapper vbox gap-3">
-    <app-article [sections]="contactData.article"/>
+<app-hero [images]="[contactData.pageData.hero]"/>
+<div class="sui wrapper flex-y gap-3">
+    <app-article [sections]="contactData.pageData.article"/>
 </div>
+
+<div class="bg-accent">
+    <div class="sui wrapper flex-x wrap center gap-3 py-4">
+        @for (member of contactData.teamMembers; track $index) {
+            <app-teammember-tile [teamMember]="member"/>
+        }
+    </div>
+
+    <button class="primary" (click)="sendSubmission()">SEND</button>
+
+</div>  

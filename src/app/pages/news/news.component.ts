@@ -2,9 +2,8 @@ import { Component, inject } from '@angular/core';
 import { ActivatedRoute, ResolveFn } from '@angular/router';
 import { StrapiService } from '../../services/strapi.service';
 import { StrapiImage } from '../../shared/shared-types';
-import { ArticleSection } from '../../article/article-sections/article-section-types';
 import { HeroComponent } from '../../shared/hero/hero.component';
-import { ArticleComponent } from '../../article/article.component';
+import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { forkJoin, lastValueFrom, map } from 'rxjs';
 import { BlogArticle } from '../../blog/blog.component';
@@ -12,16 +11,13 @@ import { BlogTileComponent } from '../../blog/blog-tile/blog-tile.component';
 
 
 export const newsResolver: ResolveFn<NewsData> = () => {
-  const pageData = 
-  forkJoin({
+  return forkJoin({
     pageData: inject(StrapiService).get<NewsData>("news-page?populate[hero]=*&populate[article][populate]=*"),
     newsData: inject(StrapiService).get<BlogArticle[]>("blogs?populate[thumbnail]=*"),
   }).pipe(map(data => {
     data.pageData.news = data.newsData;
     return data.pageData;
   }))
-
-  return pageData;
 }
 
 

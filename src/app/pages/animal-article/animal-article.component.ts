@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { Observable, switchMap } from 'rxjs';
 import { AsyncPipe } from '@angular/common';
 import { AnimalArticle, AnimalArticleService } from '../../services/animal-article.service';
-import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn, RouterLink } from '@angular/router';
 import { MarkdownPipe } from '../../pipes/markdown.pipe';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TextSectionComponent } from '../../article/article-sections/text-section/text-section.component';
@@ -28,7 +28,8 @@ export const animalArticleResolver: ResolveFn<AnimalArticle> = (
         TextSectionComponent,
         TextImageSectionComponent,
         ArticleComponent,
-        StrapiImagePipe
+        StrapiImagePipe,
+        RouterLink,
     ]
 })
 export class AnimalArticleComponent {

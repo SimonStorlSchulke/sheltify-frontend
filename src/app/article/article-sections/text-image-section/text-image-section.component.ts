@@ -1,9 +1,19 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { ArticleTextWithImageSection } from '../article-section-types';
 import { StrapiRichTextPipe } from '../strapi-rich-text.pipe';
 import { StrapiImagePipe } from '../strapi-image.pipe';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { StrapiService } from '../../../services/strapi.service';
+import { RichTextNode } from '../../../services/blockRenderer';
+import { StrapiImage } from '../../../shared/shared-types';
+
+export type ArticleTextWithImageSection = {
+  __component: 'article-section.text-with-image-section';
+  title?: string;
+  background?: boolean;
+  text: RichTextNode[];
+  images?: StrapiImage[];
+  imagePosition: 'oben' | 'rechts' | 'links' | 'unten';
+};
 
 @Component({
   selector: 'app-text-image-section',

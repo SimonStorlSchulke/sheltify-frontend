@@ -1,9 +1,8 @@
 import { Injectable } from '@angular/core';
 import { Observable, forkJoin, map, merge } from 'rxjs';
 import { StrapiService } from './strapi.service';
-import { renderStrapiRichText, richTextJson } from './blockRenderer';
-import { ArticleSection } from '../article/article-sections/article-section-types';
 import { Animal } from '../shared/shared-types';
+import { ArticleSection } from '../article/article.component';
 
 export type AnimalArticle = {
   title: string,
