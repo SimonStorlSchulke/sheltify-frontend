@@ -24,6 +24,15 @@ export class AnimalArticleService extends StrapiService {
       }));
   }
 
+  /** grässlicher Pfusch aber geht erstmal... */
+  getAnimalLink(name: string) {
+    const url = window.location.pathname.replace("/tiere/", "/tierartikel/");
+    const path = url.split("/");
+    path.pop();
+    path.push(name);
+    return window.location.origin + path.join("/");
+  }
+
   getAndInsertAnimalLinks<T>(path: string): Observable<T> {
     return forkJoin({
       originalResponse: this.getAsString(path),
@@ -34,7 +43,7 @@ export class AnimalArticleService extends StrapiService {
 
       // Insert links for all Animalnames in the text following the %Name% syntax
       for (const animal of data.animalsList) {
-        replacedString = replacedString.replaceAll(`%${animal.name}%`, `<a href='${animal.name}'>${animal.name}</a>`);
+        replacedString = replacedString.replaceAll(`%${animal.name}%`, `<a href='${this.getAnimalLink(animal.name)}'>${animal.name}</a>`);
       }
 
       // remove % signs from names that were not found in the animalList
