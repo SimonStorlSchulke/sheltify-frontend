@@ -34,7 +34,7 @@ export class AnimalArticleService extends StrapiService {
 
       // Insert links for all Animalnames in the text following the %Name% syntax
       for (const animal of data.animalsList) {
-        replacedString = replacedString.replaceAll(`%${animal.name}%`, `<a href='tierartikel/${animal.name}'>${animal.name}</a>`);
+        replacedString = replacedString.replaceAll(`%${animal.name}%`, `<a href='${animal.name}'>${animal.name}</a>`);
       }
 
       // remove % signs from names that were not found in the animalList
