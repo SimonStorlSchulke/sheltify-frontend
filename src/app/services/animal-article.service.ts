@@ -26,11 +26,13 @@ export class AnimalArticleService extends StrapiService {
 
   /** grässlicher Pfusch aber geht erstmal... */
   getAnimalLink(name: string) {
-    const url = window.location.pathname.replace("/tiere/", "/tierartikel/");
+    const url = window.location.href.replace("/tiere/", "/tierartikel/");
+
     const path = url.split("/");
     path.pop();
     path.push(name);
-    return window.location.origin + path.join("/");
+    console.log(window.location.origin + path.join("/"))
+    return path.join("/");
   }
 
   getAndInsertAnimalLinks<T>(path: string): Observable<T> {
