@@ -8,7 +8,6 @@ import { StrapiImage } from '../../../shared/shared-types';
 
 export type ArticleTextWithImageSection = {
   __component: 'article-section.text-with-image-section';
-  title?: string;
   background?: boolean;
   text: RichTextNode[];
   images?: StrapiImage[];

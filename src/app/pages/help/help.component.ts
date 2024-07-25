@@ -24,7 +24,7 @@ export const helpResolver: ResolveFn<HelpData> = () => {
   styleUrl: './help.component.scss'
 })
 export class HelpComponent {
-  public helpData!: HelpData;
+  helpData!: HelpData;
 
   constructor() {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())

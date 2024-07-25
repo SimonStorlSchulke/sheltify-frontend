@@ -1,26 +1,118 @@
 @if (article) {
   <div class="sui wrapper">
     <div class="d-flex">
-      <h1>{{ getTitle() }}</h1>
+      <h1 class="sui mb-3">{{ getDefaultTitle() }}</h1>
 
-      @for (animal of article.animals; track animal.id) {
-        <div class="animal-article-card">
-          <p>{{ animal.animalKind?.name }}</p>
-          <img
-            [alt]="animal.thumbnail?.alternativeText"
-            [src]="animal.thumbnail | strapiImage"
-          />
-          <img
-            [alt]="animal.animalKind?.icon?.alternativeText"
-            [src]="animal.animalKind?.icon | strapiImage"
-          />
+      <div class="cvs">
+        <div class="tabs sui flex-x">
+          @for (animal of article.animals; track animal.id) {
+            <div
+              class="tab sui p-3 text-sugar flex-x gap-2"
+              [class.active]="selectedCv == $index"
+              (click)="selectedCv = $index"
+            >
+              <span>{{ animal.name }}</span>
+              <!--               @if(animal.gender == "male") {
+                <img class="gender-icon" src="assets/img/male.svg">
+            } @else {
+                <img class="gender-icon" src="assets/img/female.svg">
+            } -->
+            </div>
+          }
         </div>
-      }
+
+        <div class="tab-body sui p-4">
+          <div class="sui flex-x gap-3 jc-space-between wrap">
+            <div class="cv-grid sui flex-y grow-1 w-33">
+              <h2 class="text-sugar">Steckbrief</h2>
+              <div class="sui flex-y gap-2">
+                <span
+                  ><strong>Alter:</strong>
+                  {{ animalSv.getAgeString(article.animals[selectedCv]) }}</span
+                >
+                <span
+                  ><strong>Kastriert:</strong>
+                  {{
+                    article.animals[selectedCv].castrated ? "ja" : "nein"
+                  }}</span
+                >
+                <span
+                  ><strong>Schulterhöhe: </strong
+                  >{{ article.animals[selectedCv].shoulderHeightCm }}cm</span
+                >
+
+                @if (article.animals[selectedCv].diseases?.trim()) {
+                  <span
+                    ><strong>Gesundheit:</strong>
+                    {{ article.animals[selectedCv].diseases }}</span
+                  >
+                }
+
+                @if (article.animals[selectedCv].tolerating?.trim()) {
+                  <span
+                    ><strong>Verträglichkeit:</strong>
+                    {{ article.animals[selectedCv].tolerating }}</span
+                  >
+                }
+
+                @if (article.animals[selectedCv].suitedFor?.trim()) {
+                  <span
+                    ><strong>Geeignet für:</strong>
+                    {{ article.animals[selectedCv].suitedFor }}</span
+                  >
+                }
+              </div>
+            </div>
+            <div class="sui flex-y gap-2 px-3 grow-1 w-33">
+              <br />
+              <strong>Kurzbeschreibung:</strong>
+              <span>{{ article.animals[selectedCv].description }}</span>
+            </div>
+            <div class="cv-imag-wrapper">
+              <img
+                class="cv-img"
+                [alt]="article.animals[selectedCv].thumbnail?.alternativeText"
+                [src]="article.animals[selectedCv].thumbnail | strapiImage"
+              />
+              <div class="bubbles">
+                <span
+                  class="emergency"
+                  *ngIf="article.animals[selectedCv].emergency"
+                  >Notfall</span
+                >
+                <span *ngIf="article.animals[selectedCv].inGermany"
+                  >in Deutschland</span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="sui flex-x gap-3">
+            <a [routerLink]="'/formulare/bewerbung'"
+              ><button class="cto">Jetzt bewerben</button></a
+            >
+            <a [routerLink]="'/formulare/patenschaftsantrag'"
+              ><button class="cto">Pate werden</button></a
+            >
+          </div>
+        </div>
+      </div>
+      <br /><br />
+
+      <hr class="divider" />
     </div>
   </div>
   <app-article [sections]="article.sections" />
-  <div class="sui wrapper flex-x jc-center">
-    <a [routerLink]="'/formulare/bewerbung'"><button class="cto">Haben {{getTitle()}} ihr Interesse geweckt?</button></a>
+  <div class="sui wrapper flex-y ai-center mt-4 gap-3">
+    <h3 class="text-sugar">{{ getCtoText() }}</h3>
+
+    <div class="sui flex-x gap-3">
+      <a [routerLink]="'/formulare/bewerbung'"
+        ><button class="cto">Jetzt bewerben</button></a
+      >
+      <a [routerLink]="'/formulare/patenschaftsantrag'"
+        ><button class="cto">Pate werden</button></a
+      >
+    </div>
   </div>
 } @else {
   Tier nicht gefunden

@@ -8,6 +8,7 @@ import { HelpComponent, helpResolver } from './pages/help/help.component';
 import { ContactComponent, contactResolver } from './pages/contact/contact.component';
 import { ConveyComponent, conveyResolver } from './pages/convey/convey.component';
 import { ApplyComponent } from './pages/forms/apply/apply.component';
+import { MentoringComponent } from './pages/forms/mentoring/mentoring.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, resolve: {homeData: homeResolver} },
@@ -19,4 +20,5 @@ export const routes: Routes = [
     { path: 'kontakt', component: ContactComponent, resolve: {contactData: contactResolver} },
     { path: 'tierartikel/:name', component: AnimalArticleComponent, resolve: {animalArticle: animalArticleResolver} },
     { path: 'formulare/bewerbung', component: ApplyComponent },
+    { path: 'formulare/patenschaftsantrag', component: MentoringComponent },
 ];

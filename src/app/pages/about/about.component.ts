@@ -24,7 +24,7 @@ export const aboutResolver: ResolveFn<AboutData> = () => {
   styleUrl: './about.component.scss'
 })
 export class AboutComponent {
-  public aboutData!: AboutData;
+  aboutData!: AboutData;
 
   constructor() {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())

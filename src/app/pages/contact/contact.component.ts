@@ -36,7 +36,7 @@ export const contactResolver: ResolveFn<ContactData> = () => {
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
-  public contactData!: ContactData;
+  contactData!: ContactData;
   
   submissionSv = inject(SubmissionService);
 
@@ -48,7 +48,7 @@ export class ContactComponent {
   );
 }
 
-  public sendSubmission() {
+  sendSubmission() {
     const response = this.submissionSv.postSubmission({
       name: "Simon",
       context: "Lola",

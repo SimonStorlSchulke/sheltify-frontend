@@ -7,7 +7,6 @@ import { StrapiImage } from '../../../shared/shared-types';
 
 export type ArticleImageSection = {
   __component: 'article-section.image';
-  title?: string;
   background?: boolean;
   images: StrapiImage[];
 };

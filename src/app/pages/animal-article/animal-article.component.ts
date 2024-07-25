@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
-import { Observable, switchMap } from 'rxjs';
-import { AsyncPipe } from '@angular/common';
+import { Observable, map, switchMap } from 'rxjs';
+import { AsyncPipe, NgIf } from '@angular/common';
 import { AnimalArticle, AnimalArticleService } from '../../services/animal-article.service';
 import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn, RouterLink } from '@angular/router';
 import { MarkdownPipe } from '../../pipes/markdown.pipe';
@@ -9,12 +9,17 @@ import { TextSectionComponent } from '../../article/article-sections/text-sectio
 import { TextImageSectionComponent } from '../../article/article-sections/text-image-section/text-image-section.component';
 import { ArticleComponent } from '../../article/article.component';
 import { StrapiImagePipe } from "../../article/article-sections/strapi-image.pipe";
+import { AnimalService } from '../../services/animal.service';
 
 
 export const animalArticleResolver: ResolveFn<AnimalArticle> = (
   route: ActivatedRouteSnapshot,
 ) => {
-  return inject(AnimalArticleService).getArticleByAnimalName(route.paramMap.get('name')!); //todo null savety
+  const name = route.paramMap.get('name')!;  //todo null savety
+  return inject(AnimalArticleService).getArticleByAnimalName(name).pipe(map(data => {
+    data.preselectedAnimalId = data.animals.findIndex(a => a.name.toLocaleLowerCase() == name.toLocaleLowerCase());
+    return data;
+  }));
 }
 
 @Component({
@@ -30,22 +35,33 @@ export const animalArticleResolver: ResolveFn<AnimalArticle> = (
         ArticleComponent,
         StrapiImagePipe,
         RouterLink,
+        NgIf,
     ]
 })
 export class AnimalArticleComponent {
   activatedRoute = inject(ActivatedRoute);
+  animalSv = inject(AnimalService);
+
+  genderNames = new Map<string, string>([
+    ["male", "Rüde"],
+    ["female", "Hündin"],
+    ["other", "Anderes"],
+  ])
 
   article?: AnimalArticle;
+
+  selectedCv: number = 0;
 
   constructor() {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())
       .subscribe(({ animalArticle }) => {
         this.article = animalArticle;
+        this.selectedCv = this.article!.preselectedAnimalId;
       });
   }
 
 
-  protected getTitle(): string {
+  getDefaultTitle(): string {
     if(this.article?.title) return this.article.title;
     const names = this.article?.animals.map(animal => animal.name) ?? [];
     if (names.length == 1) {
@@ -55,5 +71,16 @@ export class AnimalArticleComponent {
       return `${names[0]} & ${names[1]}`;
     }
     return names.slice(0, -1).join(", ") + ` & ${names[names.length - 1]}`;
+  }
+  
+  getCtoText() {
+    const names = this.article?.animals.map(animal => animal.name) ?? [];
+    if (names.length == 1) {
+      return `Hat ${names[0]} dein Interesse geweckt?`;
+    }
+    if (names.length == 2) {
+      return `Haben ${names[0]} & ${names[1]} dein Interesse geweckt?`;
+    }
+    return `Hat einer der Hunde dein Interesse geweckt?`;
   }
 }

@@ -24,22 +24,34 @@
         &.jc-center {
             justify-content: center;
         }
-        &.js-start {
+        &.jc-start {
             justify-content: start;
         }
-        &.js-end {
+        &.jc-end {
             justify-content: end;
         }
-        &.js-space-between {
+        &.jc-space-between {
             justify-content: space-between;
         }
-        &.js-space-around {
+        &.jc-space-around {
             justify-content: space-around;
         }
 
         &.wrap {
             flex-wrap: wrap;
         }
+    }
+
+    &.grow-1 {
+        flex-grow: 1;
+    }
+
+    &.gap-2 {
+        flex-grow: 2;
+    }
+
+    &.grow-3 {
+        flex-grow: 3;
     }
 
     @for $i from 1 through length($spacers) {
@@ -67,6 +79,29 @@
         width: min(1200px, calc(100dvw - 64px));
         margin-left: auto;
         margin-right: auto;
+    }
+
+    .w-100 {
+        width: 100%;
+    }
+
+    .w-33 {
+        width: 33%;
+    }
+
+    .w-50 {
+        width: 50%;
+    }
+
+    .w-25 {
+        width: 25%;
+    }
+    
+
+    .inline-icon {
+        width: 24px;
+        height: 24px;
+        display: inline-block;
     }
     
     @media (max-width: $breakpoint-mobile) {

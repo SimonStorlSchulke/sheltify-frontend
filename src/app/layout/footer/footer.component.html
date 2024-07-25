@@ -1,3 +1,23 @@
-<img src="assets/img/l2.png">
-<div>
+@if (footerData$ | async; as footerData) {
+  <div
+    class="banner sui py-4 flex-y jc-center"
+    style="background-image: linear-gradient(90deg, #0006, #0002), url({{
+      strapiSv.getImageFormatUrl(footerData.background, 'large')
+    }});"
+  >
+    <app-article [sections]="footerData.article" />
+  </div>
+}
+
+<div class="footer">
+  <div class="sui wrapper">
+    <div class="sui flex-x ai-center gap-3">
+      <img src="assets/img/herzenshunde_weiß.svg" />
+      <div class="sui flex-y gap-2">
+        <a class="sui flex-x ai-center gap-2" href="mailto:info@herzenshunde.de"> <img class="sui inline-icon" src="assets/img/mail.svg"> info&#64;herzenshunde.de</a>
+        <span class="sui flex-x ai-center gap-2"><img class="sui inline-icon" src="assets/img/phone.svg">0 1234 / 56 78 99 - 0</span>
+        <span class="sui flex-x ai-center gap-2"><img class="sui inline-icon" src="assets/img/comment.svg">Beratungstermin vereinbaren</span>
+      </div>
+    </div>
+  </div>
 </div>

@@ -2,8 +2,6 @@ import { Pipe, PipeTransform, inject } from '@angular/core';
 import { StrapiImage } from '../../shared/shared-types';
 import { StrapiService } from '../../services/strapi.service';
 
-const strapiUrl = 'http://localhost:1337';
-
 @Pipe({
   name: 'strapiImage',
   standalone: true,

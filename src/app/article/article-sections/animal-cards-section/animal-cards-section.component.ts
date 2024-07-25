@@ -1,4 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { Animal, StrapiImage } from '../../../shared/shared-types';
 import { StrapiService } from '../../../services/strapi.service';
 import { Observable, map } from 'rxjs';
@@ -9,7 +9,6 @@ import { RichTextNode } from '../../../services/blockRenderer';
 
 export type ArticleAnimalCardsSection = {
   __component: 'article-section.animal-cards';
-  title?: string;
   text: RichTextNode[];
   background?: boolean;
   animals: Animal[];
@@ -22,7 +21,7 @@ export type ArticleAnimalCardsSection = {
   templateUrl: './animal-cards-section.component.html',
   styleUrl: './animal-cards-section.component.scss'
 })
-export class AnimalCardsSectionComponent {
+export class AnimalCardsSectionComponent implements OnInit {
   @Input({required: true}) sectionData!: ArticleAnimalCardsSection;
 
   animals$?: Observable<Animal[]>;

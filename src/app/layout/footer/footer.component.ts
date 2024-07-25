@@ -1,12 +1,33 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { StrapiService } from '../../services/strapi.service';
+import { StrapiImage } from '../../shared/shared-types';
+import { ArticleComponent, ArticleSection } from '../../article/article.component';
+import { AsyncPipe } from '@angular/common';
+import { switchMap } from 'rxjs';
+
+type FooterDataBannerData = {
+  id: number,
+  background: StrapiImage,
+  article: ArticleSection[],
+}
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [],
+  imports: [AsyncPipe, ArticleComponent],
   templateUrl: './footer.component.html',
-  styleUrl: './footer.component.scss'
+  styleUrl: './footer.component.scss',
 })
 export class FooterComponent {
+  strapiSv = inject(StrapiService);
+
+  footerData$ = this.strapiSv.get<FooterDataBannerData[]>("footer-banners")
+  .pipe(
+    switchMap(footers => {
+      const footerIds = footers.map(footerData => footerData.id);
+      let randomId = footerIds[Math.floor(Math.random()*footerIds.length)];
+      return this.strapiSv.get<FooterDataBannerData>(`footer-banners/${randomId}?populate=*`)
+    })
+  );
 
 }

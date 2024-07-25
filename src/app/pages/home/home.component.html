@@ -1,2 +1,12 @@
-<app-hero [images]="[homeData.hero]"/>
+<app-hero [images]="[homeData.hero]" />
 <app-article [sections]="homeData.article" />
+
+<div class="sui wrapper">
+  <div class="sui flex-y gap-4">
+    @if (newsData$ | async; as newsData) {
+      @for (newsBlogEntry of newsData; track $index) {
+        <app-blog-tile [blog]="newsBlogEntry" />
+      }
+    }
+  </div>
+</div>

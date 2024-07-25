@@ -1,8 +1,9 @@
 @use "colors" as *;
+@use "variables" as *;
 
 .animal-tile {
     width: 280px;
-    height: 320px;
+    height: 335px;
     transition: transform 0.23s;
     display: block;
     background-color: #fff;
@@ -22,17 +23,20 @@
     }
 
     .name-row {
-        margin-left: -1.5rem;
+        padding-left: 0.5rem;
+        padding-top: 0.3rem;
+        font-size: $fontsize-h3;
+        display: flex;
+        justify-content: center;
     }
 
     .gender-icon {
         width: 1.6rem;
         height: 1.6rem;
     }
-
     .bubbles {
         position: absolute;
-        bottom: 50px;
+        bottom: 68px;
         left: 12px;
         display: flex;
         flex-direction: column;
@@ -49,30 +53,6 @@
             &.emergency {
                 background-color: $cto;
             }
-        }
-    }
-
-    .tile-overlay {
-        position: absolute;
-        top: 0;
-        opacity: 0;
-        transition: opacity 0.25s;
-        background: linear-gradient(transparent, mix($accent, transparent, 60%), mix($accent, transparent, 80%));
-        width: 100%;
-        height: 281px;
-
-        span {
-            overflow: hidden;
-            display: -webkit-box;
-            -webkit-line-clamp: 4;
-            line-clamp: 4;
-            -webkit-box-orient: vertical;
-        }
-    }
-
-    &:hover {
-        .tile-overlay {
-            opacity: 1;
         }
     }
 }

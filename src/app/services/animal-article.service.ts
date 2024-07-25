@@ -8,6 +8,7 @@ export type AnimalArticle = {
   title: string,
   animals: Animal[],
   sections: ArticleSection[],
+  preselectedAnimalId: number,
 }
 
 @Injectable({
@@ -23,7 +24,7 @@ export class AnimalArticleService extends StrapiService {
       }));
   }
 
-  public getAndInsertAnimalLinks<T>(path: string): Observable<T> {
+  getAndInsertAnimalLinks<T>(path: string): Observable<T> {
     return forkJoin({
       originalResponse: this.getAsString(path),
       animalsList: this.get<{ name: string }[]>("animals?fields[0]=name")

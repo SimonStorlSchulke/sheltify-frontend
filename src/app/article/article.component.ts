@@ -5,6 +5,8 @@ import { ArticleHeroSection, HeroSectionComponent } from './article-sections/her
 import { ArticleImageSection, ImageSectionComponent } from './article-sections/image-section/image-section.component';
 import { AnimalCardsSectionComponent, ArticleAnimalCardsSection } from './article-sections/animal-cards-section/animal-cards-section.component';
 import { ButtonLinkSection, ButtonLinkSectionComponent } from './article-sections/button-link-section/button-link-section.component';
+import { SectionStartComponent, SectionStartSection } from './article-sections/section-start/section-start.component';
+import { ArticleBlogCardsSection, BlogCardsComponent } from './article-sections/blog-cards/blog-cards.component';
 
 export type ArticleSection =
   | ArticleTextSection
@@ -12,8 +14,10 @@ export type ArticleSection =
   | ArticleHeroSection
   | ArticleAnimalCardsSection
   | ArticleRowStartSection
+  | ArticleBlogCardsSection
   | ButtonLinkSection
-  | ArticleImageSection;
+  | ArticleImageSection
+  | SectionStartSection;
 
 
 
@@ -35,6 +39,8 @@ export type ArticleRowStartSection = {
     ImageSectionComponent,
     AnimalCardsSectionComponent,
     ButtonLinkSectionComponent,
+    SectionStartComponent,
+    BlogCardsComponent,
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',

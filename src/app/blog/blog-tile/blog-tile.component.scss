@@ -4,23 +4,24 @@
 :host {
   display: flex;
   background: $neutral100;
-  height: 260px;
+  height: 320px;
   border-radius: 12px;
 }
 
 img {
-  height: 260px;
-  width: 250px;
+  height: 320px;
+  width: 320px;
   object-fit: cover;
   border-radius: 12px 0 0 12px;
 }
 
 .tile-content {
-  padding: 32px;
+  padding: 42px;
   padding-bottom: 12px;
   align-items: start;
   gap: 12px;
   flex-grow: 1;
+  position: relative;
 
   h3 {
     font-family: more-sugar;
@@ -39,6 +40,14 @@ img {
     display: -webkit-box;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
+    font-size: 14px;
+  }
+
+  .date {
+    position: absolute;
+    right: 24px;
+    top: 16px;
+    color: $neutral500;
   }
 }
 

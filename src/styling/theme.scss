@@ -16,6 +16,7 @@ body {
 
 .text-sugar {
     font-family: more-sugar;
+    font-weight: 400;
 }
 
 .text-center {
@@ -26,6 +27,12 @@ body {
     font-weight: 700;
 }
 
+.divider {
+    border: none;
+    background: mix(transparent, $neutral400, 50%);
+    height: 1.1px;
+    margin: 32px 0;
+  }
 button {
     .primary {
         background-color: $primary;

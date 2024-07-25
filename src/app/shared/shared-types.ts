@@ -61,5 +61,9 @@ export type Animal = {
     castrated?: boolean,
     shoulderHeightCm?: number,
     animalKind?: AnimalKind,
+    birthday?: string,
+    diseases?: string,
+    tolerating?: string,
+    suitedFor?: string,
   }
   

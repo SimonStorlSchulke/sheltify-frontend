@@ -1,18 +1,102 @@
 @use "colors" as *;
-@use "variables" as *; 
+@use "variables" as *;
 
 h1 {
-    font-family: more-sugar;
-    font-weight: 400;
-    font-size: $fontsize-h1;
-    color: $primary;
+  font-family: more-sugar;
+  font-weight: 400;
+  font-size: $fontsize-h1;
+  color: $primary;
+}
+
+.cvs {
+  .tabs {
+    max-width: fit-content;
+    .tab {
+      background-color: mix($accent, #fff, 60%);
+      border-radius: 16px 16px 0 0;
+      font-size: $fontsize-h3;
+      padding: 12px 24px;
+      cursor: pointer;
+      transition:
+        background-color 0.25s,
+        color 0.25s,
+        margin 0.25s;
+
+      &.active {
+        color: #fff;
+        background-color: $cto;
+      }
+
+      &:not(.active):hover {
+        padding-bottom: 8px;
+        margin-top: -8px;
+      }
+
+      .gender-icon {
+        color: #fff;
+        width: 32px;
+        height: 32px;
+      }
+    }
+  }
+
+  .tab-body {
+    background-color: $accent;
+    border-radius: 0 16px 16px 16px;
+
+    .cv-imag-wrapper {
+        position: relative;
+      .cv-img {
+        width: 320px;
+        height: 320px;
+        object-fit: cover;
+        border-radius: 16px;
+      }
+
+      .bubbles {
+        position: absolute;
+        bottom: 12px;
+        left: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        align-items: start;
+        font-family: more-sugar;
+        color: #fff;
+
+        span {
+          background-color: $primary;
+          border-radius: 40px;
+          padding: 4px 12px;
+
+          &.emergency {
+            background-color: $cto;
+          }
+        }
+      }
+    }
+  }
 }
 
 .animal-article-card {
-    display: flex;
+  width: 48%;
+  overflow: hidden;
+  background-color: $accent;
 
-    img {
-        width: 300px;
-        object-fit: cover;
-    }
+  .content {
+    min-width: 250px;
+  }
+
+  img {
+    width: 300px;
+    object-fit: cover;
+  }
+
+  .gender-icon {
+    height: 32px;
+    width: 32px;
+    object-fit: fill;
+  }
 }
+
+//wenn sections nicht nebeneinander passen vlt alle drei direkt untereinander

@@ -2,14 +2,34 @@
 
 :host {
     display: flex;
+    flex-direction: column;
+    margin-top: 24px;
+}
+
+.banner {
+    height: 700px;
+    max-height: 60dvh;
+    background-size: cover;
+    background-position: center;
+}
+
+.footer {
+    display: flex;
     align-items: center;
     height: 200px;
     background-color: $primary-d1;
     padding: 12px;
-    margin-top: 24px;
+    color: #fff;
 }
 
 img {
     width: 110px;
     height: 110px;
+}
+
+:host ::ng-deep article {
+    color: #fffb;
+    h1, h2, h3, h4 {
+        color: #ffffffcc;
+    }
 }

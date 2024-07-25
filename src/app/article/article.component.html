@@ -14,16 +14,10 @@
 
     @if (section.__component != "article-section.row-start") {
       <div class="section-container" [class.bg-accent]="section.background">
-        @if (section.title) {
-          <div class="sui wrapper section-heading">
-            @if ($index != 0) {
-              <hr />
-            }
-            <h2>{{ section.title }}</h2>
-          </div>
-        }
-
         @switch (section.__component) {
+          @case ("article-section.section-start") {
+            <app-section-start [sectionData]="section" />
+          }
           @case ("article-section.text") {
             <app-text-section [sectionData]="section" />
           }
@@ -41,6 +35,9 @@
           }
           @case ("article-section.button-link") {
             <app-button-link-section [sectionData]="section" />
+          }
+          @case ("article-section.news-cards") {
+            <app-blog-cards [sectionData]="section" />
           }
         }
       </div>

@@ -8,6 +8,9 @@ import { ArticleComponent, ArticleSection } from '../../article/article.componen
 import { HeroComponent } from '../../shared/hero/hero.component';
 import { StrapiImage } from '../../shared/shared-types';
 import { AnimalArticleService } from '../../services/animal-article.service';
+import { Observable } from 'rxjs';
+import { BlogArticle } from '../../blog/blog.component';
+import { BlogTileComponent } from '../../blog/blog-tile/blog-tile.component';
 
 export type HomeData = {
   bannerText: string,
@@ -22,12 +25,13 @@ export const homeResolver: ResolveFn<HomeData> = () => {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [AsyncPipe, AnimalListComponent, ArticleComponent, HeroComponent],
+  imports: [AsyncPipe, AnimalListComponent, ArticleComponent, HeroComponent, BlogTileComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })
 export class HomeComponent {
-  public homeData!: HomeData;
+  homeData!: HomeData;
+  newsData$?: Observable<BlogArticle[]>;
 
   query = "pagination[limit]=4&sort[0]=createdAt:desc"
 
@@ -37,5 +41,8 @@ export class HomeComponent {
         this.homeData = homeData;
       }
     );
+
+    this.newsData$ = inject(StrapiService).get<BlogArticle[]>("blogs?populate[thumbnail]=*");
+
   }
 }

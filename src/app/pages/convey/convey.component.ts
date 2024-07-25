@@ -24,7 +24,7 @@ export const conveyResolver: ResolveFn<ConveyData> = () => {
   styleUrl: './convey.component.scss'
 })
 export class ConveyComponent {
-  public conveyData!: ConveyData;
+  conveyData!: ConveyData;
 
   constructor() {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())

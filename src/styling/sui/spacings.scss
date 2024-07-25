@@ -29,27 +29,27 @@
     }
 
     &.p-#{$i} {
-        margin: nth($spacers, $i);
+        padding: nth($spacers, $i);
       }
       &.px-#{$i} {
-        margin-left: $cspacer;
-        margin-right: $cspacer;
+        padding-left: $cspacer;
+        padding-right: $cspacer;
       }
       &.py-#{$i} {
-        margin-top: $cspacer;
-        margin-bottom: $cspacer;
+        padding-top: $cspacer;
+        padding-bottom: $cspacer;
       }
       &.pb-#{$i} {
-        margin-bottom: $cspacer;
+        padding-bottom: $cspacer;
       }
       &.pt-#{$i} {
-        margin-top: $cspacer;
+        padding-top: $cspacer;
       }
       &.pr-#{$i} {
-        margin-right: $cspacer;
+        padding-right: $cspacer;
       }
       &.pl-#{$i} {
-        margin-left: $cspacer;
+        padding-left: $cspacer;
       }
   }
 

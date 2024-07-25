@@ -5,7 +5,6 @@ import { StrapiImage } from '../../../shared/shared-types';
 
 export type ArticleHeroSection = {
   __component: 'article-section.hero';
-  title: string;
   background?: boolean;
   hero: StrapiImage;
 };

@@ -4,7 +4,7 @@
 <div class="sui wrapper flex-y gap-3">
     <app-article [sections]="pageContent.article"/>
     
-    <div class="sui flex-x gap-3 wrap">
+    <div class="sui flex-x gap-2 wrap">
         <button (click)="showAll()" [class.active]="activeFilters.size == 0" class="bubble">Alle Hunde</button>
         <button (click)="toggleFilter('small')" [class.active]="isFilterActive('small')" class="bubble">kleine Hunde</button>
         <button (click)="toggleFilter('middle')" [class.active]="isFilterActive('middle')" class="bubble">mittlere Hunde</button>
