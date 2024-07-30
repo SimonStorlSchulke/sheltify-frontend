@@ -65,10 +65,10 @@ export class DogsComponent {
 
   animalSv = inject(AnimalService);
 
-  query = "filters[animalKind][name][$eqi]=hund"
+  query = ""
 
   pageContent$ = this.animalSv.get<{
-    hero: StrapiImage[],
+    hero: StrapiImage,
     article: ArticleSection[],
-  }>("animals-page?populate=*");
+  }>("dogs-page?populate=*");
 }

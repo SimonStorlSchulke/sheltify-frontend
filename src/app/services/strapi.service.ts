@@ -13,11 +13,11 @@ export type StrapiSingleResponse<T> = {
 })
 export class StrapiService {
   static readonly bearer = isDevMode()
-    ? '3c9e9d39a26bf76435b9888ce4d62e7bd50859afd5118867c4e7797c92094cf6f1fc63fc7cd45bca393dc3e4ad64dfb13ab6008d55c69ee1d0572c69358e88a4d1d5e55f32cfbee8f7cb1f1d271a1824b9f4105dca3ce6276d6c4194e31d6ac000c2f792caea958ebdacd224fd4312a60e9ccc0c275238127f70e0178eed7378'
-    : '3c9e9d39a26bf76435b9888ce4d62e7bd50859afd5118867c4e7797c92094cf6f1fc63fc7cd45bca393dc3e4ad64dfb13ab6008d55c69ee1d0572c69358e88a4d1d5e55f32cfbee8f7cb1f1d271a1824b9f4105dca3ce6276d6c4194e31d6ac000c2f792caea958ebdacd224fd4312a60e9ccc0c275238127f70e0178eed7378';
+    ? '8d9d5bd4f9c65a1dbbdd45d63653dfe9aedf6b6f99e4e7d5b06f847b2cd8a43d966d9a0260bfd860280efd9b605dc2c61a696034abcca869e4b302da6cf1a27d2a409945a5252bf44ce6016f6fc3a91c220f9f7e118f6571630a9a2a9e5df436f4d8d828392091937a16df4a5fbee918a04ba92da63362b77daea0cdbf1d09f3'
+    : '8d9d5bd4f9c65a1dbbdd45d63653dfe9aedf6b6f99e4e7d5b06f847b2cd8a43d966d9a0260bfd860280efd9b605dc2c61a696034abcca869e4b302da6cf1a27d2a409945a5252bf44ce6016f6fc3a91c220f9f7e118f6571630a9a2a9e5df436f4d8d828392091937a16df4a5fbee918a04ba92da63362b77daea0cdbf1d09f3';
   
-  static readonly apiBaseUrl = 'https://herzenshunde-strapi-prod.azurewebsites.net/api/';
-  static readonly uploadsBaseUrl = 'https://herzenshunde-strapi-prod.azurewebsites.net';
+  static readonly apiBaseUrl = "http://cms.herzenshunde-griechenland.de/api/";
+  static readonly uploadsBaseUrl = "http://cms.herzenshunde-griechenland.de";
 
   static readonly headers = {
     'Content-Type': 'application/json',
@@ -53,7 +53,7 @@ export class StrapiService {
 
   getImageFormatUrl(
     image: StrapiImage | null | undefined,
-    size: 'thumbnail' | 'small' | 'medium' | 'large' | 'original'
+    size: 'thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'original'
   ): string {
     if (image == null) {
       return 'https://herzenshunde-strapi-prod.azurewebsites.net/uploads/paw_e60a248111.svg';
@@ -81,6 +81,15 @@ export class StrapiService {
         break;
       case 'large':
         toReturn = (
+          image.formats.large?.url ??
+          image.formats.medium?.url ??
+          image.formats.small?.url ??
+          image.formats.thumbnail.url
+        );
+        break;
+      case 'xlarge':
+        toReturn = (
+          image.formats.xlarge?.url ??
           image.formats.large?.url ??
           image.formats.medium?.url ??
           image.formats.small?.url ??

@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
-import { AnimalService } from './services/animal.service';
 import { AsyncPipe } from '@angular/common';
 import { HeaderComponent } from "./layout/header/header.component";
 import { FooterComponent } from './layout/footer/footer.component';

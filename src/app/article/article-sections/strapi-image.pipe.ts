@@ -10,7 +10,7 @@ export class StrapiImagePipe implements PipeTransform {
   strapiSv = inject(StrapiService);
   transform(
     value?: StrapiImage,
-    ...args: ('thumbnail' | 'small' | 'medium' | 'large' | 'original')[]
+    ...args: ('thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'original')[]
   ): unknown {
     return this.strapiSv.getImageFormatUrl(value, args[0] ?? 'large');
     //todo define default image if value is null | undefined

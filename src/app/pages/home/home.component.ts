@@ -13,7 +13,6 @@ import { BlogArticle } from '../../blog/blog.component';
 import { BlogTileComponent } from '../../blog/blog-tile/blog-tile.component';
 
 export type HomeData = {
-  bannerText: string,
   hero: StrapiImage,
   article: ArticleSection[],
 }

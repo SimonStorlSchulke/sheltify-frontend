@@ -18,6 +18,9 @@ export type StrapiImage = {
       large?: {
         url: string
       },
+      xlarge?: {
+        url: string
+      },
     }
     hash: string
     ext: string

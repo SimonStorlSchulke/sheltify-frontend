@@ -9,6 +9,7 @@ import { ContactComponent, contactResolver } from './pages/contact/contact.compo
 import { ConveyComponent, conveyResolver } from './pages/convey/convey.component';
 import { ApplyComponent } from './pages/forms/apply/apply.component';
 import { MentoringComponent } from './pages/forms/mentoring/mentoring.component';
+import { ImprintComponent } from './pages/imprint/imprint.component';
 
 export const routes: Routes = [
     { path: '', component: HomeComponent, resolve: {homeData: homeResolver} },
@@ -18,6 +19,7 @@ export const routes: Routes = [
     { path: 'tiere/hunde', component: DogsComponent },
     { path: 'news', component: NewsComponent, resolve: {newsData: newsResolver} },
     { path: 'kontakt', component: ContactComponent, resolve: {contactData: contactResolver} },
+    { path: 'impressum', component: ImprintComponent},
     { path: 'tierartikel/:name', component: AnimalArticleComponent, resolve: {animalArticle: animalArticleResolver} },
     { path: 'formulare/bewerbung', component: ApplyComponent },
     { path: 'formulare/patenschaftsantrag', component: MentoringComponent },

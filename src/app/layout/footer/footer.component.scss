@@ -20,6 +20,14 @@
     background-color: $primary-d1;
     padding: 12px;
     color: #fff;
+
+    a {
+        transition: color 0.2s;
+    }
+
+    a:hover {
+        color: $cto;
+    }
 }
 
 img {

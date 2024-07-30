@@ -76,5 +76,3 @@ export type RichTextNode = {
         };
     };
 };
-
-

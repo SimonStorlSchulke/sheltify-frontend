@@ -4,6 +4,7 @@ import { StrapiImage } from '../../shared/shared-types';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { AsyncPipe } from '@angular/common';
 import { switchMap } from 'rxjs';
+import { RouterLink } from '@angular/router';
 
 type FooterDataBannerData = {
   id: number,
@@ -14,7 +15,7 @@ type FooterDataBannerData = {
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [AsyncPipe, ArticleComponent],
+  imports: [AsyncPipe, ArticleComponent, RouterLink],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })

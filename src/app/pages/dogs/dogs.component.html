@@ -1,5 +1,5 @@
 @if (pageContent$ | async; as pageContent) {
-<app-hero [images]="pageContent.hero" />
+<app-hero [images]="[pageContent.hero]" />
 
 <div class="sui wrapper flex-y gap-3">
     <app-article [sections]="pageContent.article"/>
