@@ -1,1 +1,9 @@
-<p>blog works!</p>
+@if (article) {
+    <div class="sui wrapper flex-y my-4 gap-3">
+        <h1 class="text-sugar">{{ article.title }}</h1>
+    </div>
+    <app-article [sections]="article.artikel" />
+  } @else {
+    Tier nicht gefunden
+  }
+  

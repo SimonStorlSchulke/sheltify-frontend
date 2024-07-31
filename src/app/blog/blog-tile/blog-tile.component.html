@@ -1,10 +1,15 @@
-<img [alt]="blog.thumbnail?.alternativeText" [src]="blog.thumbnail | strapiImage : 'original'">
-<div class="tile-content sui flex-y">
-    <h3>{{blog.title}}</h3>
-    <span>{{blog.description}}</span>
+<a [routerLink]="'/news/' + blog.id">
+  <img
+    [alt]="blog.thumbnail?.alternativeText"
+    [src]="blog.thumbnail | strapiImage: 'original'"
+  />
+  <div class="tile-content sui flex-y">
+    <h3>{{ blog.title }}</h3>
+    <span>{{ blog.description }}</span>
     <div class="grow-1"></div>
     <div class="sui flex-x space-between end-items w-100">
-        <button class="secondary">Mehr erfahren</button>
+      <button class="secondary">Mehr erfahren</button>
     </div>
-    <span class="date">{{blog.createdAt | date : "dd.MMMM.yyyy"}}</span>
-</div>
+    <span class="date">{{ blog.createdAt | date: "dd.MMMM.yyyy" }}</span>
+  </div>
+</a>

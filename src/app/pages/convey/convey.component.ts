@@ -13,7 +13,7 @@ export type ConveyData = {
 }
 
 export const conveyResolver: ResolveFn<ConveyData> = () => {
-  return inject(StrapiService).get<ConveyData>("convey-page?populate[hero]=*&populate[article][populate]=*");
+  return inject(StrapiService).get<ConveyData>("convey?populate[hero]=*&populate[article][populate]=*");
 }
 
 @Component({
@@ -28,9 +28,6 @@ export class ConveyComponent {
 
   constructor() {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())
-    .subscribe( ({ conveyData }) => {
-        this.conveyData = conveyData;
-      }
-    );
+    .subscribe( ({ conveyData }) =>  this.conveyData = conveyData);
   }
 }

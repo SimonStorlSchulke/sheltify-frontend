@@ -3,6 +3,7 @@ import { Observable, forkJoin, map, merge } from 'rxjs';
 import { StrapiService } from './strapi.service';
 import { Animal } from '../shared/shared-types';
 import { ArticleSection } from '../article/article.component';
+import { BlogArticle } from '../blog/blog.component';
 
 export type AnimalArticle = {
   title: string;
@@ -11,17 +12,25 @@ export type AnimalArticle = {
   preselectedAnimalId: number;
 };
 
+
 @Injectable({
   providedIn: 'root',
 })
 export class AnimalArticleService extends StrapiService {
   getArticleByAnimalName(name: string): Observable<AnimalArticle> {
     const path = `animal-articles?filters[animals][name][$eqi]=${name}&populate[sections][populate]=*&populate[animals][populate][thumbnail]=*&populate[animals][populate][animalKind][populate][icon]=*`;
-    return this.getAndInsertAnimalLinks<AnimalArticle[]>(
-      `animal-articles?filters[animals][name][$eqi]=${name}&populate[sections][populate]=*&populate[animals][populate][thumbnail]=*&populate[animals][populate][animalKind][populate][icon]=*`,
-    ).pipe(
+    return this.getAndInsertAnimalLinks<AnimalArticle[]>(path).pipe(
       map((articles) => {
         return articles[0];
+      }),
+    );
+  }
+
+  getBlogArticle(id: number): Observable<BlogArticle> {
+    const path = `blogs/${id}?populate[artikel][populate]=*`;
+    return this.getAndInsertAnimalLinks<BlogArticle>(path).pipe(
+      map((articles) => {
+        return articles;
       }),
     );
   }
