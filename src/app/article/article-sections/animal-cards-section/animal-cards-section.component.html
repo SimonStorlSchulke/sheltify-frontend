@@ -1,5 +1,5 @@
 <section class="sui wrapper {{ sectionData.__component }}">
-  @if (sectionData.text.length > 0) {
+  @if (sectionData.text && sectionData.text.length > 0) {
     <div
       class="list-text"
       [innerHTML]="sectionData.text | strapiRichText"

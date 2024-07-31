@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, Input } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild } from '@angular/core';
 import { ArticleTextSection, TextSectionComponent } from './article-sections/text-section/text-section.component';
 import { ArticleTextWithImageSection, TextImageSectionComponent } from './article-sections/text-image-section/text-image-section.component';
 import { ArticleHeroSection, HeroSectionComponent } from './article-sections/hero-section/hero-section.component';
@@ -47,10 +47,10 @@ export type ArticleRowStartSection = {
 })
 export class ArticleComponent implements AfterViewInit {
   @Input({ required: true }) sections!: ArticleSection[];
+  @ViewChild("article") articleElement!: ElementRef;
 
   ngAfterViewInit() {
-    const rowStartTags =
-      document.querySelectorAll<HTMLElement>('.article-rows');
+    const rowStartTags = (this.articleElement.nativeElement as HTMLElement).querySelectorAll<HTMLElement>('.article-rows');
     rowStartTags.forEach((rowStart) => {
       const columns: number = +rowStart.getAttribute('data-columns')!;
       rowStart.append(...this.getNextNSiblings(rowStart, columns));
@@ -71,9 +71,6 @@ export class ArticleComponent implements AfterViewInit {
     return siblings;
   }
 
-  rowStartTag = `<div class="row">`;
-  rowEndTag = `</div>`;
-
   columnIndex = 0;
 
   setRowColumnIndex(rowStartSection: ArticleRowStartSection): boolean {
@@ -81,6 +78,7 @@ export class ArticleComponent implements AfterViewInit {
     return true;
   }
 
+  /** returns true so it can be used in a template if statement */
   decrementRowColumnIndex(): boolean {
     if (this.columnIndex > 0) {
       this.columnIndex -= 1;
