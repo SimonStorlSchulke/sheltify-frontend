@@ -1,0 +1,9 @@
+@if (pageData) {
+    <div class="sui wrapper flex-y my-4 gap-3">
+        <h1 class="text-sugar">{{ pageData.title }}</h1>
+    </div>
+    <app-article [sections]="pageData.article" />
+  } @else {
+    Artikel konnte nicht geladen werden
+  }
+  

@@ -3,13 +3,13 @@
 
     @for(item of items; track $index) {
 
-        @if(item.link) {
+        @if(item.link && !item.children || item.children?.length == 0) {
             <a [routerLink]="item.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"> {{item.label}}</a>
         }
 
-        @if(item.children) {
+        @if(item.link && item.children) {
             <div class="dropdown-container" (mouseleave)="openedDropdownIndex = -1" [class.open]="openedDropdownIndex == $index">
-                <button (mouseenter)="openedDropdownIndex = $index" class="unstyled dropdown-button">{{item.label}} v</button>
+                <a [routerLink]="item.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }" ><button (mouseenter)="openedDropdownIndex = $index" class="unstyled dropdown-button">{{item.label}} v</button></a>
                 <div class="dropdown-content">
                     @for(child of item.children; track $index) {
                         <a [routerLink]="child.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"> {{child.label}}</a>
@@ -26,7 +26,7 @@
             <div class="burgermenu-content"  [class.open]="burgerMenuOpen">
                 @for(item of items; track $index) {
 
-                    @if(item.link) {
+                    @if(item.link && !item.children || item.children?.length == 0) {
                         <a [routerLink]="item.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"
                         (click)="burgerMenuOpen = false"> {{item.label}}</a>
                     }
