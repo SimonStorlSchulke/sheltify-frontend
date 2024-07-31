@@ -1,3 +1,4 @@
+git pull
 npm run build-prod
 sudo rm -rf /var/www/dev.herzenshunde-griechenland.de
 sudo mkdir /var/www/dev.herzenshunde-griechenland.de
