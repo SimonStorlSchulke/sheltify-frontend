@@ -18,17 +18,6 @@ export class AnimalService extends StrapiService {
     return this.get<Animal[]>(url);
   }
 
-  getAgeString2(animal: Animal) {
-    if (!animal.birthday) return 'unbekannt';
-    var today = new Date();
-    var birthDate = new Date(animal.birthday);
-    var age = today.getFullYear() - birthDate.getFullYear();
-    var m = today.getMonth() - birthDate.getMonth();
-    if (m < 0 || (m === 0 && today.getDate() < birthDate.getDate())) {
-      age--;
-    }
-    return age;
-  }
 
   getAgeString(animal: Animal): string {
     if (!animal.birthday) return 'Unbekannt';
@@ -53,5 +42,12 @@ export class AnimalService extends StrapiService {
     months -= d1.getMonth();
     months += d2.getMonth();
     return months <= 0 ? 0 : months;
+  }
+
+  public yearsOld(animal: Animal): number | null {
+    if(!animal.birthday) return null;
+    const birthDate = new Date(animal.birthday);
+    let months: number = this.monthDiff(birthDate, new Date());
+    return months / 12;
   }
 }

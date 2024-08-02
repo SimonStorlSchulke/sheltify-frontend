@@ -4,6 +4,7 @@ import { ArticleSection, ArticleComponent } from '../article/article.component';
 import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn, RouterLink } from '@angular/router';
 import { AnimalArticleService } from '../services/animal-article.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import { DatePipe } from '@angular/common';
 
 export type BlogArticle = {
   id: number,
@@ -27,7 +28,7 @@ export const blogArticleResolver: ResolveFn<BlogArticle>  = (
 @Component({
   selector: 'app-blog',
   standalone: true,
-  imports: [ArticleComponent, RouterLink],
+  imports: [ArticleComponent, RouterLink, DatePipe],
   templateUrl: './blog.component.html',
   styleUrl: './blog.component.scss'
 })

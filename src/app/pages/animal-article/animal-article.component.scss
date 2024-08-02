@@ -1,13 +1,6 @@
 @use "colors" as *;
 @use "variables" as *;
 
-h1 {
-  font-family: more-sugar;
-  font-weight: 400;
-  font-size: $fontsize-h1;
-  color: $primary;
-}
-
 .cvs {
   .tabs {
     max-width: fit-content;

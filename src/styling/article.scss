@@ -2,31 +2,12 @@
 @use "variables" as *;
 
 app-article {
-    h1, h2 {
-        font-family: more-sugar;
-        color: $primary;
-        font-weight: 400;
-    }
-
-    h1 {
-        font-size: $fontsize-h1;
-    }
-
-    h2 {
-        font-size: $fontsize-h2;
-    }
-
-    h3 {
-        font-size: $fontsize-h3;
-        font-weight: 300;
-    }
-
-    h4, h5, h6 {
-        font-size: $fontsize-h4;
-        font-weight: 400;
-    }
-
     p {
-        min-height: 1.5rem;   
+        min-height: 1.5rem;
+        margin: 0.55em 0;
+
+        &:only-child:empty {
+            display: none;
+        }
     }
 }

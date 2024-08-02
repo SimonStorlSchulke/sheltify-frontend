@@ -55,7 +55,8 @@
             "scripts": [],
             "stylePreprocessorOptions": {
               "includePaths": [
-                "src/styling/includes"
+                "src/styling/includes",
+                "src/styling/sui"
               ]
             }
           },

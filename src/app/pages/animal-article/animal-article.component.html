@@ -1,7 +1,7 @@
 @if (article) {
   <div class="sui wrapper">
     <div class="d-flex">
-      <h1 class="sui mb-3">{{ getDefaultTitle() }}</h1>
+      <h1 class="sui mb-3"><a class="back-link" title="Zurück zur Übersicht" [routerLink]="'/tiere/hunde'">&lt; </a>{{ getDefaultTitle() }}</h1>
 
       <div class="cvs">
         <div class="tabs sui flex-x">
@@ -23,7 +23,7 @@
 
         <div class="tab-body sui p-4">
           <div class="sui flex-x gap-3 jc-space-between wrap">
-            <div class="cv-grid sui flex-y grow-1 w-33">
+            <div class="cv-grid sui flex-y grow-1 mw-33">
               <h2 class="text-sugar">Steckbrief</h2>
               <div class="sui flex-y gap-2">
                 <span
@@ -63,16 +63,15 @@
                 }
               </div>
             </div>
-            <div class="sui flex-y gap-2 px-3 grow-1 w-33">
+            <div class="sui flex-y gap-2 grow-1 mw-33">
               <br />
-              <strong>Kurzbeschreibung:</strong>
               <span>{{ article.animals[selectedCv].description }}</span>
             </div>
             <div class="cv-imag-wrapper">
               <img
                 class="cv-img"
                 [alt]="article.animals[selectedCv].thumbnail?.alternativeText"
-                [src]="article.animals[selectedCv].thumbnail | strapiImage"
+                [src]="article.animals[selectedCv].thumbnail | strapiImage : 'medium'"
               />
               <div class="bubbles">
                 <span
@@ -96,13 +95,11 @@
           </div>
         </div>
       </div>
-      <br /><br />
-
-      <hr class="divider" />
+      <br />
     </div>
   </div>
   <app-article [sections]="article.sections" />
-  <div class="sui wrapper flex-y ai-center mt-4 gap-3">
+  <div class="sui wrapper flex-y ai-center mt-5 gap-3">
     <h3 class="text-sugar">{{ getCtoText() }}</h3>
 
     <div class="sui flex-x gap-3">

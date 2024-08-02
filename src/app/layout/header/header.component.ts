@@ -29,19 +29,13 @@ export class HeaderComponent {
   items: HeaderItem[] = [
     { label: "Home", link: "/" },
     { label: "Über uns", link: "/ueber-uns" },
-/*     {
-      label: "Tiere", children: [
-        { label: "Hunde", link: "/tiere/hunde" },
-        { label: "Katzen", link: "/tiere/katzen" },
-        { label: "Vögel", link: "/tiere/voegel" },
-      ]
-    }, */
     { label: "Hunde", link: "/tiere/hunde" },
     { label: "Vermittlung", link: "/vermittlung" },
     { label: "Helfen", link: "/helfen" },
     { label: "News & Wissen", link: "/news" },
     { label: "Kontakt", link: "/kontakt" },
   ]
+  
   
   openedDropdownIndex: number = -1;
   burgerMenuOpen: boolean = false;

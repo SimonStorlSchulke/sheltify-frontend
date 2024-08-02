@@ -2,60 +2,116 @@
 @use "variables" as *;
 
 body {
-    font-size: $fontsize-default;
-    color: $text;
+  font-size: $fontsize-default;
+  color: $text;
+   line-height: 1.65;
+   background-color: $neutral150;
+}
+h1,
+h2 {
+  font-family: more-sugar;
+  color: $primary;
+  font-weight: 400;
+  line-height: 1;
+}
+
+h1 {
+  font-size: $fontsize-h1;
+  margin-bottom: 1.25rem;
+}
+
+h2 {
+  font-size: $fontsize-h2;
+  margin-bottom: 1rem;
+}
+
+h3 {
+  font-size: $fontsize-h3;
+  font-weight: 300;
+}
+
+h4,
+h5,
+h6 {
+  font-size: $fontsize-h4;
+  font-weight: 400;
 }
 
 .text-primary {
-    color: $primary;
+  color: $primary;
 }
 
 .text-secondary {
-    color: $neutral600;
+  color: $neutral600;
 }
 
 .text-sugar {
-    font-family: more-sugar;
-    font-weight: 400;
+  font-family: more-sugar;
+  font-weight: 400;
 }
 
 .text-center {
-    text-align: center;
+  text-align: center;
 }
 
 .bold {
-    font-weight: 700;
+  font-weight: 700;
 }
 
 .divider {
-    border: none;
-    background: mix(transparent, $neutral400, 50%);
-    height: 1.1px;
-    margin: 32px 0;
-  }
+  border: none;
+  background: mix(transparent, $neutral400, 50%);
+  height: 1.1px;
+  margin: 32px 0;
+}
 button {
-    .primary {
-        background-color: $primary;
-        color: #fff;
-    }
+  .primary {
+    background-color: $primary;
+    color: #fff;
+  }
 }
 
-.link, article a {
-    color: $cto;
-    transition: color 0.2s;
+.link,
+.back-link,
+article a {
+  color: $cto;
+  transition: color 0.2s;
 
-    &:hover {
-        color: $cto-d2;
-        text-decoration: underline;
-        text-underline-offset: 4px;
-        text-decoration-style: dotted;
-    }
+  &:hover {
+    color: $cto-d2;
+    text-decoration: underline;
+    text-underline-offset: 4px;
+    text-decoration-style: dotted;
+  }
+}
+
+.back-link {
+    margin-left: -2.2rem;
+}
+
+@media (max-width: 1300px) {
+  .back-link {
+    margin-left: 0;
+}
 }
 
 .shadow {
-    box-shadow: 0 0 12px #0005;
+  box-shadow: 0 0 12px #0004;
 }
 
 .bg-accent {
-    background-color: $accent;
+  background-color: $accent;
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.fade-in {
+    animation: fadeIn 0.5s;
 }

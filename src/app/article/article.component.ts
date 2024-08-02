@@ -53,7 +53,7 @@ export class ArticleComponent implements AfterViewInit {
     const rowStartTags = (this.articleElement.nativeElement as HTMLElement).querySelectorAll<HTMLElement>('.article-rows');
     rowStartTags.forEach((rowStart) => {
       const columns: number = +rowStart.getAttribute('data-columns')!;
-      rowStart.append(...this.getNextNSiblings(rowStart, columns));
+      rowStart.append(...this.getNextNSiblings(rowStart.parentElement!, columns));
     });
   }
 

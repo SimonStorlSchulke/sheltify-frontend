@@ -4,11 +4,13 @@ import { StrapiImagePipe } from '../strapi-image.pipe';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { StrapiService } from '../../../services/strapi.service';
 import { StrapiImage } from '../../../shared/shared-types';
+import { Lightbox } from '@ngx-gallery/lightbox';
 
 export type ArticleImageSection = {
   __component: 'article-section.image';
   background?: boolean;
   images: StrapiImage[];
+  gallery: boolean;
 };
 
 @Component({
@@ -21,6 +23,7 @@ export type ArticleImageSection = {
 export class ImageSectionComponent implements OnInit {
   @Input({required: true}) sectionData!: ArticleImageSection;
   strapiSv = inject(StrapiService);
+  lightbox = inject(Lightbox);
 
   galleryImages: GalleryItem[] = [];
 
@@ -30,6 +33,10 @@ export class ImageSectionComponent implements OnInit {
       thumb: this.strapiSv.getImageFormatUrl(strapiImage, "thumbnail"),
       alt: strapiImage.alternativeText,
     }));
+  }
+
+  openLightBox(i: number) {
+
   }
 
 }

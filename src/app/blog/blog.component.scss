@@ -1,4 +1,7 @@
-h1 {
-    font-size: var(--fontsize-h1);
-    color: #365e32;
-}
+@use "colors" as *;
+
+
+.date {
+    color: $neutral500;
+    margin-top: -12px;
+  }

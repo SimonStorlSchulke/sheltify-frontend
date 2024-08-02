@@ -7,18 +7,31 @@
   @if (sectionData.images) {
     @if (sectionData.images.length == 1) {
       <img
+        class="sui rounded-2 single-image"
         [alt]="sectionData.images[0].alternativeText"
         [src]="sectionData.images[0] | strapiImage"
       />
     } @else {
-      <gallery
-        [loop]="true"
-        [items]="galleryImages"
-        [bullets]="true"
-        [bulletSize]="12"
-        [autoplay]="true"
-        [autoplayInterval]="7000"
-      />
+      @if (sectionData.gallery) {
+        <gallery
+          [loop]="true"
+          [items]="galleryImages"
+          [bullets]="true"
+          [bulletSize]="12"
+          [autoplay]="true"
+          [autoplayInterval]="7000"
+        />
+      } @else {
+        <div class="imagegrid">
+          @for (image of sectionData.images; track $index) {
+            <img
+            class="sui rounded-2"
+            [alt]="image.alternativeText"
+            [src]="image | strapiImage"
+            />
+          }
+        </div>
+      }
     }
   }
 </section>

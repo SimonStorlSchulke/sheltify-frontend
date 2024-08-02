@@ -1,13 +1,14 @@
 $spacer-factor: 16px;
 
+$spacer0: 0;
 $spacer1: ($spacer-factor * 0.25);
 $spacer2: ($spacer-factor * 0.5);
 $spacer3: ($spacer-factor);
 $spacer4: ($spacer-factor * 1.5);
-$spacer5: ($spacer-factor * 2.0);
-$spacer6: ($spacer-factor * 3.0);
+$spacer5: ($spacer-factor * 2.5);
+$spacer6: ($spacer-factor * 5.0);
 
-$spacers: $spacer1, $spacer2, $spacer3, $spacer4, $spacer5;
+$spacers: $spacer0, $spacer1, $spacer2, $spacer3, $spacer4, $spacer5;
 
 $percentages: 10, 20, 30, 40, 50, 60, 70, 80, 90, 100;
 
@@ -18,7 +19,7 @@ $breakpoint-mobile: 940px;
     --fontsize-small: 1rem;
     --fontsize-default: 1.2rem;
     --fontsize-h1: 3.8rem;
-    --fontsize-h2: 2.4rem;
+    --fontsize-h2: 2.8rem;
     --fontsize-h3: 1.85rem;
     --fontsize-h4: 1.35rem;
   }

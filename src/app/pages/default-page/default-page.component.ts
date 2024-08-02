@@ -5,7 +5,7 @@ import { ArticleComponent, ArticleSection } from '../../article/article.componen
 
 export type DefaultPageData = {
   id: number,
-  title: string,
+  name: string,
   article: ArticleSection[], //todo rename in strapi
   createdAt: Date,
 }

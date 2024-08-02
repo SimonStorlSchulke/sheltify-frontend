@@ -1,4 +1,4 @@
-@use "./_variables.scss" as *;
+@use "variables" as *;
 
 .sui {
     &.flex-x {
@@ -95,6 +95,22 @@
 
     .w-25 {
         width: 25%;
+    }
+
+    .mw-100 {
+        min-width: 100%;
+    }
+
+    .mw-33 {
+        min-width: 33%;
+    }
+
+    .mw-50 {
+        min-width: 50%;
+    }
+
+    .mw-25 {
+        min-width: 25%;
     }
     
 

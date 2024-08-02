@@ -1,54 +1,54 @@
-@use "./_variables.scss" as *;
+@use "variables" as *;
 
 .sui {
   @for $i from 1 through length($spacers) {
     $cspacer: nth($spacers, $i);
 
-    &.m-#{$i} {
+    &.m-#{$i - 1} {
       margin: nth($spacers, $i);
     }
-    &.mx-#{$i} {
+    &.mx-#{$i - 1} {
       margin-left: $cspacer;
       margin-right: $cspacer;
     }
-    &.my-#{$i} {
+    &.my-#{$i - 1} {
       margin-top: $cspacer;
       margin-bottom: $cspacer;
     }
-    &.mb-#{$i} {
+    &.mb-#{$i - 1} {
       margin-bottom: $cspacer;
     }
-    &.mt-#{$i} {
+    &.mt-#{$i - 1} {
       margin-top: $cspacer;
     }
-    &.mr-#{$i} {
+    &.mr-#{$i - 1} {
       margin-right: $cspacer;
     }
-    &.ml-#{$i} {
+    &.ml-#{$i - 1} {
       margin-left: $cspacer;
     }
 
-    &.p-#{$i} {
+    &.p-#{$i - 1} {
         padding: nth($spacers, $i);
       }
-      &.px-#{$i} {
+      &.px-#{$i - 1} {
         padding-left: $cspacer;
         padding-right: $cspacer;
       }
-      &.py-#{$i} {
+      &.py-#{$i - 1} {
         padding-top: $cspacer;
         padding-bottom: $cspacer;
       }
-      &.pb-#{$i} {
+      &.pb-#{$i - 1} {
         padding-bottom: $cspacer;
       }
-      &.pt-#{$i} {
+      &.pt-#{$i - 1} {
         padding-top: $cspacer;
       }
-      &.pr-#{$i} {
+      &.pr-#{$i - 1} {
         padding-right: $cspacer;
       }
-      &.pl-#{$i} {
+      &.pl-#{$i - 1} {
         padding-left: $cspacer;
       }
   }

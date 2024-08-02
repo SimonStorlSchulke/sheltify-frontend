@@ -24,33 +24,48 @@ section {
   }
 }
 
+.imagegrid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 8px;
+  width: 100%;
+  min-width: 100%;
+  img {
+    display: inline-block;
+    height: 190px;
+    object-fit: contain;
+  }
+}
+
 @media (min-width: 800px) {
   .imageposition-oben {
     flex-direction: column-reverse;
   }
 
+  .imageposition-links,
   .imageposition-rechts {
-    flex-direction: row;
     align-items: flex-start;
-
-    img,
+    .single-image,
     gallery {
-      width: 60%;
       min-width: 60%;
       width: 60%;
     }
+  }
+
+  .imageposition-rechts {
+    flex-direction: row;
   }
 
   .imageposition-links {
     flex-direction: row-reverse;
-    align-items: flex-start;
-
-    img,
-    gallery {
-      min-width: 60%;
-      width: 60%;
-    }
   }
+  .imagegrid {
+    width: 60%;
+    min-width: 60%;
+    justify-content: end;
+  }
+  
 }
 
 ::ng-deep {

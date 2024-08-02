@@ -121,7 +121,7 @@
     ora "5.4.1"
     rxjs "7.8.1"
 
-"@angular/animations@^18.0.0", "@angular/animations@18.0.1":
+"@angular/animations@^18.0.0", "@angular/animations@>=6.0.0", "@angular/animations@18.0.1":
   version "18.0.1"
   resolved "https://registry.npmjs.org/@angular/animations/-/animations-18.0.1.tgz"
   integrity sha512-QAY/oxfuFY2Bjr3foniWlLAiddXHu8879lZvXHt1NVOsiav+vD15IEEQsnuQbJPy/EHEnAlUh9UptB4zQIBp/Q==
@@ -159,7 +159,7 @@
     vite "5.2.11"
     watchpack "2.4.1"
 
-"@angular/cdk@^18.0.4", "@angular/cdk@>=16.0.0":
+"@angular/cdk@^18.0.4", "@angular/cdk@>=16.0.0", "@angular/cdk@>=7.0.0":
   version "18.0.4"
   resolved "https://registry.npmjs.org/@angular/cdk/-/cdk-18.0.4.tgz"
   integrity sha512-OCG1EGv/nyZYGcSu7y6IAuarC5gZcZYhhvEQsgMUDrf1TGRSa+0dBN5W2HxRWKs6NsGgDjW1VcK+AC85PYLXPA==
@@ -191,7 +191,7 @@
     symbol-observable "4.0.0"
     yargs "17.7.2"
 
-"@angular/common@^18.0.0", "@angular/common@^18.0.0 || ^19.0.0", "@angular/common@>=16.0.0", "@angular/common@18.0.1":
+"@angular/common@^18.0.0", "@angular/common@^18.0.0 || ^19.0.0", "@angular/common@>=16.0.0", "@angular/common@>=6.0.0", "@angular/common@18.0.1":
   version "18.0.1"
   resolved "https://registry.npmjs.org/@angular/common/-/common-18.0.1.tgz"
   integrity sha512-iADQC5m4fvk+VNXEoU1KR93b0eG218/GuNdzUNVJHcjxdFxPshKk5fiaGSosUCxXPRQOxDKzmS9EDang87E/Ew==
@@ -219,7 +219,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^18.0.0", "@angular/core@^18.0.0 || ^19.0.0", "@angular/core@>=16.0.0", "@angular/core@18.0.1":
+"@angular/core@^18.0.0", "@angular/core@^18.0.0 || ^19.0.0", "@angular/core@>=16.0.0", "@angular/core@>=6.0.0", "@angular/core@18.0.1":
   version "18.0.1"
   resolved "https://registry.npmjs.org/@angular/core/-/core-18.0.1.tgz"
   integrity sha512-Db1livvugoLdLsWww5IqUS5v+yUN7/5Rj0trZv9BgxIuoNtoipfLqKHwZWpumH3yI5Ucu+UH9zZ1mlGyF0Kexw==
@@ -240,7 +240,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/platform-browser@^18.0.0", "@angular/platform-browser@18.0.1":
+"@angular/platform-browser@^18.0.0", "@angular/platform-browser@>=6.0.0", "@angular/platform-browser@18.0.1":
   version "18.0.1"
   resolved "https://registry.npmjs.org/@angular/platform-browser/-/platform-browser-18.0.1.tgz"
   integrity sha512-rQUsOxZxiwSPvyHdne60IKIGsvFoVc1rO4mDyXU+9sCCLmPKHzNyEzp7vybTZeiqa3k6v3sV/bfHWwrRzmvenw==
@@ -1390,6 +1390,20 @@
   version "18.0.2"
   resolved "https://registry.npmjs.org/@ngtools/webpack/-/webpack-18.0.2.tgz"
   integrity sha512-I+ZNFGBnykUWBwGPCXy6m9R2fIX/ovnAUHylvThYd/M+FUfc+Z/3DpKEUBYIOLVCLNZR5nuK0t9QLlazYhWFgg==
+
+"@ngx-gallery/core@5.0.0-beta.0":
+  version "5.0.0-beta.0"
+  resolved "https://registry.npmjs.org/@ngx-gallery/core/-/core-5.0.0-beta.0.tgz"
+  integrity sha512-K6zh7fCHf1cV6Y6TaEHUZ1jcXZz+8s9YG0TzocKTxl5KUqb/dV8DzVy6iatYtrx/zaiU35EQ5R9Ws9ZnwDlaQw==
+  dependencies:
+    tslib "^1.9.0"
+
+"@ngx-gallery/lightbox@^5.0.0-beta.0":
+  version "5.0.0-beta.0"
+  resolved "https://registry.npmjs.org/@ngx-gallery/lightbox/-/lightbox-5.0.0-beta.0.tgz"
+  integrity sha512-KTGOWE3FnQqGNyeZwD+HedSIEWz9DJHLMKjHxpxhnMK4WcPLJaziyWSZGyiPb2q4DAvzoageWm7TbdXnqcboTg==
+  dependencies:
+    tslib "^1.9.0"
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -5398,7 +5412,7 @@ run-parallel@^1.1.9:
   dependencies:
     queue-microtask "^1.2.2"
 
-"rxjs@^6.5.3 || ^7.4.0", rxjs@^7.8.1, rxjs@>=7.0.0, rxjs@~7.8.0, rxjs@7.8.1:
+"rxjs@^6.5.3 || ^7.4.0", rxjs@^7.8.1, rxjs@>=6.0.0, rxjs@>=7.0.0, rxjs@~7.8.0, rxjs@7.8.1:
   version "7.8.1"
   resolved "https://registry.npmjs.org/rxjs/-/rxjs-7.8.1.tgz"
   integrity sha512-AA3TVj+0A2iuIoQkWEK/tqFjBq2j+6PO6Y0zJcvzLAFhEFIO3HL0vls9hWLncZbAAbK0mar7oZ4V079I/qPMxg==
@@ -6030,6 +6044,11 @@ tree-kill@1.2.2:
   version "1.2.2"
   resolved "https://registry.npmjs.org/tree-kill/-/tree-kill-1.2.2.tgz"
   integrity sha512-L0Orpi8qGpRG//Nd+H90vFB+3iHnue1zSSGmNOOCh1GLJ7rUKVwV2HvijphGQS2UmhUZewS9VgvxYIdgr+fG1A==
+
+tslib@^1.9.0:
+  version "1.14.1"
+  resolved "https://registry.npmjs.org/tslib/-/tslib-1.14.1.tgz"
+  integrity sha512-Xni35NKzjgMrwevysHTCArtLDpPvye8zV/0E4EyYn43P7/7qvQwPh9BGkHewbMulVntbigmcT7rdX3BNo9wRJg==
 
 tslib@^2, tslib@^2.0.0, tslib@^2.1.0, tslib@^2.3.0, tslib@^2.3.1, tslib@2, tslib@2.6.2:
   version "2.6.2"

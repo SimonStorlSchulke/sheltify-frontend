@@ -10,6 +10,7 @@ import { TextImageSectionComponent } from '../../article/article-sections/text-i
 import { ArticleComponent } from '../../article/article.component';
 import { StrapiImagePipe } from "../../article/article-sections/strapi-image.pipe";
 import { AnimalService } from '../../services/animal.service';
+import { Title } from '@angular/platform-browser';
 
 
 export const animalArticleResolver: ResolveFn<AnimalArticle> = (
@@ -41,6 +42,7 @@ export const animalArticleResolver: ResolveFn<AnimalArticle> = (
 export class AnimalArticleComponent {
   activatedRoute = inject(ActivatedRoute);
   animalSv = inject(AnimalService);
+  titleSv = inject(Title);
 
   genderNames = new Map<string, string>([
     ["male", "Rüde"],
@@ -57,6 +59,7 @@ export class AnimalArticleComponent {
       .subscribe(({ animalArticle }) => {
         this.article = animalArticle;
         this.selectedCv = this.article!.preselectedAnimalId;
+        this.titleSv.setTitle(`${this.getDefaultTitle()} | Herzenshunde Griechenland e.V.`)
       });
   }
 

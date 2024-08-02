@@ -2,14 +2,19 @@ import { ApplicationConfig, provideZoneChangeDetection, importProvidersFrom } fr
 import { provideHttpClient } from '@angular/common/http';
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { GalleryModule } from 'ng-gallery';
-import { provideRouter } from '@angular/router';
+import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
+import { LightboxModule } from '@ngx-gallery/lightbox';
+
 
 export const appConfig: ApplicationConfig = {
   providers: [
     provideZoneChangeDetection({ eventCoalescing: true }),
-    provideRouter(routes),
+    provideRouter(routes, withInMemoryScrolling({
+      scrollPositionRestoration: 'top',
+      anchorScrolling: 'enabled',
+    })),
     provideAnimations(),
-    importProvidersFrom(GalleryModule),
+    importProvidersFrom(GalleryModule, LightboxModule),
     provideHttpClient()]
 };
