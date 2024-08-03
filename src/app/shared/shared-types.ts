@@ -55,12 +55,13 @@ export type StrapiImage = {
 export type Animal = {
     id: number,
     documentId: string,
+    updatedAt: string,
     name: string,
     gender: "male" | "female" | "other";
     thumbnail?: StrapiImage,
     description: string,
     emergency?: boolean,
-    inGermany?: boolean,
+    whereInGermany?: string,
     castrated?: boolean,
     shoulderHeightCm?: number,
     animalKind?: AnimalKind,
@@ -68,5 +69,9 @@ export type Animal = {
     diseases?: string,
     tolerating?: string,
     suitedFor?: string,
+    priority: number,
+    animal_article?: {
+      updatedAt: string,  // for sorting
+    }
   }
   

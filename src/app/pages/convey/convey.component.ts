@@ -4,7 +4,7 @@ import { ActivatedRoute, ResolveFn } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { StrapiImage } from '../../shared/shared-types';
-import { StrapiService } from '../../services/strapi.service';
+import { AnimalArticleService } from '../../services/animal-article.service';
 
 
 export type ConveyData = {
@@ -13,7 +13,7 @@ export type ConveyData = {
 }
 
 export const conveyResolver: ResolveFn<ConveyData> = () => {
-  return inject(StrapiService).get<ConveyData>("convey?populate[hero]=*&populate[article][populate]=*");
+  return inject(AnimalArticleService).getAndInsertAnimalLinks<ConveyData>("convey?populate[hero]=*&populate[article][populate]=*");
 }
 
 @Component({

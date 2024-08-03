@@ -8,6 +8,7 @@ import { StrapiService } from '../../services/strapi.service';
 import { TeamMember, TeammemberTileComponent } from './teammember-tile/teammember-tile.component';
 import { forkJoin } from 'rxjs';
 import { SubmissionService } from '../../services/submission.service';
+import { AnimalArticleService } from '../../services/animal-article.service';
 
 
 export type ContactData = {
@@ -21,7 +22,7 @@ export type ContactData = {
 
 export const contactResolver: ResolveFn<ContactData> = () => {
   return forkJoin({
-    pageData:   inject(StrapiService).get<{hero: StrapiImage,article: ArticleSection[],}>
+    pageData:   inject(AnimalArticleService).getAndInsertAnimalLinks<{hero: StrapiImage,article: ArticleSection[],}>
     ("contact-page?populate[hero]=*&populate[article][populate]=*"),
     teamMembers: inject(StrapiService).get<TeamMember[]>
     ("teammembers?populate=*"),

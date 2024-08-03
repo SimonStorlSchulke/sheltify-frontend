@@ -13,9 +13,21 @@ export class AnimalService extends StrapiService {
     );
   }
 
+  /** returns list of animals from the given filters as query. Ordered by priority and modification date of the animals article */
   getAnimalList(filters: string = ''): Observable<Animal[]> {
-    let url = `animals?populate=thumbnail&${filters}`;
-    return this.get<Animal[]>(url);
+    let url = `animals?populate[thumbnail]=*&populate[animal_article]=updatedAt${filters}`;
+    return this.get<Animal[]>(url).pipe(
+      map(animals => animals
+        .filter(a => a.animal_article)
+        .sort((a, b) => {
+        if (a.priority !== b.priority) {
+          return b.priority - a.priority;
+        }
+        const dateA = new Date(a.animal_article?.updatedAt ?? "2000-01-01").getTime();
+        const dateB = new Date(b.animal_article?.updatedAt ?? "2000-01-01").getTime();
+        return dateB - dateA;
+      }))
+    );
   }
 
 
@@ -49,5 +61,9 @@ export class AnimalService extends StrapiService {
     const birthDate = new Date(animal.birthday);
     let months: number = this.monthDiff(birthDate, new Date());
     return months / 12;
+  }
+
+  public isInGermany(animal: Animal) {
+    return (animal.whereInGermany ?? "").trim() != "";
   }
 }

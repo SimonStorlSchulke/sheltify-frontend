@@ -26,6 +26,10 @@
       background-color: $primary;
       color: #fff;
     }
+
+    &:only-child {
+        border-radius: 100px;
+    }
   }
 }
 

@@ -6,11 +6,7 @@
       <div class="cvs">
         <div class="tabs sui flex-x">
           @for (animal of article.animals; track animal.id) {
-            <div
-              class="tab sui p-3 text-sugar flex-x gap-2"
-              [class.active]="selectedCv == $index"
-              (click)="selectedCv = $index"
-            >
+            <div class="tab sui p-3 text-sugar flex-x gap-2" [class.active]="selectedCv == $index" (click)="selectedCv = $index">
               <span>{{ animal.name }}</span>
               <!--               @if(animal.gender == "male") {
                 <img class="gender-icon" src="assets/img/male.svg">
@@ -26,40 +22,20 @@
             <div class="cv-grid sui flex-y grow-1 mw-33">
               <h2 class="text-sugar">Steckbrief</h2>
               <div class="sui flex-y gap-2">
-                <span
-                  ><strong>Alter:</strong>
-                  {{ animalSv.getAgeString(article.animals[selectedCv]) }}</span
-                >
-                <span
-                  ><strong>Kastriert:</strong>
-                  {{
-                    article.animals[selectedCv].castrated ? "ja" : "nein"
-                  }}</span
-                >
-                <span
-                  ><strong>Schulterhöhe: </strong
-                  >{{ article.animals[selectedCv].shoulderHeightCm }}cm</span
-                >
+                <span><strong>Alter:</strong> {{ animalSv.getAgeString(article.animals[selectedCv]) }}</span>
+                <span><strong>Kastriert:</strong> {{ article.animals[selectedCv].castrated ? "ja" : "nein" }}</span>
+                <span><strong>Schulterhöhe: </strong>{{ article.animals[selectedCv].shoulderHeightCm }}cm</span>
 
                 @if (article.animals[selectedCv].diseases?.trim()) {
-                  <span
-                    ><strong>Gesundheit:</strong>
-                    {{ article.animals[selectedCv].diseases }}</span
-                  >
+                  <span><strong>Gesundheit:</strong> {{ article.animals[selectedCv].diseases }}</span>
                 }
 
                 @if (article.animals[selectedCv].tolerating?.trim()) {
-                  <span
-                    ><strong>Verträglichkeit:</strong>
-                    {{ article.animals[selectedCv].tolerating }}</span
-                  >
+                  <span><strong>Verträglichkeit:</strong> {{ article.animals[selectedCv].tolerating }}</span>
                 }
 
                 @if (article.animals[selectedCv].suitedFor?.trim()) {
-                  <span
-                    ><strong>Geeignet für:</strong>
-                    {{ article.animals[selectedCv].suitedFor }}</span
-                  >
+                  <span><strong>Geeignet für:</strong> {{ article.animals[selectedCv].suitedFor }}</span>
                 }
               </div>
             </div>
@@ -71,27 +47,17 @@
               <img
                 class="cv-img"
                 [alt]="article.animals[selectedCv].thumbnail?.alternativeText"
-                [src]="article.animals[selectedCv].thumbnail | strapiImage : 'medium'"
+                [src]="article.animals[selectedCv].thumbnail | strapiImage: 'medium'"
               />
               <div class="bubbles">
-                <span
-                  class="emergency"
-                  *ngIf="article.animals[selectedCv].emergency"
-                  >Notfall</span
-                >
-                <span *ngIf="article.animals[selectedCv].inGermany"
-                  >in Deutschland</span
-                >
+                <span class="emergency" *ngIf="article.animals[selectedCv].emergency">Notfall</span>
+                <span *ngIf="animalSv.isInGermany(article.animals[selectedCv])">{{ article.animals[selectedCv].whereInGermany }}</span>
               </div>
             </div>
           </div>
           <div class="sui flex-x gap-3">
-            <a [routerLink]="'/formulare/bewerbung'"
-              ><button class="cto">Jetzt bewerben</button></a
-            >
-            <a [routerLink]="'/formulare/patenschaftsantrag'"
-              ><button class="cto">Pate werden</button></a
-            >
+            <a [routerLink]="'/formulare/bewerbung'"><button class="cto">Jetzt bewerben</button></a>
+            <a [routerLink]="'/formulare/patenschaftsantrag'"><button class="cto">Pate werden</button></a>
           </div>
         </div>
       </div>
@@ -103,12 +69,8 @@
     <h3 class="text-sugar">{{ getCtoText() }}</h3>
 
     <div class="sui flex-x gap-3">
-      <a [routerLink]="'/formulare/bewerbung'"
-        ><button class="cto">Jetzt bewerben</button></a
-      >
-      <a [routerLink]="'/formulare/patenschaftsantrag'"
-        ><button class="cto">Pate werden</button></a
-      >
+      <a [routerLink]="'/formulare/bewerbung'"><button class="cto">Jetzt bewerben</button></a>
+      <a [routerLink]="'/formulare/patenschaftsantrag'"><button class="cto">Pate werden</button></a>
     </div>
   </div>
 } @else {

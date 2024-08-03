@@ -8,11 +8,12 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { forkJoin, lastValueFrom, map } from 'rxjs';
 import { BlogArticle } from '../../blog/blog.component';
 import { BlogTileComponent } from '../../blog/blog-tile/blog-tile.component';
+import { AnimalArticleService } from '../../services/animal-article.service';
 
 
 export const newsResolver: ResolveFn<NewsData> = () => {
   return forkJoin({
-    pageData: inject(StrapiService).get<NewsData>("news-page?populate[hero]=*&populate[article][populate]=*"),
+    pageData: inject(AnimalArticleService).getAndInsertAnimalLinks<NewsData>("news-page?populate[hero]=*&populate[article][populate]=*"),
     newsData: inject(StrapiService).get<BlogArticle[]>("blogs?populate[thumbnail]=*"),
   }).pipe(map(data => {
     data.pageData.news = data.newsData;

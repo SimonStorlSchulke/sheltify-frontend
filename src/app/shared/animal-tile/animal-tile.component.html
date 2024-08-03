@@ -12,6 +12,6 @@
 
     <div class="bubbles">
         <span class="emergency" *ngIf="animal.emergency">Notfall</span>
-        <span *ngIf="animal.inGermany">in Deutschland</span>
+        <span *ngIf="animalSv.isInGermany(animal)">{{animal.whereInGermany}}</span>
     </div>
 </a>

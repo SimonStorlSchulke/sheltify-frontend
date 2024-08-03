@@ -5,6 +5,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { StrapiImage } from '../../shared/shared-types';
 import { StrapiService } from '../../services/strapi.service';
+import { AnimalArticleService } from '../../services/animal-article.service';
 
 
 export type AboutData = {
@@ -13,7 +14,7 @@ export type AboutData = {
 }
 
 export const aboutResolver: ResolveFn<AboutData> = () => {
-  return inject(StrapiService).get<AboutData>("about-page?populate[hero]=*&populate[article][populate]=*");
+  return inject(AnimalArticleService).getAndInsertAnimalLinks<AboutData>("about-page?populate[hero]=*&populate[article][populate]=*");
 }
 
 @Component({
