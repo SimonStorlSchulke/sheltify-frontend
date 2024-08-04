@@ -4,7 +4,6 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { GalleryModule } from 'ng-gallery';
 import { provideRouter, withInMemoryScrolling } from '@angular/router';
 import { routes } from './app.routes';
-import { LightboxModule } from '@ngx-gallery/lightbox';
 
 
 export const appConfig: ApplicationConfig = {
@@ -15,6 +14,6 @@ export const appConfig: ApplicationConfig = {
       anchorScrolling: 'enabled',
     })),
     provideAnimations(),
-    importProvidersFrom(GalleryModule, LightboxModule),
+    importProvidersFrom(GalleryModule),
     provideHttpClient()]
 };

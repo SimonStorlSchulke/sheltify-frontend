@@ -1,8 +1,8 @@
 export type StrapiImage = {
     id: number
     name: string
-    alternativeText: any
-    caption: any
+    alternativeText: string
+    caption: string
     width: number
     height: number
     formats?: {

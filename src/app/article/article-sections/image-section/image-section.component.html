@@ -1,10 +1,11 @@
 <section class="sui wrapper {{ sectionData.__component }}">
   @if (sectionData.images.length == 1) {
-    <img class="sui rounded-2"
+    <img class="sui rounded-2 c-pointer"
       [alt]="sectionData.images[0].alternativeText"
       [src]="sectionData.images[0] | strapiImage"
+      (click)="lightboxSv.open(sectionData.images, 0)"
     />
   } @else {
-    <gallery (itemClick)="openLightBox(0)" [items]="galleryImages" />
+    <gallery class="c-pointer" (itemClick)="lightboxSv.open(sectionData.images, $event)" [items]="galleryImages" />
   }
 </section>

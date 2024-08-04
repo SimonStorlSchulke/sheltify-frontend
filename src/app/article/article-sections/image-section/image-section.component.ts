@@ -4,7 +4,7 @@ import { StrapiImagePipe } from '../strapi-image.pipe';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { StrapiService } from '../../../services/strapi.service';
 import { StrapiImage } from '../../../shared/shared-types';
-import { Lightbox } from '@ngx-gallery/lightbox';
+import { LightboxService } from '../../../services/lightbox.service';
 
 export type ArticleImageSection = {
   __component: 'article-section.image';
@@ -23,7 +23,7 @@ export type ArticleImageSection = {
 export class ImageSectionComponent implements OnInit {
   @Input({required: true}) sectionData!: ArticleImageSection;
   strapiSv = inject(StrapiService);
-  lightbox = inject(Lightbox);
+  lightboxSv = inject(LightboxService);
 
   galleryImages: GalleryItem[] = [];
 
@@ -34,9 +34,4 @@ export class ImageSectionComponent implements OnInit {
       alt: strapiImage.alternativeText,
     }));
   }
-
-  openLightBox(i: number) {
-
-  }
-
 }

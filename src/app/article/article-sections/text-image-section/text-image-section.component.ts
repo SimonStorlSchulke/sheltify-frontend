@@ -5,7 +5,7 @@ import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { StrapiService } from '../../../services/strapi.service';
 import { RichTextNode } from '../../../services/blockRenderer';
 import { StrapiImage } from '../../../shared/shared-types';
-import { Lightbox } from '@ngx-gallery/lightbox';
+import { LightboxService } from '../../../services/lightbox.service';
 
 export type ArticleTextWithImageSection = {
   __component: 'article-section.text-with-image-section';
@@ -26,7 +26,7 @@ export type ArticleTextWithImageSection = {
 export class TextImageSectionComponent implements OnInit {
   @Input({ required: true }) sectionData!: ArticleTextWithImageSection;
   strapiSv = inject(StrapiService);
-  lightbox = inject(Lightbox);
+  lightboxSv = inject(LightboxService);
 
   galleryImages: GalleryItem[] = [];
 
@@ -42,10 +42,5 @@ export class TextImageSectionComponent implements OnInit {
           alt: strapiImage.alternativeText,
         }),
     );
-  }
-
-
-  openLightbox(index: number) {
-    this.lightbox.open(index);
   }
 }

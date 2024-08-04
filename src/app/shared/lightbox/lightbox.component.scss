@@ -1,0 +1,38 @@
+dialog {
+  margin: 10% auto;
+  width: 950dvw;
+  max-width: 95dvw;
+  padding: 0;
+  border: 0;
+  margin: auto;
+  background: none;
+  border: none;
+  outline: none;
+  transition: opacity 0.5s;
+}
+
+dialog::backdrop {
+  background-color: rgba(0, 0, 0, 0.548);
+  left: -90px;
+}
+
+dialog:not([open]) {
+  opacity: 0;
+  pointer-events: none;
+}
+dialog[open] {
+  opacity: 1;
+  pointer-events: inherit;
+}
+
+img {
+  height: calc(100dvh - 100px);
+  min-height: calc(100dvh - 100px);
+  object-fit: contain;
+  max-width: calc(100% - 150px);
+}
+
+.description {
+  color: #ddd;
+  height: 40px;
+}

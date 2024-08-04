@@ -1,0 +1,27 @@
+<dialog #modal class="lightbox-wrapper sui flex-y ai-center closable">
+  @if (ligtboxSv.images) {
+    <div class="sui flex-x ai-center gap-3 w-100 closable"
+    [class.jc-space-between]="multiImageMode"
+    [class.jc-center]="!multiImageMode"
+    >
+      @if (multiImageMode) {
+        <button class="sui primary" (click)="to(ligtboxSv.currentIndex - 1)">&lt;</button>
+      }
+      <img
+        class="sui rounded-2"
+        loading="lazy"
+        [alt]="ligtboxSv.images[ligtboxSv.currentIndex].alternativeText"
+        [src]="currentSource"
+      />
+      @if (multiImageMode) {
+        <button class="sui primary" (click)="to(ligtboxSv.currentIndex + 1)">&gt;</button>
+      }
+    </div>
+    <span class="description sui py-2">
+      @if (multiImageMode) {
+        {{ ligtboxSv.currentIndex + 1 }}/{{ ligtboxSv.images.length }}
+      }
+      {{ ligtboxSv.images[ligtboxSv.currentIndex].caption }}
+    </span>
+  }
+</dialog>

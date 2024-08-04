@@ -4,20 +4,20 @@
       <h1 class="sui mb-3"><a class="back-link" title="Zurück zur Übersicht" [routerLink]="'/tiere/hunde'">&lt; </a>{{ getDefaultTitle() }}</h1>
 
       <div class="cvs">
-        <div class="tabs sui flex-x">
+        <div class="tabs sui flex-x wrap">
           @for (animal of article.animals; track animal.id) {
-            <div class="tab sui p-3 text-sugar flex-x gap-2" [class.active]="selectedCv == $index" (click)="selectedCv = $index">
+            <div class="tab sui p-3 text-sugar ai-center flex-x gap-2" [class.active]="selectedCv == $index" (click)="selectedCv = $index">
               <span>{{ animal.name }}</span>
-              <!--               @if(animal.gender == "male") {
+              @if(animal.gender == "male") {
                 <img class="gender-icon" src="assets/img/male.svg">
             } @else {
                 <img class="gender-icon" src="assets/img/female.svg">
-            } -->
+            }
             </div>
           }
         </div>
 
-        <div class="tab-body sui p-4">
+        <div class="tab-body sui p-4 flex-y gap-5">
           <div class="sui flex-x gap-3 jc-space-between wrap">
             <div class="cv-grid sui flex-y grow-1 mw-33">
               <h2 class="text-sugar">Steckbrief</h2>

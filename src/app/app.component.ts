@@ -5,13 +5,14 @@ import { HeaderComponent } from "./layout/header/header.component";
 import { FooterComponent } from './layout/footer/footer.component';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs';
+import { LightboxComponent } from './shared/lightbox/lightbox.component';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [RouterOutlet, AsyncPipe, HeaderComponent, FooterComponent],
+    imports: [RouterOutlet, AsyncPipe, HeaderComponent, FooterComponent, LightboxComponent],
 })
 export class AppComponent {
   title = 'sheltify-frontend';

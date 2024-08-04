@@ -11,7 +11,7 @@ export class StrapiImagePipe implements PipeTransform {
   transform(
     value?: StrapiImage,
     ...args: ('thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'original')[]
-  ): unknown {
+  ): string {
     return this.strapiSv.getImageFormatUrl(value, args[0] ?? 'large');
     //todo define default image if value is null | undefined
   }

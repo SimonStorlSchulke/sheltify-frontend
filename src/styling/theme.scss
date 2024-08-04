@@ -4,8 +4,11 @@
 body {
   font-size: $fontsize-default;
   color: $text;
-   line-height: 1.65;
-   background-color: $neutral150;
+  line-height: 1.65;
+  background-color: $neutral150;
+}
+html {
+  scrollbar-gutter: stable;
 }
 h1,
 h2 {
@@ -86,13 +89,13 @@ article a {
 }
 
 .back-link {
-    margin-left: -2.2rem;
+  margin-left: -2.2rem;
 }
 
 @media (max-width: 1300px) {
   .back-link {
     margin-left: 0;
-}
+  }
 }
 
 .shadow {
@@ -113,5 +116,8 @@ article a {
 }
 
 .fade-in {
-    animation: fadeIn 0.5s;
+  animation: fadeIn 0.5s;
+}
+.c-pointer {
+  cursor: pointer;
 }

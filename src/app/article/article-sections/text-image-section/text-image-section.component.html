@@ -6,11 +6,14 @@
   <div [innerHTML]="sectionData.text | strapiRichText"></div>
   @if (sectionData.images) {
     @if (sectionData.images.length == 1) {
-      <img
-        class="sui rounded-2 single-image"
+      @if(sectionData.images[0] | strapiImage; as imgSrc) {
+        <img
+        class="sui rounded-2 single-image c-pointer"
         [alt]="sectionData.images[0].alternativeText"
-        [src]="sectionData.images[0] | strapiImage"
-      />
+        [src]="imgSrc"
+        (click)="lightboxSv.open(sectionData.images, 0, imgSrc)"
+        />
+      }
     } @else {
       @if (sectionData.gallery) {
         <gallery
@@ -20,15 +23,19 @@
           [bulletSize]="12"
           [autoplay]="true"
           [autoplayInterval]="7000"
+          (itemClick)="lightboxSv.open(sectionData.images, $event)"
         />
       } @else {
         <div class="imagegrid">
           @for (image of sectionData.images; track $index) {
-            <img
-            class="sui rounded-2"
-            [alt]="image.alternativeText"
-            [src]="image | strapiImage"
-            />
+            @if(image | strapiImage : 'medium'; as imgSrc) {              
+              <img
+              class="sui rounded-2 c-pointer"
+              [alt]="image.alternativeText"
+              [src]="imgSrc"
+              (click)="lightboxSv.open(sectionData.images, $index, imgSrc)"
+              />
+            }
           }
         </div>
       }

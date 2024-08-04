@@ -27,8 +27,14 @@
 
       .gender-icon {
         color: #fff;
-        width: 32px;
-        height: 32px;
+        width: calc($fontsize-h3 * 1.7);
+        height: calc($fontsize-h3 * 1.7);
+      }
+
+      &.active {
+        .gender-icon {
+          filter: invert(1) brightness(1.7);
+        }
       }
     }
   }
@@ -71,25 +77,9 @@
   }
 }
 
-.animal-article-card {
-  width: 48%;
-  overflow: hidden;
-  background-color: $accent;
-
-  .content {
-    min-width: 250px;
-  }
-
-  img {
-    width: 300px;
-    object-fit: cover;
-  }
-
-  .gender-icon {
-    height: 32px;
-    width: 32px;
-    object-fit: fill;
-  }
+.gender-icon {
+  height: 42px;
+  width: 42px;
+  object-fit: fill;
 }
-
 //wenn sections nicht nebeneinander passen vlt alle drei direkt untereinander
