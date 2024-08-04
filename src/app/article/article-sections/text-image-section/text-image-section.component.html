@@ -11,7 +11,7 @@
         class="sui rounded-2 single-image c-pointer"
         [alt]="sectionData.images[0].alternativeText"
         [src]="imgSrc"
-        (click)="lightboxSv.open(sectionData.images, 0, imgSrc)"
+        (click)="lightboxSv.open(sectionData.images, 0, [imgSrc])"
         />
       }
     } @else {
@@ -27,15 +27,15 @@
         />
       } @else {
         <div class="imagegrid">
-          @for (image of sectionData.images; track $index) {
-            @if(image | strapiImage : 'medium'; as imgSrc) {              
-              <img
-              class="sui rounded-2 c-pointer"
-              [alt]="image.alternativeText"
-              [src]="imgSrc"
-              (click)="lightboxSv.open(sectionData.images, $index, imgSrc)"
-              />
-            }
+          @if(strapiSv.getImageFormatUrls(sectionData.images, "medium"); as imgs) {
+            @for (image of sectionData.images; track $index) {
+                <img
+                class="sui rounded-2 c-pointer"
+                [alt]="image.alternativeText"
+                [src]="imgs[$index]"
+                (click)="lightboxSv.open(sectionData.images, $index, imgs)"
+                />
+              }
           }
         </div>
       }

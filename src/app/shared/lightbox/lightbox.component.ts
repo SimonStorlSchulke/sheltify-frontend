@@ -18,11 +18,13 @@ export class LightboxComponent {
   ligtboxSv = inject(LightboxService);
   strapiSv = inject(StrapiService);
   currentSource: string = "";
+  startSrcs: string[] = [];
 
   ngAfterViewInit() {
-    this.ligtboxSv.open$.subscribe((startSrc) => {
-      console.log("startSrc", startSrc)
-      this.currentSource = startSrc;
+    this.ligtboxSv.open$.subscribe((startSrcs) => {
+      console.log("startSrc", startSrcs)
+      this.startSrcs = startSrcs;
+      this.currentSource = startSrcs[this.ligtboxSv.currentIndex];
       this.dialogRef.nativeElement.showModal();
       window.setTimeout(() => {
         this.currentSource = this.getSrc();
@@ -46,8 +48,11 @@ export class LightboxComponent {
     } else {
       this.ligtboxSv.currentIndex = index;
     }
-    this.currentSource = this.getSrc();
-  }
+    this.currentSource = this.startSrcs[this.ligtboxSv.currentIndex];
+    window.setTimeout(() => {
+      this.currentSource = this.getSrc();
+    }, 0
+    )  }
 
   @HostListener('click', ['$event'])
   closeOnClick(e: MouseEvent) {

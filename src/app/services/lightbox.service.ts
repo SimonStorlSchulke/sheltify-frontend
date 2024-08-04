@@ -10,13 +10,13 @@ export class LightboxService {
   images?: StrapiImage[];
   currentIndex: number = 0;
 
-  open$ = new Subject<string>();
+  open$ = new Subject<string[]>();
   close$ = new Subject<void>();
   
-  open(images: StrapiImage[], startIndex: number, startImgSrc="") {
+  open(images: StrapiImage[], startIndex: number, startImgSrcs: string[] = []) {
     this.images = images;
     this.currentIndex = startIndex;
-    this.open$.next(startImgSrc);
+    this.open$.next(startImgSrcs);
   }
 
 }
