@@ -7,3 +7,4 @@
 - Klick auf Gallerie - Bild groß anzeigen
 - Paten anzeigen
 - wo in Deutschland
+- tierkarten strapi view - text oben
