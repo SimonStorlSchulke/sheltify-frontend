@@ -3,34 +3,39 @@
     <app-article [sections]="contactData.pageData.article"/>
 </div>
 
-<section class="form-container pt-5 sui wrapper bg-accent-green p-4 mb-4 flex-y gap-5">
+<div class="sui flex-x gap-6 wrapper">
+
+<section class="form-container pt-5 sui wrapper bg-accent-green p-5 mb-4 flex-y gap-5">
   <h2>Schreib uns!</h2>
   <form
-    class="sui flex-y gap-4"
+    class="sui flex-y gap-5"
     action="#"
     method="POST"
     enctype="multipart/form-data"
   >
-    <div class="sui flex-x gap-4">
+    <div class="sui flex-x gap-5">
       <div class="form-block">
         <input
           type="text"
           name="name"
           id="name"
-          placeholder="Name"
+          placeholder="Name*"
         />
       </div>
       <div class="form-block">
-        <input type="email" name="email" id="email" placeholder="Email" />
+        <input type="email" name="email" id="email" placeholder="Email*" />
       </div>
     </div>
 
     <div class="form-block">
       <textarea
+        rows="1"
+        #message
+        (input)="autogrow(message)"
         name="message"
         name="message"
         id="message"
-        placeholder="Nachricht"
+        placeholder="Nachricht*"
       ></textarea>
     </div>
 
@@ -43,6 +48,14 @@
     </div>
       <button class="sui cto large">Jetzt senden (TODO)</button>
 </section>
+  <div class="contact">
+    <span>
+      <h2 class="mb-3">Kontakt</h2>
+        <a class="sui flex-x ai-center gap-3" href="mailto:info@herzenshunde.de"> <img class="sui inline-icon" src="assets/img/mail.svg"><span> info&#64;herzenshunde.de</span></a>
+        <span class="sui flex-x ai-center gap-3"><img class="sui inline-icon" src="assets/img/phone.svg"><span>0 1234 / 56 78 99 - 0</span></span>
+    </span>
+  </div>
+</div>
 
 <div class="bg-accent ">
     <div class="sui wrapper flex-y gap-5 py-6">

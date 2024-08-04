@@ -49,6 +49,11 @@ export class ContactComponent {
   );
 }
 
+  autogrow(area: HTMLTextAreaElement) {
+    area.style.height = "50px";
+    area.style.height = (area.scrollHeight) + "px";
+  }
+
   sendSubmission() {
     const response = this.submissionSv.postSubmission({
       name: "Simon",
