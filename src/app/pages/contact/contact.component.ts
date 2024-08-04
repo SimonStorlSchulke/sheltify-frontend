@@ -1,6 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { HeroComponent } from '../../shared/hero/hero.component';
-import { ActivatedRoute, ResolveFn } from '@angular/router';
+import { ActivatedRoute, ResolveFn, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { StrapiImage } from '../../shared/shared-types';
@@ -26,19 +26,19 @@ export const contactResolver: ResolveFn<ContactData> = () => {
     ("contact-page?populate[hero]=*&populate[article][populate]=*"),
     teamMembers: inject(StrapiService).get<TeamMember[]>
     ("teammembers?populate=*"),
-  }) 
+  })
 }
 
 @Component({
   selector: 'app-contact',
   standalone: true,
-  imports: [HeroComponent, ArticleComponent, TeammemberTileComponent],
+  imports: [HeroComponent, ArticleComponent, TeammemberTileComponent, RouterLink],
   templateUrl: './contact.component.html',
   styleUrl: './contact.component.scss'
 })
 export class ContactComponent {
   contactData!: ContactData;
-  
+
   submissionSv = inject(SubmissionService);
 
   constructor() {

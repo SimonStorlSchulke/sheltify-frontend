@@ -4,13 +4,31 @@
     display: flex;
     flex-direction: column;
     margin-top: 42px;
+  overflow: hidden;
+
 }
 
 .banner {
-    height: 700px;
-    max-height: 60dvh;
+    display: flex;
+    align-items: center;
+    height: 800px;
+    max-height: 70dvh;
     background-size: cover;
     background-position: center;
+    position: relative;
+    overflow: hidden;
+
+    app-article {
+      display: flex;
+      align-items: center;
+      width: 50%;
+      min-width: 600px;
+      max-width: 100%;
+      background-color: rgba(0, 0, 0, 0.53);
+      position: absolute;
+      height: 200%;
+      border-radius: 0 1200px 1200px 0;
+    }
 }
 
 .footer {
@@ -36,8 +54,9 @@ img {
 }
 
 :host ::ng-deep article {
-    color: #fffb;
-    h1, h2, h3, h4 {
-        color: #ffffffcc;
-    }
+  max-width: 100%;
+  color: #fffb;
+  h1, h2, h3, h4 {
+    color: #ffffffcc;
+  }
 }

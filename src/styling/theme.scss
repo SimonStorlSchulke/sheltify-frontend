@@ -78,7 +78,7 @@ article a {
   transition: color 0.2s;
 
   &:hover {
-    color: $cto-d2;
+    color: $cto-d1;
     text-decoration: underline;
     text-underline-offset: 4px;
     text-decoration-style: dotted;
@@ -101,6 +101,10 @@ article a {
 
 .bg-accent {
   background-color: $accent;
+}
+
+.bg-accent-green {
+  background-color: $primary-bg;
 }
 
 @keyframes fadeIn {

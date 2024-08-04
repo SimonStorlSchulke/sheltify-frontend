@@ -1,15 +1,58 @@
 <app-hero [images]="[contactData.pageData.hero]"/>
-<div class="sui wrapper flex-y gap-3">
+<div class="sui wrapper flex-y gap-4">
     <app-article [sections]="contactData.pageData.article"/>
 </div>
 
-<div class="bg-accent">
-    <div class="sui wrapper flex-x wrap center gap-3 py-4">
+<section class="form-container pt-5 sui wrapper bg-accent-green p-4 mb-4 flex-y gap-5">
+  <h2>Schreib uns!</h2>
+  <form
+    class="sui flex-y gap-4"
+    action="#"
+    method="POST"
+    enctype="multipart/form-data"
+  >
+    <div class="sui flex-x gap-4">
+      <div class="form-block">
+        <input
+          type="text"
+          name="name"
+          id="name"
+          placeholder="Name"
+        />
+      </div>
+      <div class="form-block">
+        <input type="email" name="email" id="email" placeholder="Email" />
+      </div>
+    </div>
+
+    <div class="form-block">
+      <textarea
+        name="message"
+        name="message"
+        id="message"
+        placeholder="Nachricht"
+      ></textarea>
+    </div>
+
+  </form>
+    <div class="sui flex-x ai-center">
+      <input type="checkbox" id="accept-dsgvo" name="accept-dsgvo">
+      <label class="sui  pl-3" for="accept-dsgvo">
+        Ich habe die <a class="link" [routerLink]="'dsgvo'">Datenschutzerklärung</a> gelesen. Ich stimme zu, dass meine Angaben zur Kontaktaufnahme und für Rückfragen dauerhaft gespeichert werden.
+      </label>
+    </div>
+      <button class="sui cto large">Jetzt senden (TODO)</button>
+</section>
+
+<div class="bg-accent ">
+    <div class="sui wrapper flex-y gap-5 py-6">
+  <h2>Das Team</h2>
+      <div class="sui flex-x wrap center gap-3">
         @for (member of contactData.teamMembers; track $index) {
             <app-teammember-tile [teamMember]="member"/>
         }
+      </div>
     </div>
+</div>
 
-    <button class="primary" (click)="sendSubmission()">SEND</button>
 
-</div>  

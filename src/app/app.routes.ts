@@ -27,6 +27,7 @@ import {
   DefaultPageComponent,
   DefaultPageData,
 } from './pages/default-page/default-page.component';
+import { DsgvoComponent } from './pages/dsgvo/dsgvo.component';
 
 function getSubPageResolver(collectionNamePlural: string) {
   const resolver: ResolveFn<DefaultPageData> = (
@@ -99,6 +100,7 @@ export const routes: Routes = [
     resolve: { contactData: contactResolver },
   },
   { path: 'impressum', component: ImprintComponent },
+  { path: 'dsgvo', component: DsgvoComponent },
   {
     path: 'tierartikel/:name',
     component: AnimalArticleComponent,

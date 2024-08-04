@@ -80,6 +80,7 @@
 
     &.wrapper {
         width: min(1200px, calc(100dvw - 64px));
+        max-width: 100%;
         margin-left: auto;
         margin-right: auto;
     }

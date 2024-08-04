@@ -25,7 +25,9 @@
 
 <nav class="sui mobile">
     <div class="sui flex-x px-3 py-1">
-        <button  (click)="burgerMenuOpen = true" class="burgermenu-button">O</button>
+        <button  (click)="burgerMenuOpen = true" class="burgermenu-button">
+          <img class="burger" src="/assets/img/burger.png">
+        </button>
             <div class="burgermenu-content"  [class.open]="burgerMenuOpen">
                 @for(item of items; track $index) {
 

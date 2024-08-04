@@ -32,14 +32,13 @@ button:not(.unstyled) {
             background-color: $primary-h1;
         }
     }
-    box-shadow: 1px 2px 4px #0000003f;
 
     &.cto, &.call-to-action {
         background-color: $cto;
         color: #fff;
 
         &:hover {
-            background-color: $cto-d2;
+            background-color: $cto-d1;
         }
     }
 
@@ -72,7 +71,7 @@ button:not(.unstyled) {
         &.active {
             background-color: $primary;
             color: #fff;
-    
+
             &:hover {
                 background-color: $primary;
             }
