@@ -34,7 +34,10 @@
             justify-content: space-between;
         }
         &.jc-space-around {
-            justify-content: space-around;
+          justify-content: space-around;
+        }
+        &.jc-space-evenly {
+            justify-content: space-evenly;
         }
 
         &.wrap {
@@ -112,20 +115,20 @@
     .mw-25 {
         min-width: 25%;
     }
-    
+
 
     .inline-icon {
         width: 24px;
         height: 24px;
         display: inline-block;
     }
-    
+
     @media (max-width: $breakpoint-mobile) {
         &.desktop {
             display: none !important;
         }
     }
-    
+
     @media (min-width: calc($breakpoint-mobile + 1px)) {
         &.mobile {
             display: none !important;

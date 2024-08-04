@@ -1,7 +1,6 @@
 import { Component, ElementRef, HostListener, inject, ViewChild } from '@angular/core';
 import { LightboxService } from '../../services/lightbox.service';
 import { StrapiImagePipe } from '../../article/article-sections/strapi-image.pipe';
-import { StrapiImage } from '../shared-types';
 import { StrapiService } from '../../services/strapi.service';
 
 @Component({

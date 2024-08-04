@@ -1,5 +1,5 @@
 <nav class="sui desktop">
-    <img src="assets/img/herzenshunde_farbig.svg">
+    <img src="assets/img/herzenshunde-logo-header.svg">
 
     @for(item of items; track $index) {
 
@@ -10,10 +10,13 @@
         @if(item.link && item.children) {
             <div class="dropdown-container" (mouseleave)="openedDropdownIndex = -1" [class.open]="openedDropdownIndex == $index">
                 <a [routerLink]="item.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }" ><button (mouseenter)="openedDropdownIndex = $index" class="unstyled dropdown-button">{{item.label}} v</button></a>
-                <div class="dropdown-content">
+              <div class="dropdown-content">
+                  <div class="triangle"></div>
+                <div class="entries">
                     @for(child of item.children; track $index) {
                         <a [routerLink]="child.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"> {{child.label}}</a>
                     }
+                </div>
                 </div>
             </div>
         }
@@ -30,7 +33,7 @@
                         <a [routerLink]="item.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"
                         (click)="burgerMenuOpen = false"> {{item.label}}</a>
                     }
-            
+
                     @if(item.children) {
                         <div class="unstyled dropdown-container dropdown-index-{{$index}}" [class.open]="openedDropdownIndex == $index">
                             <button (click)="openedDropdownIndex = $index" class="unstyled dropdown-button dropdown-index-{{$index}}">{{item.label}} v</button>
@@ -39,13 +42,13 @@
                                         <a (click)="burgerMenuOpen = false" class="dropdown-index-{{$index}}" [routerLink]="child.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"> {{child.label}}</a>
                                     }
                                 </div>
-                            
+
                         </div>
                     }
-            
+
                 }
             </div>
-        <div class="grow-1"></div>
-        <img src="assets/img/herzenshunde-logo.png">
+        <div class="sui grow-1"></div>
+        <img src="assets/img/herzenshunde_farbig.svg">
     </div>
 </nav>

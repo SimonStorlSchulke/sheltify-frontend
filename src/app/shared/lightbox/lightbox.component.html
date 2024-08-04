@@ -1,26 +1,32 @@
 <dialog #modal class="lightbox-wrapper sui flex-y ai-center closable">
   @if (ligtboxSv.images) {
-    <div class="sui flex-x ai-center gap-3 w-100 closable"
-    [class.jc-space-between]="multiImageMode"
-    [class.jc-center]="!multiImageMode"
-    >
+    <div class="sui flex-x w-100 content" [class.jc-space-between]="multiImageMode"
+         [class.jc-center]="!multiImageMode">
+
       @if (multiImageMode) {
-        <button class="sui primary" (click)="to(ligtboxSv.currentIndex - 1)">&lt;</button>
+        <div class="to-btn sui flex-x ai-center text-sugar jc-center prev" (click)="to(ligtboxSv.currentIndex - 1)"><span>&lt;</span></div>
       }
-      <img
-        class="sui rounded-2"
-        [alt]="ligtboxSv.images[ligtboxSv.currentIndex].alternativeText"
-        [src]="currentSource"
-      />
-      @if (multiImageMode) {
-        <button class="sui primary" (click)="to(ligtboxSv.currentIndex + 1)">&gt;</button>
-      }
-    </div>
-    <span class="description sui py-2">
+      <div class="sui flex-y ai-center jc-space-evenly gap-3 w-100 closable"
+
+      >
+        <img
+          class="sui rounded-2 closable"
+          [alt]="ligtboxSv.images[ligtboxSv.currentIndex].alternativeText"
+          [src]="currentSource"
+        />
+
+        <span class="description sui py-2">
       @if (multiImageMode) {
         {{ ligtboxSv.currentIndex + 1 }}/{{ ligtboxSv.images.length }}
       }
-      {{ ligtboxSv.images[ligtboxSv.currentIndex].caption }}
+          {{ ligtboxSv.images[ligtboxSv.currentIndex].caption }}
     </span>
+      </div>
+      @if (multiImageMode) {
+        <div class="to-btn sui flex-x ai-center text-sugar jc-center next" (click)="to(ligtboxSv.currentIndex + 1)"><span>&gt;</span></div>
+      }
+    </div>
+
   }
 </dialog>
+

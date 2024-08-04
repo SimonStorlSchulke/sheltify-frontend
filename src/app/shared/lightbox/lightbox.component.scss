@@ -1,14 +1,18 @@
 dialog {
-  margin: 10% auto;
-  width: 950dvw;
-  max-width: 95dvw;
+  width: 100dvw;
+  max-width: 100dvw;
+  height: 100dvh;
+  max-height: 100dvh;
   padding: 0;
-  border: 0;
-  margin: auto;
   background: none;
   border: none;
   outline: none;
   transition: opacity 0.5s;
+
+  .content {
+    height: 100dvh;
+    max-height: 100dvh;
+  }
 }
 
 dialog::backdrop {
@@ -29,10 +33,30 @@ img {
   height: calc(100dvh - 100px);
   min-height: calc(100dvh - 100px);
   object-fit: contain;
-  max-width: calc(100% - 150px);
+  max-width: min(100%, 85dvw);
 }
 
 .description {
   color: #ddd;
   height: 40px;
+}
+
+.to-btn {
+  color: #fff;
+  cursor: pointer;
+  width: clamp(150px, 125px, 15dvw);
+  font-size: 38px;
+  user-select: none;
+
+  &.next:hover {
+  background: linear-gradient(90deg, transparent, #fff5);
+  }
+  &.prev:hover {
+    background: linear-gradient(-90deg, transparent, #fff5);
+  }
+}
+
+button:focus-visible {
+  outline: none;
+  border: none;
 }
