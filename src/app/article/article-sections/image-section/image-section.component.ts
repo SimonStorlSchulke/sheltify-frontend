@@ -1,22 +1,22 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { StrapiRichTextPipe } from '../strapi-rich-text.pipe';
-import { StrapiImagePipe } from '../strapi-image.pipe';
+import { StrapiMediaPipe } from '../strapi-image.pipe';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { StrapiService } from '../../../services/strapi.service';
-import { StrapiImage } from '../../../shared/shared-types';
+import { StrapiMedia } from '../../../shared/shared-types';
 import { LightboxService } from '../../../services/lightbox.service';
 
 export type ArticleImageSection = {
   __component: 'article-section.image';
   background?: boolean;
-  images: StrapiImage[];
+  images: StrapiMedia[];
   gallery: boolean;
 };
 
 @Component({
   selector: 'app-image-section',
   standalone: true,
-  imports: [StrapiRichTextPipe, StrapiImagePipe, GalleryModule],
+  imports: [StrapiRichTextPipe, StrapiMediaPipe, GalleryModule],
   templateUrl: './image-section.component.html',
   styleUrl: './image-section.component.scss'
 })

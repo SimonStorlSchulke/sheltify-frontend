@@ -1,7 +1,7 @@
 import { Component, inject } from '@angular/core';
 import { ActivatedRoute, ResolveFn } from '@angular/router';
 import { StrapiService } from '../../services/strapi.service';
-import { StrapiImage } from '../../shared/shared-types';
+import { StrapiMedia } from '../../shared/shared-types';
 import { HeroComponent } from '../../shared/hero/hero.component';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -23,7 +23,7 @@ export const newsResolver: ResolveFn<NewsData> = () => {
 
 
 export type NewsData = {
-  hero?: StrapiImage,
+  hero?: StrapiMedia,
   article: ArticleSection[],
   news?: BlogArticle[],
 }

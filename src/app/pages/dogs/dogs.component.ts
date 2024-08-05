@@ -2,7 +2,7 @@ import { Component, ElementRef, inject, ViewChild } from '@angular/core';
 import { AnimalService } from '../../services/animal.service';
 import { AsyncPipe } from '@angular/common';
 import { HeroComponent } from '../../shared/hero/hero.component';
-import { Animal, StrapiImage } from '../../shared/shared-types';
+import { Animal, StrapiMedia } from '../../shared/shared-types';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { AnimalListComponent } from '../../shared/animal-list/animal-list.component';
 import { BehaviorSubject, Subject } from 'rxjs';
@@ -24,7 +24,7 @@ export class DogsComponent {
   query$ = new BehaviorSubject<string>('');
 
   pageContent$ = inject(AnimalArticleService).getAndInsertAnimalLinks<{
-    hero: StrapiImage;
+    hero: StrapiMedia;
     article: ArticleSection[];
   }>('dogs-page?populate=*');
 

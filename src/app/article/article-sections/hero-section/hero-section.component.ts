@@ -1,18 +1,18 @@
 import { Component, Input } from '@angular/core';
 import { StrapiRichTextPipe } from '../strapi-rich-text.pipe';
-import { StrapiImagePipe } from '../strapi-image.pipe';
-import { StrapiImage } from '../../../shared/shared-types';
+import { StrapiMediaPipe } from '../strapi-image.pipe';
+import { StrapiMedia } from '../../../shared/shared-types';
 
 export type ArticleHeroSection = {
   __component: 'article-section.hero';
   background?: boolean;
-  hero: StrapiImage;
+  hero: StrapiMedia;
 };
 
 @Component({
   selector: 'app-hero-section',
   standalone: true,
-  imports: [StrapiRichTextPipe, StrapiImagePipe],
+  imports: [StrapiRichTextPipe, StrapiMediaPipe],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.scss'
 })

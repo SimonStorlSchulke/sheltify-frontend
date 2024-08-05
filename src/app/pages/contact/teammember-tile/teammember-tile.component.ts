@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { StrapiImage } from '../../../shared/shared-types';
-import { StrapiImagePipe } from "../../../article/article-sections/strapi-image.pipe";
+import { StrapiMedia } from '../../../shared/shared-types';
+import { StrapiMediaPipe } from "../../../article/article-sections/strapi-image.pipe";
 
 export type TeamMember = {
   name: string,
@@ -8,7 +8,7 @@ export type TeamMember = {
   description: string,
   mail: string,
   phone: string,
-  image: StrapiImage,
+  image: StrapiMedia,
 }
 
 @Component({
@@ -16,7 +16,7 @@ export type TeamMember = {
     standalone: true,
     templateUrl: './teammember-tile.component.html',
     styleUrl: './teammember-tile.component.scss',
-    imports: [StrapiImagePipe]
+    imports: [StrapiMediaPipe]
 })
 export class TeammemberTileComponent {
   @Input({required: true}) teamMember!: TeamMember;

@@ -1,13 +1,13 @@
 import { Component, Input } from '@angular/core';
 import { BlogArticle } from '../blog.component';
-import { StrapiImagePipe } from '../../article/article-sections/strapi-image.pipe';
+import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
 import { DatePipe } from '@angular/common';
 import { RouterLink } from '@angular/router';
 
 @Component({
   selector: 'app-blog-tile',
   standalone: true,
-  imports: [StrapiImagePipe, DatePipe, RouterLink],
+  imports: [StrapiMediaPipe, DatePipe, RouterLink],
   templateUrl: './blog-tile.component.html',
   styleUrl: './blog-tile.component.scss'
 })

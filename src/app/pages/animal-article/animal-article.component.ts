@@ -8,7 +8,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TextSectionComponent } from '../../article/article-sections/text-section/text-section.component';
 import { TextImageSectionComponent } from '../../article/article-sections/text-image-section/text-image-section.component';
 import { ArticleComponent } from '../../article/article.component';
-import { StrapiImagePipe } from "../../article/article-sections/strapi-image.pipe";
+import { StrapiMediaPipe } from "../../article/article-sections/strapi-image.pipe";
 import { AnimalService } from '../../services/animal.service';
 import { Title } from '@angular/platform-browser';
 
@@ -34,7 +34,7 @@ export const animalArticleResolver: ResolveFn<AnimalArticle> = (
         TextSectionComponent,
         TextImageSectionComponent,
         ArticleComponent,
-        StrapiImagePipe,
+        StrapiMediaPipe,
         RouterLink,
         NgIf,
     ]

@@ -3,7 +3,7 @@ import { HeroComponent } from '../../shared/hero/hero.component';
 import { ActivatedRoute, ResolveFn, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
-import { StrapiImage } from '../../shared/shared-types';
+import { StrapiMedia } from '../../shared/shared-types';
 import { StrapiService } from '../../services/strapi.service';
 import { TeamMember, TeammemberTileComponent } from './teammember-tile/teammember-tile.component';
 import { forkJoin } from 'rxjs';
@@ -13,7 +13,7 @@ import { AnimalArticleService } from '../../services/animal-article.service';
 
 export type ContactData = {
   pageData: {
-    hero: StrapiImage,
+    hero: StrapiMedia,
     article: ArticleSection[],
   },
   teamMembers: TeamMember[],
@@ -22,7 +22,7 @@ export type ContactData = {
 
 export const contactResolver: ResolveFn<ContactData> = () => {
   return forkJoin({
-    pageData:   inject(AnimalArticleService).getAndInsertAnimalLinks<{hero: StrapiImage,article: ArticleSection[],}>
+    pageData:   inject(AnimalArticleService).getAndInsertAnimalLinks<{hero: StrapiMedia,article: ArticleSection[],}>
     ("contact-page?populate[hero]=*&populate[article][populate]=*"),
     teamMembers: inject(StrapiService).get<TeamMember[]>
     ("teammembers?populate=*"),

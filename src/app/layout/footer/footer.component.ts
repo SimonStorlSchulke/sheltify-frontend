@@ -1,22 +1,22 @@
 import { Component, inject } from '@angular/core';
 import { StrapiService } from '../../services/strapi.service';
-import { StrapiImage } from '../../shared/shared-types';
+import { StrapiMedia } from '../../shared/shared-types';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { AsyncPipe } from '@angular/common';
 import { switchMap } from 'rxjs';
 import { RouterLink } from '@angular/router';
-import { StrapiImagePipe } from '../../article/article-sections/strapi-image.pipe';
+import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
 
 type FooterDataBannerData = {
   id: number,
-  background: StrapiImage,
+  background: StrapiMedia,
   article: ArticleSection[],
 }
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [AsyncPipe, ArticleComponent, RouterLink, StrapiImagePipe],
+  imports: [AsyncPipe, ArticleComponent, RouterLink, StrapiMediaPipe],
   templateUrl: './footer.component.html',
   styleUrl: './footer.component.scss',
 })

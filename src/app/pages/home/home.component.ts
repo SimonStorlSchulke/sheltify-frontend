@@ -6,14 +6,14 @@ import { StrapiService } from '../../services/strapi.service';
 import { AnimalListComponent } from '../../shared/animal-list/animal-list.component';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { HeroComponent } from '../../shared/hero/hero.component';
-import { StrapiImage } from '../../shared/shared-types';
+import { StrapiMedia } from '../../shared/shared-types';
 import { AnimalArticleService } from '../../services/animal-article.service';
 import { Observable } from 'rxjs';
 import { BlogArticle } from '../../blog/blog.component';
 import { BlogTileComponent } from '../../blog/blog-tile/blog-tile.component';
 
 export type HomeData = {
-  hero: StrapiImage,
+  hero: StrapiMedia,
   article: ArticleSection[],
 }
 

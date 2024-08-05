@@ -46,10 +46,11 @@ section {
   .imageposition-links,
   .imageposition-rechts {
     align-items: flex-start;
-    .single-image,
+    .single-media,
     gallery {
       min-width: 60%;
       width: 60%;
+      max-height: 750px;
     }
   }
 
@@ -66,6 +67,10 @@ section {
     justify-content: end;
   }
 
+}
+
+video {
+  background-color: $primary-bg;
 }
 
 ::ng-deep {

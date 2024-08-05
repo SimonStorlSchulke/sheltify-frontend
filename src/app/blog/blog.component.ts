@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { StrapiImage } from '../shared/shared-types';
+import { StrapiMedia } from '../shared/shared-types';
 import { ArticleSection, ArticleComponent } from '../article/article.component';
 import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn, RouterLink } from '@angular/router';
 import { AnimalArticleService } from '../services/animal-article.service';
@@ -10,7 +10,7 @@ export type BlogArticle = {
   id: number,
   title: string,
   type: string,
-  thumbnail?: StrapiImage,
+  thumbnail?: StrapiMedia,
   description: string,
   artikel: ArticleSection[], //todo rename in strapi
   createdAt: Date,
@@ -39,8 +39,8 @@ export class BlogComponent {
   constructor() {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())
     .subscribe( ({ articleData }) => {
+      console.log(articleData)
         this.article = articleData;
-        console.log(this.article)
       }
     );
   }

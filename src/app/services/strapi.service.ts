@@ -1,7 +1,7 @@
 import { Injectable, inject, isDevMode } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
-import { StrapiFilter, StrapiImage } from '../shared/shared-types';
+import { StrapiFilter, StrapiMedia } from '../shared/shared-types';
 
 export type StrapiSingleResponse<T> = {
   data: T;
@@ -51,8 +51,12 @@ export class StrapiService {
       .pipe(map((obj) => JSON.stringify(flattenStrapiObject(obj))));
   }
 
+  getVideoUrl(media: StrapiMedia) {
+    return StrapiService.uploadsBaseUrl + media.url;
+  }
+
   getImageFormatUrl(
-    image: StrapiImage | null | undefined,
+    image: StrapiMedia | null | undefined,
     size: 'thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'original',
   ): string {
     if (image == null) {
@@ -102,7 +106,7 @@ export class StrapiService {
   }
 
   getImageFormatUrls(
-    images: StrapiImage[],
+    images: StrapiMedia[],
     size: 'thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'original',
   ) {
     return images.map(img => this.getImageFormatUrl(img, size));

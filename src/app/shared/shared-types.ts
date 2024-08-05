@@ -1,8 +1,8 @@
-export type StrapiImage = {
+export type StrapiMedia = {
     id: number
     name: string
     alternativeText: string
-    caption: string
+    caption?: string
     width: number
     height: number
     formats?: {
@@ -49,7 +49,7 @@ export type StrapiImage = {
 
   export type AnimalKind = {
     name: string,
-    icon: StrapiImage,
+    icon: StrapiMedia,
   }
 
 export type Animal = {
@@ -58,7 +58,7 @@ export type Animal = {
     updatedAt: string,
     name: string,
     gender: "male" | "female" | "other";
-    thumbnail?: StrapiImage,
+    thumbnail?: StrapiMedia,
     description: string,
     emergency?: boolean,
     whereInGermany?: string,

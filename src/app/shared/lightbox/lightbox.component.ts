@@ -1,12 +1,12 @@
 import { Component, ElementRef, HostListener, inject, ViewChild } from '@angular/core';
 import { LightboxService } from '../../services/lightbox.service';
-import { StrapiImagePipe } from '../../article/article-sections/strapi-image.pipe';
+import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
 import { StrapiService } from '../../services/strapi.service';
 
 @Component({
   selector: 'app-lightbox',
   standalone: true,
-  imports: [StrapiImagePipe],
+  imports: [StrapiMediaPipe],
   templateUrl: './lightbox.component.html',
   styleUrl: './lightbox.component.scss'
 })

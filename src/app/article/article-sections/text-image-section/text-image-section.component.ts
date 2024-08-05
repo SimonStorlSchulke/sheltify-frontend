@@ -1,17 +1,17 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { StrapiRichTextPipe } from '../strapi-rich-text.pipe';
-import { StrapiImagePipe } from '../strapi-image.pipe';
+import { StrapiMediaPipe } from '../strapi-image.pipe';
 import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
 import { StrapiService } from '../../../services/strapi.service';
 import { RichTextNode } from '../../../services/blockRenderer';
-import { StrapiImage } from '../../../shared/shared-types';
+import { StrapiMedia } from '../../../shared/shared-types';
 import { LightboxService } from '../../../services/lightbox.service';
 
 export type ArticleTextWithImageSection = {
   __component: 'article-section.text-with-image-section';
   background?: boolean;
   text: RichTextNode[];
-  images?: StrapiImage[];
+  images?: StrapiMedia[];
   imagePosition: 'oben' | 'rechts' | 'links' | 'unten';
   gallery: boolean;
 };
@@ -19,7 +19,7 @@ export type ArticleTextWithImageSection = {
 @Component({
   selector: 'app-text-image-section',
   standalone: true,
-  imports: [StrapiRichTextPipe, StrapiImagePipe, GalleryModule],
+  imports: [StrapiRichTextPipe, StrapiMediaPipe, GalleryModule],
   templateUrl: './text-image-section.component.html',
   styleUrl: './text-image-section.component.scss',
 })

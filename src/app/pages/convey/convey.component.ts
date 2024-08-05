@@ -3,12 +3,12 @@ import { HeroComponent } from '../../shared/hero/hero.component';
 import { ActivatedRoute, ResolveFn } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
-import { StrapiImage } from '../../shared/shared-types';
+import { StrapiMedia } from '../../shared/shared-types';
 import { AnimalArticleService } from '../../services/animal-article.service';
 
 
 export type ConveyData = {
-  hero: StrapiImage,
+  hero: StrapiMedia,
   article: ArticleSection[],
 }
 
