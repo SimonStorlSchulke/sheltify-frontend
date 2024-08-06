@@ -28,6 +28,7 @@ import {
   DefaultPageData,
 } from './pages/default-page/default-page.component';
 import { DsgvoComponent } from './pages/dsgvo/dsgvo.component';
+import { NotFoundComponent } from './pages/404/404.component';
 
 function getSubPageResolver(collectionNamePlural: string) {
   const resolver: ResolveFn<DefaultPageData> = (
@@ -109,4 +110,5 @@ export const routes: Routes = [
   },
   { path: 'formulare/bewerbung', component: ApplyComponent },
   { path: 'formulare/patenschaftsantrag', component: MentoringComponent },
+  { path: '**', pathMatch: "full", component:  NotFoundComponent},
 ];

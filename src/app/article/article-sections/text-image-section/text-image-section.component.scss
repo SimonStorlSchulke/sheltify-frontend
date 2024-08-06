@@ -24,19 +24,6 @@ section {
   }
 }
 
-.imagegrid {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: start;
-  gap: 8px;
-  width: 100%;
-  min-width: 100%;
-  img {
-    display: inline-block;
-    height: 195px;
-    object-fit: contain;
-  }
-}
 
 @media (min-width: 800px) {
   .imageposition-oben {
@@ -46,8 +33,7 @@ section {
   .imageposition-links,
   .imageposition-rechts {
     align-items: flex-start;
-    .single-media,
-    gallery {
+    app-strapi-media {
       min-width: 60%;
       width: 60%;
       max-height: 750px;

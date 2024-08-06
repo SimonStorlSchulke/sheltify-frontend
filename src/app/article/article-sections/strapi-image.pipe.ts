@@ -3,7 +3,7 @@ import { StrapiMedia } from '../../shared/shared-types';
 import { StrapiService } from '../../services/strapi.service';
 
 @Pipe({
-  name: 'strapiImage',
+  name: 'strapiMedia',
   standalone: true,
 })
 export class StrapiMediaPipe implements PipeTransform {
@@ -13,8 +13,6 @@ export class StrapiMediaPipe implements PipeTransform {
     ...args: ('thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'original' | 'video')[]
   ): string {
     if(args[0] == 'video') {
-      const d =  this.strapiSv.getVideoUrl(value!);
-      console.log("d, d")
       return this.strapiSv.getVideoUrl(value!);
     }
     return this.strapiSv.getImageFormatUrl(value, args[0] ?? 'large');

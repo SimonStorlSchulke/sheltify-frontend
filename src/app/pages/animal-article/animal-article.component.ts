@@ -1,8 +1,8 @@
 import { Component, inject } from '@angular/core';
-import { Observable, map, switchMap } from 'rxjs';
+import { Observable, map, of, switchMap } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { AnimalArticle, AnimalArticleService } from '../../services/animal-article.service';
-import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn, RouterLink } from '@angular/router';
+import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn, Router, RouterLink } from '@angular/router';
 import { MarkdownPipe } from '../../pipes/markdown.pipe';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { TextSectionComponent } from '../../article/article-sections/text-section/text-section.component';
@@ -13,11 +13,13 @@ import { AnimalService } from '../../services/animal.service';
 import { Title } from '@angular/platform-browser';
 
 
-export const animalArticleResolver: ResolveFn<AnimalArticle> = (
+export const animalArticleResolver: ResolveFn<AnimalArticle | null> = (
   route: ActivatedRouteSnapshot,
 ) => {
   const name = route.paramMap.get('name')!;  //todo null savety
-  return inject(AnimalArticleService).getArticleByAnimalName(name).pipe(map(data => {
+  return inject(AnimalArticleService).getArticleByAnimalName(name)
+  .pipe(map(data => {
+    if(!data) return null;
     data.preselectedAnimalId = data.animals.findIndex(a => a.name.toLocaleLowerCase() == name.toLocaleLowerCase());
     return data;
   }));
@@ -57,9 +59,13 @@ export class AnimalArticleComponent {
   constructor() {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())
       .subscribe(({ animalArticle }) => {
+        if(!animalArticle) {
+          inject(Router).navigate(["404"]);
+          return;
+        } 
         this.article = animalArticle;
         this.selectedCv = this.article!.preselectedAnimalId;
-        this.titleSv.setTitle(`${this.getDefaultTitle()} | Herzenshunde Griechenland e.V.`)
+        this.titleSv.setTitle(`${this.getDefaultTitle()} | Herzenshunde Griechenland e.V.`);
       });
   }
 

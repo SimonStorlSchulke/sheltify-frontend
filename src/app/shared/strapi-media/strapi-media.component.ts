@@ -1,0 +1,34 @@
+import { Component, inject, Input } from '@angular/core';
+import { GalleryModule, ImageItem } from 'ng-gallery';
+import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
+import { StrapiRichTextPipe } from '../../article/article-sections/strapi-rich-text.pipe';
+import { LightboxService } from '../../services/lightbox.service';
+import { StrapiService } from '../../services/strapi.service';
+import { StrapiMedia } from '../shared-types';
+import { LightboxComponent } from '../lightbox/lightbox.component';
+
+@Component({
+  selector: 'app-strapi-media',
+  standalone: true,
+  imports: [StrapiRichTextPipe, StrapiMediaPipe, GalleryModule, LightboxComponent],
+  templateUrl: './strapi-media.component.html',
+  styleUrl: './strapi-media.component.scss'
+})
+export class StrapiMediaComponent {
+  @Input({required: true}) media?: StrapiMedia[] = [];
+  @Input() asGallery: boolean = true;
+  strapiSv = inject(StrapiService);
+  lightboxSv = inject(LightboxService);
+
+  get galleryImages() {
+    return  this.media!.map(
+      (strapiImage) =>
+        new ImageItem({
+          src: this.strapiSv.getImageFormatUrl(strapiImage, 'large'),
+          thumb: this.strapiSv.getImageFormatUrl(strapiImage, 'thumbnail'),
+          alt: strapiImage.alternativeText,
+        }),
+    );
+  }
+
+}

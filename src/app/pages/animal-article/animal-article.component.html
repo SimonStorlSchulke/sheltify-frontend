@@ -47,7 +47,7 @@
               <img
                 class="cv-img"
                 [alt]="article.animals[selectedCv].thumbnail?.alternativeText"
-                [src]="article.animals[selectedCv].thumbnail | strapiImage: 'medium'"
+                [src]="article.animals[selectedCv].thumbnail | strapiMedia: 'medium'"
               />
               <div class="bubbles">
                 <span class="emergency" *ngIf="article.animals[selectedCv].emergency">Notfall</span>

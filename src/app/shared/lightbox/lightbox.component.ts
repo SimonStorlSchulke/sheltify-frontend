@@ -1,7 +1,8 @@
-import { Component, ElementRef, HostListener, inject, ViewChild } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, Input, ViewChild } from '@angular/core';
 import { LightboxService } from '../../services/lightbox.service';
 import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
 import { StrapiService } from '../../services/strapi.service';
+import { StrapiMedia } from '../shared-types';
 
 @Component({
   selector: 'app-lightbox',
@@ -14,44 +15,63 @@ export class LightboxComponent {
   @ViewChild("modal") dialogRef!: ElementRef<HTMLDialogElement>;
 
 
-  ligtboxSv = inject(LightboxService);
+  lightboxSv = inject(LightboxService);
   strapiSv = inject(StrapiService);
-  currentSource: string = "";
-  startSrcs: string[] = [];
 
-  ngAfterViewInit() {
-    this.ligtboxSv.open$.subscribe((startSrcs) => {
-      console.log("startSrc", startSrcs)
-      this.startSrcs = startSrcs;
-      this.currentSource = startSrcs[this.ligtboxSv.currentIndex];
-      this.dialogRef.nativeElement.showModal();
-      window.setTimeout(() => {
-        this.currentSource = this.getSrc();
-      }, 0
-      )
-    })
+  @Input() images: StrapiMedia[] = [];
+  @Input() currentSource: string = "";
+  @Input() startSrcs: string[] = [];
+  @Input() fullscreen = false;
+
+  currentIndex = 0;
+
+  ngOnInit() {
+    if(!this.fullscreen) {
+      this.to(0);
+    } else {
+      this.lightboxSv.open$.subscribe((data) => {
+        this.startSrcs = data.startImgSrcs;
+        this.currentIndex = data.startIndex;
+        this.images = data.images;
+        this.currentSource = data.startImgSrcs[this.currentIndex];
+        window.setTimeout(() => {
+          this.dialogRef.nativeElement.showModal();
+          this.currentSource = this.getSrc();
+        }, 0
+        )
+      })
+    }
   }
 
   getSrc(): string {
-    const strapiImg = this.ligtboxSv.images![this.ligtboxSv.currentIndex];
-    return this.strapiSv.getImageFormatUrl(strapiImg, "original");
+    const strapiImg = this.images![this.currentIndex];
+    return this.strapiSv.getImageFormatUrl(strapiImg, this.fullscreen ? "xlarge" : "medium");
+  }
+
+  getFullscreenStartingSources() {
+    return this.strapiSv.getImageFormatUrls(this.images, "medium");
   }
 
   to(index: number) {
-    if(!this.dialogRef.nativeElement.open) return;
-    const imgMaxIndex = this.ligtboxSv.images!.length - 1;
+    if(this.dialogRef?.nativeElement && !this.dialogRef.nativeElement.open) return;
+    const imgMaxIndex = this.images!.length - 1;
     if(index > imgMaxIndex) {
-      this.ligtboxSv.currentIndex = 0
+      this.currentIndex = 0
     } else if(index < 0) {
-      this.ligtboxSv.currentIndex = imgMaxIndex;
+      this.currentIndex = imgMaxIndex;
     } else {
-      this.ligtboxSv.currentIndex = index;
+      this.currentIndex = index;
     }
-    this.currentSource = this.startSrcs[this.ligtboxSv.currentIndex];
-    window.setTimeout(() => {
+    this.currentSource = this.startSrcs[this.currentIndex];
+     if(this.fullscreen) {
+      window.setTimeout(() => {
+        this.currentSource = this.getSrc();
+      }, 0
+      ) 
+    } else {
       this.currentSource = this.getSrc();
-    }, 0
-    )  }
+    }
+   }
 
   @HostListener('click', ['$event'])
   closeOnClick(e: MouseEvent) {
@@ -63,15 +83,15 @@ export class LightboxComponent {
 
   @HostListener('window:keydown.ArrowLeft', ['$event'])
   prev() {
-    this.to(this.ligtboxSv.currentIndex - 1);
+    this.to(this.currentIndex - 1);
   }
 
   @HostListener('window:keydown.ArrowRight', ['$event'])
   next() {
-    this.to(this.ligtboxSv.currentIndex + 1);
+    this.to(this.currentIndex + 1);
   }
 
   get multiImageMode() {
-    return (this.ligtboxSv.images?.length ?? 0) > 1;
+    return (this.images?.length ?? 0) > 1;
   }
 }

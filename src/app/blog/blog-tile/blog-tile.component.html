@@ -1,7 +1,7 @@
 <a class="blogtile" [routerLink]="'/news/' + blog.id">
   <img
     [alt]="blog.thumbnail?.alternativeText"
-    [src]="blog.thumbnail | strapiImage: 'original'"
+    [src]="blog.thumbnail | strapiMedia: 'original'"
   />
   <div class="tile-content sui flex-y">
     <h3>{{ blog.title }}</h3>

@@ -6,6 +6,7 @@ import { StrapiService } from '../../../services/strapi.service';
 import { RichTextNode } from '../../../services/blockRenderer';
 import { StrapiMedia } from '../../../shared/shared-types';
 import { LightboxService } from '../../../services/lightbox.service';
+import { StrapiMediaComponent } from '../../../shared/strapi-media/strapi-media.component';
 
 export type ArticleTextWithImageSection = {
   __component: 'article-section.text-with-image-section';
@@ -19,7 +20,7 @@ export type ArticleTextWithImageSection = {
 @Component({
   selector: 'app-text-image-section',
   standalone: true,
-  imports: [StrapiRichTextPipe, StrapiMediaPipe, GalleryModule],
+  imports: [StrapiRichTextPipe, StrapiMediaPipe, GalleryModule, StrapiMediaComponent],
   templateUrl: './text-image-section.component.html',
   styleUrl: './text-image-section.component.scss',
 })
