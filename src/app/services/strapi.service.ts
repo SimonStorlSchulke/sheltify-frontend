@@ -14,8 +14,8 @@ export class StrapiService {
   static readonly bearer =
     '8d9d5bd4f9c65a1dbbdd45d63653dfe9aedf6b6f99e4e7d5b06f847b2cd8a43d966d9a0260bfd860280efd9b605dc2c61a696034abcca869e4b302da6cf1a27d2a409945a5252bf44ce6016f6fc3a91c220f9f7e118f6571630a9a2a9e5df436f4d8d828392091937a16df4a5fbee918a04ba92da63362b77daea0cdbf1d09f3';
 
-  static readonly apiBaseUrl = 'http://cms.herzenshunde-griechenland.de/api/';
-  static readonly uploadsBaseUrl = 'http://cms.herzenshunde-griechenland.de';
+  static readonly apiBaseUrl = 'https://cms.herzenshunde-griechenland.de/api/';
+  static readonly uploadsBaseUrl = 'https://cms.herzenshunde-griechenland.de';
 
   static readonly headers = {
     'Content-Type': 'application/json',
