@@ -30,6 +30,14 @@
       border-radius: 0 1200px 1200px 0;
       padding-left: min(100px, 10dvw);
       padding-right: min(100px, 10dvw);
+      transition: width 0.5s, padding 0.5s ;
+
+      &:hover {
+        width: calc(50% + 20px);
+        min-width: min(620px, 100%);
+        padding-right: min(110px, 10dvw);
+        padding-left: min(110px, 10dvw);
+      }
     }
 }
 

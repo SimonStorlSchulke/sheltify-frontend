@@ -25,8 +25,10 @@ export class BlogCardsComponent {
 
   blogs$?: Observable<BlogArticle[]>;
 
-  constructor() {
-    this.blogs$ = inject(StrapiService).get<BlogArticle[]>("blogs?populate[thumbnail]=*");
+  strapiSv = inject(StrapiService);
+
+  ngOnInit() {
+    this.blogs$ = this.strapiSv.get<BlogArticle[]>(`blogs?populate[thumbnail]=*&pagination[pageSize]=${this.sectionData.amount}`);
   }
 
 }

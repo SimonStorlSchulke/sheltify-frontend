@@ -8,9 +8,14 @@ input, textarea {
   background-color: transparent;
   border-color: #fff;
   border-width: 1.8px;
+  font-family: system-ui, sans-serif;
+
+  &:hover {
+    border-color: #fff;
+  }
 
   &::placeholder {
-    color: #000;
+    color: $text;
     opacity: 1; /* Firefox */
   }
 }

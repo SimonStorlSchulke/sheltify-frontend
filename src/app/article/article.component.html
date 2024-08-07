@@ -3,8 +3,7 @@
     <!-- This is disgusting code but it works -->
     @if (section.__component == "article-section.row-start") {
       @if (setRowColumnIndex($any(section))) {}
-      <div
-          [class.bg-beige]="section.background || true"
+      <div [class.bg-beige]="section.background == 'beige'" [class.bg-lightgreen]="section.background == 'grün'"
       ><div class="sui wrapper article-rows" [attr.data-columns]="columnIndex"
       [class.text-center]="section.textCentered"></div></div>
     } @else {

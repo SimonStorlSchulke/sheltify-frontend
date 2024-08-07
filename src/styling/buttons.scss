@@ -36,9 +36,11 @@ button:not(.unstyled) {
     &.cto, &.call-to-action {
         background-color: $cto;
         color: #fff;
+        transition: transform 0.27s, background-color 0.27s;
 
         &:hover {
             background-color: $cto-d1;
+            transform: scale(1.05) translateY(-1%);
         }
     }
 
