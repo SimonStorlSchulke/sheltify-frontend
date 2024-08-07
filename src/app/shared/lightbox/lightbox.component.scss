@@ -16,24 +16,39 @@ dialog {
     height: 100dvh;
     max-height: 100dvh;
   }
-  ::backdrop {
+  &::backdrop {
     background-color: rgba(0, 0, 0, 0.548);
     left: -90px;
+  }
+  img {
+    height: calc(100dvh - 100px);
+    min-height: calc(100dvh - 100px);
+    object-fit: contain;
+    max-width: min(100%, 85dvw);
+  }
+  
+  .description {
+    color: #ddd;
+    height: 40px;
   }
   
   &:not([open]) {
     opacity: 0;
     pointer-events: none;
-    img {
-      height: calc(100dvh - 100px);
-      min-height: calc(100dvh - 100px);
-      object-fit: contain;
-      max-width: min(100%, 85dvw);
+  }
+
+  .to-btn {
+    color: #fff;
+    cursor: pointer;
+    width: clamp(150px, 125px, 15dvw);
+    font-size: 38px;
+    user-select: none;
+  
+    &.next:hover {
+    background: linear-gradient(90deg, transparent, #fff5);
     }
-    
-    .description {
-      color: #ddd;
-      height: 40px;
+    &.prev:hover {
+      background: linear-gradient(-90deg, transparent, #fff5);
     }
   }
 }
@@ -44,20 +59,6 @@ dialog[open] {
 }
 
 
-.to-btn {
-  color: #fff;
-  cursor: pointer;
-  width: clamp(150px, 125px, 15dvw);
-  font-size: 38px;
-  user-select: none;
-
-  &.next:hover {
-  background: linear-gradient(90deg, transparent, #fff5);
-  }
-  &.prev:hover {
-    background: linear-gradient(-90deg, transparent, #fff5);
-  }
-}
 
 button:focus-visible {
   outline: none;
@@ -66,6 +67,7 @@ button:focus-visible {
 
 .gallery {
   background-color: $primary-bg;
+  position: relative;
 
   .description {
     position: absolute;
@@ -75,9 +77,27 @@ button:focus-visible {
   }
   
   img {
-    //height: calc(100dvh - 100px);
-    //min-height: calc(100dvh - 100px);
+    height: calc(100dvh - 100px);
+    min-height: calc(100dvh - 100px);
     object-fit: contain;
     width: 100%;
+  }
+
+  .to-btn {
+    color: #fff;
+    cursor: pointer;
+    width: 70px;
+    height: 100%;
+    font-size: 38px;
+    user-select: none;
+    position: absolute;
+    z-index: 1;
+  
+    &.next:hover {
+    background: linear-gradient(90deg, transparent, #fff5);
+    }
+    &.prev:hover {
+      background: linear-gradient(-90deg, transparent, #fff5);
+    }
   }
 }
