@@ -17,6 +17,7 @@ import { LightboxComponent } from '../lightbox/lightbox.component';
 export class StrapiMediaComponent {
   @Input({required: true}) media?: StrapiMedia[] = [];
   @Input() asGallery: boolean = true;
+  @Input() imagePosition: string = "solo";
   strapiSv = inject(StrapiService);
   lightboxSv = inject(LightboxService);
 

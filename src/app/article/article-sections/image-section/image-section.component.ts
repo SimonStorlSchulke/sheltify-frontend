@@ -9,7 +9,7 @@ import { StrapiMediaComponent } from '../../../shared/strapi-media/strapi-media.
 
 export type ArticleImageSection = {
   __component: 'article-section.image';
-  background?: boolean;
+  background?: "nein" | "grün" | "beige";
   images: StrapiMedia[];
   gallery: boolean;
 };

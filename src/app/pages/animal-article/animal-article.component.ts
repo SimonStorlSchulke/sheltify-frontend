@@ -1,5 +1,5 @@
 import { Component, inject } from '@angular/core';
-import { Observable, map, of, switchMap } from 'rxjs';
+import { map } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { AnimalArticle, AnimalArticleService } from '../../services/animal-article.service';
 import { ActivatedRoute, ActivatedRouteSnapshot, ResolveFn, Router, RouterLink } from '@angular/router';

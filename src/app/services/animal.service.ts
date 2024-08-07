@@ -1,12 +1,23 @@
-import { Injectable } from '@angular/core';
+import { DestroyRef, inject, Injectable } from '@angular/core';
 import { Observable, map } from 'rxjs';
 import { StrapiService } from './strapi.service';
 import { Animal } from '../shared/shared-types';
+import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AnimalService extends StrapiService {
+
+
+  allAnimalsData: Animal[] = [];
+  private destroyRef = inject(DestroyRef);
+
+  updateAllAnimalsData() {
+    this.getAnimalList().pipe(takeUntilDestroyed(this.destroyRef))
+      .subscribe(animals => this.allAnimalsData = animals);
+  }
+
   getAnimalByName(name: string): Observable<Animal> {
     return this.get<Animal[]>(`animals?filters[name][$eqi]=${name}`).pipe(
       map((animals) => animals[0]),
@@ -29,6 +40,7 @@ export class AnimalService extends StrapiService {
       }))
     );
   }
+
 
 
   getAgeString(animal: Animal): string {

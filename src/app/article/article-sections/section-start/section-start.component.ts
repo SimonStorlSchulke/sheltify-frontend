@@ -3,7 +3,7 @@ import { Component, Input } from '@angular/core';
 export type SectionStartSection = {
   __component: 'article-section.section-start';
   title?: string;
-  background?: boolean;
+  background?: "nein" | "grün" | "beige";
 };
 
 @Component({

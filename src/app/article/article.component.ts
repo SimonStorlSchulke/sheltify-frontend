@@ -24,7 +24,7 @@ export type ArticleSection =
 export type ArticleRowStartSection = {
   __component: 'article-section.row-start';
   title: string;
-  background?: boolean;
+  background?: "nein" | "grün" | "beige";
   columns: number;
   textCentered: boolean;
 };

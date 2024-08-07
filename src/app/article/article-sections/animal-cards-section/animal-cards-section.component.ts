@@ -6,12 +6,14 @@ import { AnimalTileComponent  } from '../../../shared/animal-tile/animal-tile.co
 import { AsyncPipe } from '@angular/common';
 import { StrapiRichTextPipe } from '../strapi-rich-text.pipe';
 import { RichTextNode } from '../../../services/blockRenderer';
+import { AnimalService } from '../../../services/animal.service';
 
 export type ArticleAnimalCardsSection = {
   __component: 'article-section.animal-cards';
   text: RichTextNode[];
-  background?: boolean;
+  background?: "nein" | "grün" | "beige";
   animals: Animal[];
+  filteredAmount?: number,
 };
 
 @Component({
@@ -26,7 +28,7 @@ export class AnimalCardsSectionComponent implements OnInit {
 
   animals$?: Observable<Animal[]>;
 
-  animalSv = inject(StrapiService);
+  animalSv = inject(AnimalService);
 
   ngOnInit() {
     const animalIds = this.sectionData.animals.map(a => a.id);
@@ -46,8 +48,25 @@ export class AnimalCardsSectionComponent implements OnInit {
             sortedAnimals.push(matchingAnimal)
           }
         }
+
+        const dogNumToAdd = (this.sectionData.filteredAmount ?? 0) - sortedAnimals.length;
+
+        if(dogNumToAdd > 0) {
+          this.addNextAnimals(sortedAnimals, dogNumToAdd);
+        }
+
         return sortedAnimals;
        }));
+  }
+
+  private addNextAnimals(animalsAlreadyInList: Animal[], num: number) {
+    for (const a of this.animalSv.allAnimalsData) {
+      if(animalsAlreadyInList.findIndex(an => an.id == a.id) == -1) {
+        animalsAlreadyInList.push(a);
+        num--;
+      }
+      if(num < 1) break;
+    }
   }
 
 }

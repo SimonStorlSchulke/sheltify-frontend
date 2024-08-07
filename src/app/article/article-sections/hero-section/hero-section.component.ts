@@ -5,7 +5,7 @@ import { StrapiMedia } from '../../../shared/shared-types';
 
 export type ArticleHeroSection = {
   __component: 'article-section.hero';
-  background?: boolean;
+  background?: "nein" | "grün" | "beige";
   hero: StrapiMedia;
 };
 

@@ -6,6 +6,7 @@ import { FooterComponent } from './layout/footer/footer.component';
 import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs';
 import { LightboxComponent } from './shared/lightbox/lightbox.component';
+import { AnimalService } from './services/animal.service';
 
 @Component({
     selector: 'app-root',
@@ -20,6 +21,7 @@ export class AppComponent {
   router = inject(Router);
   titleSv = inject(Title);
   contexts = inject(ChildrenOutletContexts);
+  animalSv = inject(AnimalService);
 
   ngOnInit() {
     this.router.events
@@ -47,5 +49,7 @@ export class AppComponent {
           this.titleSv.setTitle("Herzenshunde Griechenland e.V.");
         }
       });
+
+      this.animalSv.updateAllAnimalsData();
   }
 }

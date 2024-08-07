@@ -5,6 +5,6 @@
 >
   <div [innerHTML]="sectionData.text | strapiRichText"></div>
   
-  <app-strapi-media [media]="sectionData.images" [asGallery]="sectionData.gallery"/>
+  <app-strapi-media [imagePosition]="sectionData.imagePosition" [media]="sectionData.images" [asGallery]="sectionData.gallery"/>
 
 </section>

@@ -16,19 +16,8 @@
         @if (asGallery) {
 
             <app-lightbox [images]="media" [fullscreen]="false"/>
-<!--           <gallery
-          class="media-container"
-            [loop]="true"
-            [items]="galleryImages"
-            [bullets]="true"
-            [bulletSize]="12"
-            [disableBullets]="false"
-            [autoplay]="true"
-            [autoplayInterval]="7000"
-            (itemClick)="lightboxSv.open(media, $event)"
-          /> -->
         } @else {
-          <div class="imagegrid">
+          <div class="imagegrid imageposition-{{imagePosition}}">
             @if(strapiSv.getImageFormatUrls(media, "medium"); as imgs) {
               @for (image of media; track $index) {
                   <img

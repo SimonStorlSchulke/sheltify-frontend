@@ -7,7 +7,7 @@ import { AsyncPipe } from '@angular/common';
 
 export type ArticleBlogCardsSection = {
   __component: 'article-section.news-cards';
-  background?: boolean;
+  background?: "nein" | "grün" | "beige";
   amount: number,
   type: string,
 };

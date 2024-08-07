@@ -4,7 +4,7 @@ import { RichTextNode } from '../../../services/blockRenderer';
 
 export type ArticleTextSection = {
   __component: 'article-section.text';
-  background?: boolean;
+  background?: "nein" | "grün" | "beige";
   text: RichTextNode[];
 };
 

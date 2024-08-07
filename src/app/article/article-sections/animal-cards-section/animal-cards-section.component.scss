@@ -1,6 +1,7 @@
 .animal-list {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 24px;
     min-height: 320px;
     padding: 24px 0;

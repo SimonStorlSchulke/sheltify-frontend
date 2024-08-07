@@ -16,33 +16,33 @@ dialog {
     height: 100dvh;
     max-height: 100dvh;
   }
+  ::backdrop {
+    background-color: rgba(0, 0, 0, 0.548);
+    left: -90px;
+  }
+  
+  &:not([open]) {
+    opacity: 0;
+    pointer-events: none;
+    img {
+      height: calc(100dvh - 100px);
+      min-height: calc(100dvh - 100px);
+      object-fit: contain;
+      max-width: min(100%, 85dvw);
+    }
+    
+    .description {
+      color: #ddd;
+      height: 40px;
+    }
+  }
 }
 
-dialog::backdrop {
-  background-color: rgba(0, 0, 0, 0.548);
-  left: -90px;
-}
-
-dialog:not([open]) {
-  opacity: 0;
-  pointer-events: none;
-}
 dialog[open] {
   opacity: 1;
   pointer-events: inherit;
 }
 
-img {
-  height: calc(100dvh - 100px);
-  min-height: calc(100dvh - 100px);
-  object-fit: contain;
-  max-width: min(100%, 85dvw);
-}
-
-.description {
-  color: #ddd;
-  height: 40px;
-}
 
 .to-btn {
   color: #fff;
@@ -72,5 +72,12 @@ button:focus-visible {
     bottom: 8px;
     color: #fff;
     text-shadow: 1px 2px 2px rgba(0, 0, 0, 0.75);
+  }
+  
+  img {
+    //height: calc(100dvh - 100px);
+    //min-height: calc(100dvh - 100px);
+    object-fit: contain;
+    width: 100%;
   }
 }

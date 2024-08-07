@@ -1,24 +1,35 @@
 @use "colors" as *;
 
 .media-container {
-    width: 100%;
-    max-width: 100%;
-    height: 100%;
-    max-height: 750px;
-    background-color: $primary-bg;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  max-height: 750px;
+  background-color: $primary-bg;
 }
 
-
 .imagegrid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: start;
-    gap: 8px;
-    width: 100%;
-    min-width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: start;
+  gap: 8px;
+  width: 100%;
+  min-width: 100%;
+  img {
+    display: inline-block;
+    height: 195px;
+    object-fit: contain;
+  }
+
+  &.imageposition-oben,
+  &.imageposition-unten,
+  &.imageposition-solo {
+    justify-content: center;
     img {
-      display: inline-block;
-      height: 195px;
-      object-fit: contain;
+      height: 300px;
+      flex-grow: 1;
+      object-fit: cover;
+      object-position: center 30%;
     }
   }
+}

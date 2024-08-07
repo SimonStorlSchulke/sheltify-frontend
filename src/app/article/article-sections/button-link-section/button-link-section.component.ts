@@ -3,7 +3,7 @@ import { StrapiService } from '../../../services/strapi.service';
 
 export type ButtonLinkSection = {
   __component: 'article-section.button-link';
-  background?: boolean;
+  background?: "nein" | "grün" | "beige";
   text: string;
   link: string;
   type: 'primary' | 'secondary' | 'call-to-action';

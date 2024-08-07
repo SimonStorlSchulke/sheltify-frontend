@@ -61,6 +61,8 @@ nav.desktop .dropdown-container {
     position: absolute;
     z-index: 1;
     top: 96px;
+    margin-top: -1px;
+
 
     .triangle {
       width: 0;
@@ -87,6 +89,10 @@ nav.desktop .dropdown-container {
         &.active {
           color: $primary;
           background: linear-gradient(90deg, $primary 6px, #fff 6px);
+        }
+
+        &:hover {
+          color: $primary;
         }
       }
     }

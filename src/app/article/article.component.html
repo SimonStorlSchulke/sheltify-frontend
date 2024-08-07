@@ -4,7 +4,7 @@
     @if (section.__component == "article-section.row-start") {
       @if (setRowColumnIndex($any(section))) {}
       <div
-          [class.bg-accent]="section.background || true"
+          [class.bg-beige]="section.background || true"
       ><div class="sui wrapper article-rows" [attr.data-columns]="columnIndex"
       [class.text-center]="section.textCentered"></div></div>
     } @else {
@@ -12,7 +12,7 @@
     }
 
     @if (section.__component != "article-section.row-start") {
-      <div class="section-container" [class.bg-accent]="section.background">
+      <div class="section-container" [class.bg-beige]="section.background == 'beige'" [class.bg-lightgreen]="section.background == 'grün'">
         @switch (section.__component) {
           @case ("article-section.section-start") {
             <app-section-start [sectionData]="section" />

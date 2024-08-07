@@ -10,8 +10,12 @@ article {
   padding-bottom: 38px;
   padding-top: 38px;
 
-  &.bg-accent {
-    background-color: $accent;
+  &.bg-beige,
+  &.bg-lightgreen {
+    padding: 38px 0;
+  }
+
+  &.bg-lightgreen {
     padding: 38px 0;
   }
 }

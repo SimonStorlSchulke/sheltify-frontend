@@ -6,7 +6,7 @@ import { ArticleSection } from '../article/article.component';
 import { BlogArticle } from '../blog/blog.component';
 
 export type AnimalArticle = {
-  title: string;
+  title?: string;
   animals: Animal[];
   sections: ArticleSection[];
   preselectedAnimalId: number;

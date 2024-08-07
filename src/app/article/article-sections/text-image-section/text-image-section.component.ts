@@ -10,7 +10,7 @@ import { StrapiMediaComponent } from '../../../shared/strapi-media/strapi-media.
 
 export type ArticleTextWithImageSection = {
   __component: 'article-section.text-with-image-section';
-  background?: boolean;
+  background?: "nein" | "grün" | "beige";
   text: RichTextNode[];
   images?: StrapiMedia[];
   imagePosition: 'oben' | 'rechts' | 'links' | 'unten';
@@ -24,24 +24,7 @@ export type ArticleTextWithImageSection = {
   templateUrl: './text-image-section.component.html',
   styleUrl: './text-image-section.component.scss',
 })
-export class TextImageSectionComponent implements OnInit {
+export class TextImageSectionComponent {
   @Input({ required: true }) sectionData!: ArticleTextWithImageSection;
   strapiSv = inject(StrapiService);
-  lightboxSv = inject(LightboxService);
-
-  galleryImages: GalleryItem[] = [];
-
-  ngOnInit() {
-    if (!this.sectionData.images || this.sectionData.images?.length < 2) {
-      return;
-    }
-    this.galleryImages = this.sectionData.images.map(
-      (strapiImage) =>
-        new ImageItem({
-          src: this.strapiSv.getImageFormatUrl(strapiImage, 'large'),
-          thumb: this.strapiSv.getImageFormatUrl(strapiImage, 'thumbnail'),
-          alt: strapiImage.alternativeText,
-        }),
-    );
-  }
 }
