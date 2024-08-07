@@ -56,6 +56,7 @@ export type Animal = {
     id: number,
     documentId: string,
     updatedAt: string,
+    publishedAt: string,
     name: string,
     gender: "male" | "female" | "other";
     thumbnail?: StrapiMedia,
@@ -71,7 +72,7 @@ export type Animal = {
     suitedFor?: string,
     priority: number,
     animal_article?: {
-      updatedAt: string,  // for sorting
+    updatedAt: string,  // for sorting
     }
   }
   

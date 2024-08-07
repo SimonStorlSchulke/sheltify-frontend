@@ -25,11 +25,17 @@ export class StrapiService {
   httpClient = inject(HttpClient);
 
   get<T>(path: string): Observable<T> {
+    let url = decodeURIComponent(StrapiService.apiBaseUrl + path);
+    url = this.addDraftsInDevMode(url);
     return this.httpClient
-      .get(decodeURIComponent(StrapiService.apiBaseUrl + path), {
+      .get(url, {
         headers: StrapiService.headers,
       })
       .pipe(map((obj) => flattenStrapiObject(obj)));
+  }
+
+  get isDevEnv(): boolean {
+    return window.location.origin.includes("//dev.") || window.location.origin.includes(":4200");
   }
 
   getAsString(path: string, filters: StrapiFilter[] = []): Observable<string> {
@@ -46,6 +52,8 @@ export class StrapiService {
       path +
       (path.includes('?') ? '&' : '?') +
       params.toString();
+      url = this.addDraftsInDevMode(url);
+
     return this.httpClient
       .get(decodeURIComponent(url), { headers: StrapiService.headers })
       .pipe(map((obj) => JSON.stringify(flattenStrapiObject(obj))));
@@ -110,6 +118,12 @@ export class StrapiService {
     size: 'thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'original',
   ) {
     return images.map(img => this.getImageFormatUrl(img, size));
+  }
+
+  addDraftsInDevMode(url: string): string {
+    const isDevMode = window.location.origin.includes("//dev.") || window.location.origin.includes(":4200");
+    if(!isDevMode) return url;
+    return url + (url.includes("?") ? "&" : "?") + "&publicationState=preview";
   }
 }
 
