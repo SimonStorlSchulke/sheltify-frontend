@@ -7,6 +7,7 @@
   height: 280px;
   border-radius: 12px;
   transition: transform 0.23s, box-shadow 0.4s;
+  position: relative;
 
   &:hover {
     transform: scale(1.01);

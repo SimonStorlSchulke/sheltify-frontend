@@ -1,4 +1,7 @@
 <a class="blogtile" [routerLink]="'/news/' + blog.id">
+  @if(!blog.publishedAt) {
+    <span class="draft">draft</span>
+  }
   <img
     [alt]="blog.thumbnail?.alternativeText"
     [src]="blog.thumbnail | strapiMedia: 'original'"

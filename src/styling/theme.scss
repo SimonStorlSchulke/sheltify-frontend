@@ -128,3 +128,15 @@ input,
 textarea {
   font-family: system-ui, sans-serif;
 }
+
+.draft {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: #c1872fc7;
+  border-radius: 0 0 0 8px;
+  padding: 2px 6px;
+  color: #fff;
+  font-size: 14px;
+  z-index: 1;
+}
