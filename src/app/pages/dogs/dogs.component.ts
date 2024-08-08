@@ -97,38 +97,66 @@ export class DogsComponent {
     return this.filters.get(category)!.get(key);
   }
 
-  isAnyFilterActive(category: string) {
-    for (const value of this.filters.get(category)!.values()) {
-      if (value) return true;
+  activeFilter(category: string) {
+    for (const key of this.filters.get(category)!.keys()) {
+      if (this.filters.get(category)?.get(key)) return key;
     }
-    return false;
+    return null;
   }
+
 
   getIsVisibleFunction(): (animal: Animal) => boolean {
     return (animal: Animal) => {
       let inGermany = !this.isFilterActive('inGermany', 'inGermany') || this.animalSv.isInGermany(animal);
 
-      let fitsSize = !this.isAnyFilterActive('size');
+      let fitsSize = !this.activeFilter('size');
       if (animal.shoulderHeightCm) {
-        if (this.isFilterActive('size', 'small') && animal.shoulderHeightCm <= 35) fitsSize = true;
-        if (this.isFilterActive('size', 'medium') && animal.shoulderHeightCm > 35 && animal.shoulderHeightCm <= 45) fitsSize = true;
-        if (this.isFilterActive('size', 'large') && animal.shoulderHeightCm > 45) fitsSize = true;
+        if (this.isFilterActive('size', 'small') && animal.shoulderHeightCm <= 40) fitsSize = true;
+        if (this.isFilterActive('size', 'medium') && animal.shoulderHeightCm > 40 && animal.shoulderHeightCm <= 55) fitsSize = true;
+        if (this.isFilterActive('size', 'large') && animal.shoulderHeightCm > 55) fitsSize = true;
       }
 
-      let fitsGender = !this.isAnyFilterActive('gender');
+      let fitsGender = !this.activeFilter('gender');
       if (this.isFilterActive('gender', 'male') && animal.gender == 'male') fitsGender = true;
       if (this.isFilterActive('gender', 'female') && animal.gender == 'female') fitsGender = true;
       
 
-      let fitsAge = !this.isAnyFilterActive('age');
+      let fitsAge = !this.activeFilter('age');
       if (animal.birthday) {
         const yearsOld = this.animalSv.yearsOld(animal)!;
-        if (this.isFilterActive('age', 'young') && yearsOld < 2) fitsAge = true;
-        if (this.isFilterActive('age', 'medium') && yearsOld >= 2 && yearsOld <= 9) fitsAge = true;
-        if (this.isFilterActive('age', 'old') && yearsOld > 9) fitsAge = true;
+        if (this.isFilterActive('age', 'young') && yearsOld < 1) fitsAge = true;
+        if (this.isFilterActive('age', 'medium') && yearsOld >= 1 && yearsOld < 7) fitsAge = true;
+        if (this.isFilterActive('age', 'old') && yearsOld >= 7) fitsAge = true;
       }
 
       return fitsSize && fitsGender && fitsAge && inGermany;
     };
+  }
+
+  getSizeExplainer(category: string): string {
+    const activeValue = this.activeFilter(category);
+    if(!activeValue) return "";
+
+    const sizeTexts = new Map<string, string>([
+      ["small", "bis 30cm"],
+      ["medium", "30 - 55cm"],
+      ["large", "ab 55cm"],
+    ]);
+
+    const ageTexts = new Map<string, string>([
+      ["young", "bis 12 Monate"],
+      ["medium", "1-6 Jahre"],
+      ["old", "ab 7 Jahre"],
+    ]);
+
+    switch (category) {
+        case "size":
+          return sizeTexts.get(activeValue)!
+        case "age":
+          return ageTexts.get(activeValue)!
+
+    }
+
+    return ""
   }
 }

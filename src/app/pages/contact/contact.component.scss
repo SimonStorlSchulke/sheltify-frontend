@@ -1,4 +1,6 @@
 @use "colors" as *;
+@use "variables" as *;
+
 .form-container {
   border-radius: 24px;
 }
@@ -31,10 +33,35 @@ textarea {
   border-radius: 16px;
   accent-color:  $primary;
   height: 32px;
+  border-width: 50%;
+    -moz-appearance: none;
+    -webkit-appearance: none;
+    -o-appearance: none;
+    position: relative;
+    margin-left: 4px;
+    
+    &:checked::before {
+      background-image: url("/assets/img/check.svg");
+      content: "";
+      width: 50px;
+      height: 50px;
+      display: block;
+      position: absolute;
+      top: 0;
+      transform: translateY(-10px);
+      left: 0;
+      background-image: url("/assets/img/check.svg");
+      background-repeat: no-repeat;
+    }
 
   &:focus-within, &:focus {
   outline: none !important;
   }
+}
+
+#accept-dsgvo + label {
+  font-size: 0.88rem;
+  line-height: 1.25;
 }
 
 button {
@@ -46,5 +73,12 @@ button {
 
   img {
     filter: invert(0.6);
+  }
+}
+
+
+@media (max-width: 900px) {
+  .wrapper {
+    flex-direction: column;
   }
 }

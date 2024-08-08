@@ -11,6 +11,7 @@ import { ArticleComponent } from '../../article/article.component';
 import { StrapiMediaPipe } from "../../article/article-sections/strapi-image.pipe";
 import { AnimalService } from '../../services/animal.service';
 import { Title } from '@angular/platform-browser';
+import { Animal } from '../../shared/shared-types';
 
 
 export const animalArticleResolver: ResolveFn<AnimalArticle | null> = (
@@ -91,5 +92,9 @@ export class AnimalArticleComponent {
       return `Haben ${names[0]} & ${names[1]} dein Interesse geweckt?`;
     }
     return `Hat einer der Hunde dein Interesse geweckt?`;
+  }
+
+  getGendericon(animal: Animal) {
+    return animal.gender == "male" ? "assets/img/male.svg" : "assets/img/female.svg";
   }
 }

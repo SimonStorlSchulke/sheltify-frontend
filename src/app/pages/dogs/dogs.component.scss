@@ -43,3 +43,16 @@
     outline-offset: -1px;
     border-radius: 100px;
 }
+
+.filter-explainer {
+  position: absolute;
+  margin-top: -28px;
+  margin-left: 16px;
+}
+
+.filters {
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 32px;
+  column-gap: 12px;
+}

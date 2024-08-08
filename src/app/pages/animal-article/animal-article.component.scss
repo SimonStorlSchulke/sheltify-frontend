@@ -1,11 +1,21 @@
 @use "colors" as *;
 @use "variables" as *;
 
+h1 .gender-icon {
+  color: #fff;
+  width: calc($fontsize-h1 * 1);
+  height: calc($fontsize-h1 * 1.4);
+  display: inline-block;
+}
+
+$tabInactiveColor: mix($accent, #fff, 60%);
+$tabInactiveColorGradient: mix($accent, #000, 92%);
+
 .cvs {
   .tabs {
     max-width: fit-content;
     .tab {
-      background-color: mix($accent, #fff, 60%);
+      background: linear-gradient(45deg, $tabInactiveColor 60%, $tabInactiveColorGradient);
       border-radius: 16px 16px 0 0;
       font-size: $fontsize-h3;
       padding: 12px 24px;
@@ -17,7 +27,7 @@
 
       &.active {
         color: #fff;
-        background-color: $cto;
+        background: $cto;
       }
 
       &:not(.active):hover {
@@ -26,7 +36,6 @@
       }
 
       .gender-icon {
-        color: #fff;
         width: calc($fontsize-h3 * 1.7);
         height: calc($fontsize-h3 * 1.7);
       }
@@ -82,4 +91,3 @@
   width: 42px;
   object-fit: fill;
 }
-//wenn sections nicht nebeneinander passen vlt alle drei direkt untereinander

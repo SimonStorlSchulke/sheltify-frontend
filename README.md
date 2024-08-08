@@ -11,3 +11,9 @@
 - cto-buttons wachsen bei hover
 - footer kontaktformular
 - kontaktfeld - placeholder grau und font anpassen
+
+
+vlt disclaimer unter hunden:
+Lex wird nach positiver Vorkontrolle mit Kostenübernahme, Vertrag, EU Ausweis und Sicherheitsgeschirr vermittelt.
+
+- weibl icon drehen
