@@ -65,6 +65,7 @@ img {
 
 @media (max-width: $breakpoint-small) {
   .blogtile {
+    flex-direction: column;
     height: 320px;
   }
   img {
@@ -78,6 +79,5 @@ img {
       -webkit-line-clamp: 4;
     }
   }
-  
   
 }

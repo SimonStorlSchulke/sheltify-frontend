@@ -60,7 +60,7 @@
 <div class="bg-beige ">
     <div class="sui wrapper flex-y gap-5 py-6">
   <h2>Das Team</h2>
-      <div class="sui flex-x wrap center gap-3">
+      <div class="sui flex-x wrap center gap-5 jc-center">
         @for (member of contactData.teamMembers; track $index) {
             <app-teammember-tile [teamMember]="member"/>
         }
