@@ -133,30 +133,28 @@ export class DogsComponent {
     };
   }
 
-  getSizeExplainer(category: string): string {
-    const activeValue = this.activeFilter(category);
-    if(!activeValue) return "";
+  getExplainer() {
 
     const sizeTexts = new Map<string, string>([
-      ["small", "bis 30cm"],
-      ["medium", "30 - 55cm"],
-      ["large", "ab 55cm"],
+      ["small", "mit bis zu 30cm Schulterhöhe"],
+      ["medium", "mit 30-55cm Schulterhöhe"],
+      ["large", "ab 55cm Schulterhöhe"],
     ]);
 
     const ageTexts = new Map<string, string>([
-      ["young", "bis 12 Monate"],
-      ["medium", "1-6 Jahre"],
-      ["old", "ab 7 Jahre"],
+      ["young", "im Alter bis zu 12 Monaten"],
+      ["medium", "im Alter von 1-6 Jahren"],
+      ["old", "ab 7 Jahren"],
     ]);
+    
+    const gender = this.activeFilter("gender");
+    const genderText = gender ? (gender == "male" ? "Rüden" : "Hündinnen") : "Hunde";
+    const sizeText = sizeTexts.get(this.activeFilter("size") ?? "") ?? "";
+    const ageText = ageTexts.get(this.activeFilter("age") ?? "") ?? "";
+    const inGermanyText = this.isFilterActive('inGermany', 'inGermany') ? "in Deutschland" : "";
 
-    switch (category) {
-        case "size":
-          return sizeTexts.get(activeValue)!
-        case "age":
-          return ageTexts.get(activeValue)!
-
-    }
-
-    return ""
+    const text = [genderText, inGermanyText, sizeText, ageText].join(" ");
+    if(text.trim() == "Hunde") return "";
+    return text;
   }
 }

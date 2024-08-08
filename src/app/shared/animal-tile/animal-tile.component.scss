@@ -60,3 +60,15 @@
         }
     }
 }
+
+@media (max-width: 700px) {
+    .animal-tile {
+        width: calc(50dvw - 50px);
+    }
+}
+
+@media (max-width: 550px) {
+    .animal-tile {
+        width: calc(100dvw - 60px);
+    }
+}
