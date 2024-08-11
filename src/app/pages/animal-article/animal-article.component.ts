@@ -70,6 +70,9 @@ export class AnimalArticleComponent {
       });
   }
 
+  get cAnimal() {
+   return this.article!.animals[this.selectedCv]
+  }
 
   getDefaultTitle(): string {
     if(this.article?.title) return this.article.title;
@@ -92,6 +95,11 @@ export class AnimalArticleComponent {
       return `Haben ${names[0]} & ${names[1]} dein Interesse geweckt?`;
     }
     return `Hat einer der Hunde dein Interesse geweckt?`;
+  }
+
+  isAdult() {
+    const age = this.animalSv.yearsOld(this.article!.animals[this.selectedCv]) ?? 1;
+    return age > 1;
   }
 
   getGendericon(animal: Animal) {

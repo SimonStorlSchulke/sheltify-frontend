@@ -65,6 +65,7 @@ export type Animal = {
     whereInGermany?: string,
     castrated?: boolean,
     shoulderHeightCm?: number,
+    weightKg?: number,
     animalKind?: AnimalKind,
     birthday?: string,
     diseases?: string,
