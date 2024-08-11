@@ -1,9 +1,8 @@
 @if (pageContent$ | async; as pageContent) {
 <app-hero [images]="[pageContent.hero]" />
 
-<div class="sui wrapper flex-y gap-3">
-    <app-article [sections]="pageContent.article"/>
-
+<app-article [sections]="pageContent.article"/>
+<div class="sui wrapper flex-y gap-3 mb-5">
     <div class="sui flex-y gap-5">
         <div class="sui filters gap-4 wrap">
             <div class="form-container">

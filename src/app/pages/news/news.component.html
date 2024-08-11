@@ -1,9 +1,8 @@
 @if(pageData.hero) {
     <app-hero [images]="[pageData.hero]"/>
 }
-<div class="sui wrapper flex-y gap-3 py-4">
-    <app-article [sections]="pageData.article"/>
-</div>
+
+<app-article [sections]="pageData.article"/>
 
 <div class="sui wrapper flex-y gap-6">
 
