@@ -11,13 +11,10 @@ scp root@217.160.28.91:/root/sheltify-strapi/export_20240811210627.tar.gz /home/
 
 # TODO  
 - Paten anzeigen
-- tierkartenartikel hintergrund
 - hero parallax
-- cto-buttons wachsen bei hover
 - footer kontaktformular
 
 
 vlt disclaimer unter hunden:
 Lex wird nach positiver Vorkontrolle mit Kostenübernahme, Vertrag, EU Ausweis und Sicherheitsgeschirr vermittelt.
 
-- weibl icon drehen
