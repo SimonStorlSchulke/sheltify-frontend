@@ -14,7 +14,7 @@ import { AnimalArticleService } from '../../services/animal-article.service';
 export const newsResolver: ResolveFn<NewsData> = () => {
   return forkJoin({
     pageData: inject(AnimalArticleService).getAndInsertAnimalLinks<NewsData>("news-page?populate[hero]=*&populate[article][populate]=*"),
-    newsData: inject(StrapiService).get<BlogArticle[]>("blogs?populate[thumbnail]=*"),
+    newsData: inject(StrapiService).get<BlogArticle[]>("blogs?sort[1]=publishedAt:desc&populate[thumbnail]=*"),
   }).pipe(map(data => {
     data.pageData.news = data.newsData;
     return data.pageData;
