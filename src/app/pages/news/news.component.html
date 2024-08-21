@@ -8,9 +8,12 @@
 
 
     <div class="sui flex-x gap-3 wrap">
-        <button (click)="showAll()" [class.active]="activeFilters.size == 0" class="bubble">Alle Artikel</button>
-        <button (click)="toggleFilter('news')" [class.active]="isFilterActive('news')" class="bubble">News</button>
-        <button (click)="toggleFilter('wissen')" [class.active]="isFilterActive('wissen')" class="bubble">Wissenswertes</button>
+        <button (click)="showAll()" [class.active]="activeFilter == ''" class="bubble">Alle Artikel</button>
+
+        <div class="filter-selector">
+            <button (click)="toggleFilter('news')" [class.active]="isFilterActive('news')" class="bubble">News</button>
+            <button (click)="toggleFilter('wissen')" [class.active]="isFilterActive('wissen')" class="bubble">Wissenswertes</button>
+        </div>
     </div>
 
     @for(newsBlogEntry of pageData.news; track $index) {

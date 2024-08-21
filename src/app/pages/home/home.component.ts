@@ -11,6 +11,7 @@ import { BlogTileComponent } from '../../blog/blog-tile/blog-tile.component';
 
 export type HomeData = {
   hero: StrapiMedia,
+  castrationCount: number,
   article: ArticleSection[],
 }
 

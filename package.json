@@ -25,6 +25,7 @@
     "@types/markdown-it": "^14.1.1",
     "markdown-it": "^14.1.0",
     "ng-gallery": "^12.0.0-beta.4",
+    "ngx-countup": "^13.2.0",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.14.3"

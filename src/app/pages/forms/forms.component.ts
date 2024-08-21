@@ -1,19 +1,18 @@
 import { Component, inject, SecurityContext } from '@angular/core';
-import { MailformService } from '../../../services/mailform.service';
+import { MailformService } from '../../services/mailform.service';
 import { DomSanitizer } from '@angular/platform-browser';
 
 @Component({
-  selector: 'app-apply',
+  selector: 'app-forms',
   standalone: true,
   imports: [],
-  templateUrl: './apply.component.html',
-  styleUrl: './apply.component.scss'
+  templateUrl: './forms.component.html',
+  styleUrl: './forms.component.scss'
 })
-export class ApplyComponent {
+export class FormsComponent {
 
   mailFormSv = inject(MailformService);
   sanitizer = inject(DomSanitizer);
-
 
   send() {
     const animalName = this.mailFormSv.truncate((document.querySelector("#tiername") as HTMLInputElement).value ||  "(Kein Hundename angegeben)", 35 );

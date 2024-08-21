@@ -8,7 +8,7 @@ export type TeamMember = {
   description: string,
   mail: string,
   phone: string,
-  image: StrapiMedia,
+  image?: StrapiMedia,
 }
 
 @Component({

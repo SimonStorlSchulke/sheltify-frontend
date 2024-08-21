@@ -1,0 +1,33 @@
+@use "colors" as *;
+
+.filter-selector {
+    display: flex;
+    padding: 3px;
+    
+    button {
+      background-color: $neutral100;
+      outline: 3px solid $primary;
+      outline-offset: -1.2px;
+      border-radius: 0;
+      padding: 6px 8px;
+      color: $neutral800;
+      transition: background-color 0.25s, color 0.25s;
+      &:first-child {
+        border-radius: 100px 0 0 100px;
+      }
+      &:last-child {
+        border-radius: 0 100px 100px 0;
+      }
+      &.active {
+        background-color: $primary;
+        color: #fff;
+      }
+      &:not(.active):hover {
+        background-color: $primary-bg;
+      }
+  
+      &:only-child {
+          border-radius: 100px;
+      }
+    }
+  }

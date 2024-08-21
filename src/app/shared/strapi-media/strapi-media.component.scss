@@ -12,6 +12,7 @@
   display: flex;
   flex-wrap: wrap;
   justify-content: start;
+  align-items: start;
   gap: 8px;
   width: 100%;
   min-width: 100%;
@@ -19,12 +20,12 @@
     display: inline-block;
     height: 195px;
     object-fit: contain;
+    max-width: 350px;
   }
 
   &.imageposition-oben,
   &.imageposition-unten,
   &.imageposition-solo {
-    justify-content: center;
     img {
       height: 300px;
       flex-grow: 1;

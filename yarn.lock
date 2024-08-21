@@ -191,7 +191,7 @@
     symbol-observable "4.0.0"
     yargs "17.7.2"
 
-"@angular/common@^18.0.0", "@angular/common@^18.0.0 || ^19.0.0", "@angular/common@>=16.0.0", "@angular/common@>=6.0.0", "@angular/common@18.0.1":
+"@angular/common@^18.0.0", "@angular/common@^18.0.0 || ^19.0.0", "@angular/common@>=13.0.0", "@angular/common@>=16.0.0", "@angular/common@>=6.0.0", "@angular/common@18.0.1":
   version "18.0.1"
   resolved "https://registry.npmjs.org/@angular/common/-/common-18.0.1.tgz"
   integrity sha512-iADQC5m4fvk+VNXEoU1KR93b0eG218/GuNdzUNVJHcjxdFxPshKk5fiaGSosUCxXPRQOxDKzmS9EDang87E/Ew==
@@ -219,7 +219,7 @@
   dependencies:
     tslib "^2.3.0"
 
-"@angular/core@^18.0.0", "@angular/core@^18.0.0 || ^19.0.0", "@angular/core@>=16.0.0", "@angular/core@>=6.0.0", "@angular/core@18.0.1":
+"@angular/core@^18.0.0", "@angular/core@^18.0.0 || ^19.0.0", "@angular/core@>=13.0.0", "@angular/core@>=16.0.0", "@angular/core@>=6.0.0", "@angular/core@18.0.1":
   version "18.0.1"
   resolved "https://registry.npmjs.org/@angular/core/-/core-18.0.1.tgz"
   integrity sha512-Db1livvugoLdLsWww5IqUS5v+yUN7/5Rj0trZv9BgxIuoNtoipfLqKHwZWpumH3yI5Ucu+UH9zZ1mlGyF0Kexw==
@@ -2604,6 +2604,11 @@ cosmiconfig@^9.0.0:
     js-yaml "^4.1.0"
     parse-json "^5.2.0"
 
+countup.js@^2.3.2:
+  version "2.8.0"
+  resolved "https://registry.npmjs.org/countup.js/-/countup.js-2.8.0.tgz"
+  integrity sha512-f7xEhX0awl4NOElHulrl4XRfKoNH3rB+qfNSZZyjSZhaAoUk6elvhH+MNxMmlmuUJ2/QNTWPSA7U4mNtIAKljQ==
+
 critters@0.0.22:
   version "0.0.22"
   resolved "https://registry.npmjs.org/critters/-/critters-0.0.22.tgz"
@@ -4578,6 +4583,14 @@ ng-gallery@^12.0.0-beta.4:
   integrity sha512-y06Xp1ORTMmOwskz3rbKk6Nt3VxboHNDVzsb7XaAC/7wxGN9x0sQSsiNRTkNYfw5PJfrkI48eQssyZm5eHl9fg==
   dependencies:
     tslib "^2.3.1"
+
+ngx-countup@^13.2.0:
+  version "13.2.0"
+  resolved "https://registry.npmjs.org/ngx-countup/-/ngx-countup-13.2.0.tgz"
+  integrity sha512-8HpLinaRAg9qta8P/1BjP7IzVY8USNbn9981StlvYPNshLwZcmSmxKJIuHzE9zTL+y7ILWih2L4SDyJDfsIyVw==
+  dependencies:
+    countup.js "^2.3.2"
+    tslib "^2.0.0"
 
 nice-napi@^1.0.2:
   version "1.0.2"

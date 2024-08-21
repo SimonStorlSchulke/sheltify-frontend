@@ -16,8 +16,8 @@
         />
       </div>
       <div class="form-block">
-        <label for="email">Geburtsdatum</label>
-        <input type="date" name="email" id="email" />
+        <label for="geburtsdatum">Geburtsdatum</label>
+        <input type="date" name="geburtsdatum" id="geburtsdatum" />
       </div>
     </div>
     <div class="sui flex-x gap-2">
@@ -26,30 +26,30 @@
         <input type="email" name="email" id="email" />
       </div>
       <div class="form-block">
-        <label for="email">Tel. (Festnetz / Mobil)</label>
-        <input type="text" name="email" id="email" />
+        <label for="tel">Tel. (Festnetz / Mobil)</label>
+        <input type="text" name="tel" id="tel" />
       </div>
     </div>
     <div class="sui flex-x gap-2">
       <div class="form-block">
-        <label for="email">Straße, Hausnummer</label>
-        <input type="text" name="street" id="email" />
+        <label for="strase">Straße, Hausnummer</label>
+        <input type="text" name="strase" id="strase" />
       </div>
 
       <div class="form-block">
-        <label for="email">Postleitzahl, Wohnort</label>
-        <input type="text" name="plz" id="email" />
+        <label for="wohnort">Postleitzahl, Wohnort</label>
+        <input type="text" name="wohnort" id="wohnort" />
       </div>
     </div>
 
     <div class="form-block">
-      <label for="email">Beruf</label>
-      <input type="text" name="email" id="email" />
+      <label for="beruf">Beruf</label>
+      <input type="text" name="beruf" id="beruf" />
     </div>
 
     <div class="form-block">
-      <label for="email">Für welches Tier möchten sie sich bewerben?</label>
-      <input type="text" name="email" id="email" />
+      <label for="tiername">Für welches Tier möchten sie sich bewerben?</label>
+      <input type="text" name="tiername" id="tiername" />
     </div>
 
     <div class="form-block">
@@ -219,7 +219,7 @@
 
 
 </form>
-<div class="form-block">
-  <button class="primary" (click)="generateMessageText()">aaaaaa</button>
+<div class="sui mt-2">
+  <button class="primary" (click)="send()">Abschicken</button>
 </div>
 </section>

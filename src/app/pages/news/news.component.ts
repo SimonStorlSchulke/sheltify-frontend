@@ -37,7 +37,7 @@ export type NewsData = {
 })
 export class NewsComponent {
   pageData!: NewsData;
-  activeFilters = new Set<string>();
+  activeFilter = "";
 
   strapiSv = inject(StrapiService);
 
@@ -51,30 +51,33 @@ export class NewsComponent {
 
 
   toggleFilter(filterKey: string) {
-    if (this.activeFilters.has(filterKey)) {
-      this.activeFilters.delete(filterKey);
+    const previousFilter = this.activeFilter
+    if(previousFilter == "") {
+      this.activeFilter = filterKey;
+    } else if (previousFilter == filterKey) {
+      this.activeFilter = ""
     } else {
-      this.activeFilters.add(filterKey);
+      this.activeFilter = filterKey;
     }
 
     let filterQuery = "";
-    for (const filter of this.activeFilters) {
-      filterQuery += "&filters[type]=" + filter
+    if(this.activeFilter != "") {
+      filterQuery += "&filters[type]=" + this.activeFilter;
     }
+    
 
-    // TODO - Could break when user clicks to fast. Replace with proper rxjs at some point.
     lastValueFrom(this.strapiSv.get<BlogArticle[]>("blogs?populate[thumbnail]=*" + filterQuery))
       .then(news => this.pageData.news = news);
 
   }
 
   showAll() {
-    this.activeFilters = new Set<string>();
+    this.activeFilter = "";
     lastValueFrom(this.strapiSv.get<BlogArticle[]>("blogs?populate[thumbnail]=*"))
       .then(news => this.pageData.news = news);
   }
 
   isFilterActive(filterKey: string) {
-    return this.activeFilters.has(filterKey);
+    return this.activeFilter == filterKey;
   }
 }
