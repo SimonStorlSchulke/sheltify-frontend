@@ -17,7 +17,7 @@ export class MailformService {
   httpClient = inject(HttpClient);
 
 
-  async send(mail: FormMail): Promise<any> {
+  async send(mail: FormMail): Promise<number> {
     const headers = {
       'Content-Type': 'application/json',
       Authorization: `Bearer e168baf22ad1319def4403e5954185b5d317936b94b056b6014cdfd481fa5fe1bd44c82ed38c2f666b668dcad647153a27709aa19bad690b42975d3497623f39a4a94658f64a28c88aa68c824a1e7e108adb62ef918bd1dd07682f69e564d04cc481278bde8b6512360d2c34fe0ea7a6fead23e039a136df9163b669897985ae`,
@@ -43,7 +43,6 @@ export class MailformService {
           return [error.status];
         })
     ))
-      
     return status;
   }
 

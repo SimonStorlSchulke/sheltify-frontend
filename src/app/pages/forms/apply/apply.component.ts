@@ -1,11 +1,12 @@
 import { Component, inject, SecurityContext } from '@angular/core';
 import { MailformService } from '../../../services/mailform.service';
 import { DomSanitizer } from '@angular/platform-browser';
+import { FormsComponent } from '../forms.component';
 
 @Component({
   selector: 'app-apply',
   standalone: true,
-  imports: [],
+  imports: [FormsComponent],
   templateUrl: './apply.component.html',
   styleUrl: './apply.component.scss'
 })

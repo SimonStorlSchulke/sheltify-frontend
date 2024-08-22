@@ -8,6 +8,7 @@ import { ButtonLinkSection, ButtonLinkSectionComponent } from './article-section
 import { SectionStartComponent, SectionStartSection } from './article-sections/section-start/section-start.component';
 import { ArticleBlogCardsSection, BlogCardsComponent } from './article-sections/blog-cards/blog-cards.component';
 import { ArticleCounterSection, CounterSectionComponent } from './article-sections/counter-section/counter-section.component';
+import { ArticlePaypalButtonSection, PaypalButtonSectionComponent } from './article-sections/paypal-button-section/paypal-button-section.component';
 
 export type ArticleSection =
   | ArticleTextSection
@@ -19,6 +20,7 @@ export type ArticleSection =
   | ButtonLinkSection
   | ArticleImageSection
   | SectionStartSection
+  | ArticlePaypalButtonSection
   | ArticleCounterSection;
 
 
@@ -44,6 +46,7 @@ export type ArticleRowStartSection = {
     SectionStartComponent,
     BlogCardsComponent,
     CounterSectionComponent,
+    PaypalButtonSectionComponent,
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
