@@ -1,5 +1,5 @@
 <section class="form-container pt-5 sui wrapper">
-  <app-forms title="Bewerben Sie sich auf einen unserer Schützlinge!">
+  <app-forms title="Bewerben Sie sich auf einen unserer Schützlinge!" [subject]="'Neue Bewerbung für ' + animalName ">
     <div class="sui flex-x gap-2">
       <div class="form-block">
         <label for="name">Vorname, Name</label>
@@ -39,7 +39,7 @@
 
     <div class="form-block">
       <label for="tiername">Für welches Tier möchten sie sich bewerben?</label>
-      <input type="text" name="tiername" id="tiername" />
+      <input [(ngModel)]="animalName" type="text" name="tiername" id="tiername" />
     </div>
 
     <div class="form-block">

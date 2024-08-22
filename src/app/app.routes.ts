@@ -17,7 +17,6 @@ import {
   conveyResolver,
 } from './pages/convey/convey.component';
 import { ApplyComponent } from './pages/forms/apply/apply.component';
-import { MentoringComponent } from './pages/forms/mentoring/mentoring.component';
 import { ImprintComponent } from './pages/imprint/imprint.component';
 import { blogArticleResolver, BlogComponent } from './blog/blog.component';
 import { AnimalArticleService } from './services/animal-article.service';
@@ -109,6 +108,5 @@ export const routes: Routes = [
     resolve: { animalArticle: animalArticleResolver },
   },
   { path: 'formulare/bewerbung', component: ApplyComponent },
-  { path: 'formulare/patenschaftsantrag', component: MentoringComponent },
   { path: '**', pathMatch: "full", component:  NotFoundComponent},
 ];

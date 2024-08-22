@@ -1,9 +1,9 @@
 <section class="form-container pt-5 sui wrapper">
-    <app-forms>
+    <app-forms [subject]="'Mitgliedsantrag von ' + applicantName">
       <div class="sui flex-x gap-2">
         <div class="form-block">
           <label for="name">Vorname, Name</label>
-          <input type="text" name="name" id="name" />
+          <input [(ngModel)]="applicantName"  type="text" name="name" id="name" />
         </div>
         <div class="form-block">
           <label for="geburtsdatum">Geburtsdatum</label>

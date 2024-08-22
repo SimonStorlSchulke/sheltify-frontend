@@ -14,6 +14,7 @@ import { RouterLink } from '@angular/router';
 export class FormsComponent {
 
   @Input() title = "";
+  @Input() subject = "";
 
   mailFormSv = inject(MailformService);
   sanitizer = inject(DomSanitizer);
@@ -22,8 +23,7 @@ export class FormsComponent {
 
   async send() {
     this.sentStatus = 0;
-    const animalName = this.mailFormSv.truncate((document.querySelector("#tiername") as HTMLInputElement).value || "(Kein Hundename angegeben)", 35);
-    let mailHtml = `<h2>Es gibt eine neue Bewerbung für ${animalName}</h2><br><br>`;
+    let mailHtml = `<h2>${this.subject}</h2><br><br>`;
 
     Array.from(document.querySelectorAll(".form-block"))
       .forEach(formBlock => {
@@ -35,7 +35,7 @@ export class FormsComponent {
     console.log(mailHtml)
 
     this.sentStatus = await this.mailFormSv.send({
-      subject: "Bewerbung für " + animalName,
+      subject: this.subject,
       content: mailHtml,
     });
 
