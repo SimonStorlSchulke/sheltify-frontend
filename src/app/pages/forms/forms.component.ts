@@ -1,4 +1,4 @@
-import { Component, inject, SecurityContext } from '@angular/core';
+import { Component, inject, Input, SecurityContext } from '@angular/core';
 import { MailformService } from '../../services/mailform.service';
 import { DomSanitizer } from '@angular/platform-browser';
 import { HttpStatusCode } from '@angular/common/http';
@@ -12,6 +12,8 @@ import { RouterLink } from '@angular/router';
   styleUrl: './forms.component.scss'
 })
 export class FormsComponent {
+
+  @Input() title = "";
 
   mailFormSv = inject(MailformService);
   sanitizer = inject(DomSanitizer);

@@ -1,7 +1,9 @@
 <section class="form-container py-5 sui wrapper">
 
     @if(sentStatus != HttpStatusCode.Ok) {
-    <h1>Bewerben sie sich auf einen unserer Schützlinge</h1>
+    @if(title != "") {
+    <h1>{{title}}</h1>
+    }
     <form class="sui flex-y gap-3" action="#" method="POST" enctype="multipart/form-data">
         <ng-content></ng-content>
     </form>
