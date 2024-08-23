@@ -4,7 +4,7 @@
 .blogtile {
   display: flex;
   background: $neutral100;
-  height: 280px;
+  height: 310px;
   border-radius: 12px;
   transition: transform 0.23s, box-shadow 0.4s;
   position: relative;
@@ -21,7 +21,7 @@
 }
 
 img {
-  height: 280px;
+  height: 310px;
   width: 320px;
   min-width: 320px;
   object-fit: cover;
@@ -51,7 +51,7 @@ img {
     text-overflow: ellipsis;
     overflow: hidden;
     display: -webkit-box;
-    -webkit-line-clamp: 3;
+    -webkit-line-clamp: 4;
     -webkit-box-orient: vertical;
   }
 
@@ -66,17 +66,24 @@ img {
 @media (max-width: $breakpoint-small) {
   .blogtile {
     flex-direction: column;
-    height: 320px;
+    height: unset;
   }
+
   img {
-    width: min(180px, 40%);
+    width: 100%;
     height: 320px;
+    border-radius: 12px 12px 0 0px;
+  }
+
+  h3 {
+    max-width: calc(100dvw - 230px);
+    -webkit-line-clamp: 3;
   }
 
   .tile-content {
     padding: 12px;
     span {
-      -webkit-line-clamp: 4;
+      -webkit-line-clamp: 5;
     }
   }
   
