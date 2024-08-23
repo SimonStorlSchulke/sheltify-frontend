@@ -9,6 +9,7 @@ article {
 .section-container {
   padding-bottom: 38px;
   padding-top: 38px;
+  transition: transform 0.3s, opacity 0.3s;
 
   &.bg-beige,
   &.bg-lightgreen {

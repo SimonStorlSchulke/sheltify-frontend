@@ -11,7 +11,7 @@
     }
 
     @if (section.__component != "article-section.row-start") {
-      <div class="section-container" [class.bg-beige]="section.background == 'beige'" [class.bg-lightgreen]="section.background == 'grün'">
+      <div #sectionContainer class="section-container" [class.bg-beige]="section.background == 'beige'" [class.bg-lightgreen]="section.background == 'grün'">
         @switch (section.__component) {
           @case ("article-section.section-start") {
             <app-section-start [sectionData]="section" />
