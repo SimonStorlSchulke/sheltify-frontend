@@ -8,18 +8,17 @@ h1 .gender-icon {
   display: inline-block;
 }
 
-$tabInactiveColor: mix($accent, #fff, 60%);
-$tabInactiveColorGradient: mix($accent, #000, 92%);
-
 .cvs {
   .tabs {
     max-width: fit-content;
 
     .tab {
-      background: linear-gradient(45deg, $tabInactiveColor 60%, $tabInactiveColorGradient);
+      background: mix($accent, #fff, 60%);
       border-radius: 16px 16px 0 0;
       font-size: $fontsize-h3;
       padding: 12px 24px;
+      margin-right: 3px;
+      box-shadow: 0 -4px 12px #0002;
 
       cursor: pointer;
       transition:
