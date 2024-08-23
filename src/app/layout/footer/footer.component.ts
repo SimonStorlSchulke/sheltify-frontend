@@ -6,6 +6,8 @@ import { AsyncPipe } from "@angular/common";
 import { switchMap } from "rxjs";
 import { RouterLink } from "@angular/router";
 import { StrapiMediaPipe } from "../../article/article-sections/strapi-image.pipe";
+import { IconComponent } from "../../shared/icon/icon.component";
+import { PaypalButtonSectionComponent } from "../../article/article-sections/paypal-button-section/paypal-button-section.component";
 
 type FooterDataBannerData = {
   id: number;
@@ -16,7 +18,7 @@ type FooterDataBannerData = {
 @Component({
   selector: "app-footer",
   standalone: true,
-  imports: [AsyncPipe, ArticleComponent, RouterLink, StrapiMediaPipe],
+  imports: [AsyncPipe, ArticleComponent, RouterLink, StrapiMediaPipe, IconComponent, PaypalButtonSectionComponent],
   templateUrl: "./footer.component.html",
   styleUrl: "./footer.component.scss",
 })

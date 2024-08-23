@@ -5,6 +5,17 @@
 nav {
   font-family: more-sugar;
   line-height: 1.1;
+  opacity: 0;
+  transition: opacity 0.3s;
+  position: fixed;
+  z-index: 22;
+  width: 100dvw;
+  pointer-events: none;
+
+  &.shown {
+    opacity: 1;
+    pointer-events: all;
+  }
 
   a {
     &:hover {
@@ -22,6 +33,7 @@ nav.mobile {
   font-size: $fontsize-h3;
   background-color: #fff;
 
+  .logo-link,
   img {
     height: 55px;
   }
@@ -38,12 +50,15 @@ nav.desktop {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
-  padding: 0 0px;
+  padding: 0 16px;
   gap: 24px;
   height: 96px;
   background-color: #fff;
   font-size: $fontsize-h4;
+  transition: height 0.3s, opacity 0.3s;
 
+
+  .logo-link,
   img {
     height: 100%;
   }
@@ -55,7 +70,6 @@ nav.desktop .dropdown-container {
   .dropdown-button {
     cursor: pointer;
     height: 100%;
-
   }
 
   .dropdown-content {
@@ -63,7 +77,6 @@ nav.desktop .dropdown-container {
     pointer-events: none;
     position: absolute;
     z-index: 1;
-    top: 96px;
     margin-top: -1px;
 
 

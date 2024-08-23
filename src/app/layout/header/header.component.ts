@@ -1,4 +1,4 @@
-import { Component, HostListener, inject } from '@angular/core';
+import { Component, ElementRef, HostListener, inject, ViewChild } from '@angular/core';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { StrapiService } from '../../services/strapi.service';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
@@ -41,6 +41,25 @@ export class HeaderComponent {
   burgerMenuOpen: boolean = false;
 
   strapiSv = inject(StrapiService);
+
+  @ViewChild("navDesktop") navDesktop!: ElementRef;
+  previousScrollPosition = 0;
+  showHeader = true;
+  desktopHeaderHeight = 96;
+
+  @HostListener('window:scroll', [])
+  onWindowScroll() {
+    const currentScrollPosition = document.documentElement.scrollTop;
+
+    if (currentScrollPosition > this.previousScrollPosition && currentScrollPosition > 100) {
+      this.showHeader = false;
+    } else {
+      this.showHeader = true;
+    }
+
+    this.desktopHeaderHeight = currentScrollPosition > 200 ? 66 : 86;
+    this.previousScrollPosition = currentScrollPosition;
+  }
 
   constructor() {
     this.strapiSv.get<subPageLink[]>("convey-subpages?fields[0]=name&fields[1]=urlName")

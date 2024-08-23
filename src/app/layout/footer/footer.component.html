@@ -1,26 +1,70 @@
 @if (footerData$ | async; as footerData) {
-  <div
-    class="banner"
-    style="background-image: linear-gradient(90deg, #0006, #0002), url({{footerData.background | strapiMedia : 'xlarge'}});"
-  >
-    <app-article class="sui py-3" [sections]="footerData.article" />
-  </div>
+<div class="banner"
+  style="background-image: linear-gradient(90deg, #0006, #0002), url({{footerData.background | strapiMedia : 'xlarge'}});">
+  <app-article class="sui py-3" [sections]="footerData.article" />
+</div>
 }
 
-<div class="footer">
-  <div class="sui wrapper pb-5">
-    <a class="link sui text-center" href="https://www.gesetze-im-internet.de/tierschg/__11.html" target="_blank"><h3 class="sui py-3">Zertifiziert nach §11 Tierschutzgesetz</h3></a>
-    <div class="sui flex-x wrap gap-3">
-      <img src="assets/img/herzenshunde_weiß.svg" />
-      <div class="sui flex-y gap-2">
-        <a class="sui flex-x ai-center gap-3" href="mailto:info@herzenshunde.de"> <img class="sui inline-icon" src="assets/img/mail.svg"><span> info&#64;herzenshunde.de</span></a>
-        <span class="sui flex-x ai-center gap-3"><img class="sui inline-icon" src="assets/img/phone.svg"><span>0 1234 / 56 78 99 - 0</span></span>
-        <span class="sui flex-x ai-center gap-3"><img class="sui inline-icon" src="assets/img/comment.svg"><span>Beratungstermin vereinbaren</span></span>
-      </div>
 
-      <div class="sui flex-y gap-2">
-        <a routerLink="impressum">Impressum</a>
-      </div>
+<div class="footer sui flex-y">
+  <div class="footer-top">
+    <a routerLink="/">
+      <img class="sui flex-y gap-2" src="assets/img/herzenshunde_weiß.svg" />
+    </a>
+    <div class="sui flex-y gap-2">
+      <h3>Du hast Fragen? Wir helfen gerne!</h3>
+      <a class="sui flex-x ai-center gap-3" href="mailto:info@herzenshunde.de">
+        <icon type="mail" /><span> info&#64;herzenshunde.de</span>
+      </a>
+      <span class="sui flex-x ai-center gap-3">
+        <icon type="phone" /><span>0 1234 / 56 78 99 - 0</span>
+      </span>
+      <span class="sui flex-x ai-center gap-3">
+        <icon type="comment" /><span>Welcher Hund passt zu mir, lass dich von uns Beraten</span>
+      </span><br>
+
+      <span>
+        <b>Herzenshunde Griechenland e.V.</b><br>
+        Kalkofenstraße 25<br>
+        78050 Villingen<br>
+        IBAN: DE24 6945 0065 0151 0920 21<br>
+        BIC: SOLADES1VSS<br><br>
+      </span>
+      <app-paypal-button-section [sectionData]="{__component: 'article-section.paypal-button',background: 'nein'}" />
+
+    </div>
+    <div class="sui flex-y gap-2">
+      <h3>Sitemap</h3>
+      <a routerLink="/">› Home</a>
+      <a routerLink="/ueber-uns">› Über uns</a>
+      <a routerLink="/tiere/hunde">› Hunde</a>
+      <a routerLink="/vermittlung">› Vermittlung</a>
+      <a routerLink="/vermittlung/allgemeine-infos">&nbsp;&nbsp;&nbsp;› Allgemeine Infos zu den Tieren</a>
+      <a routerLink="/vermittlung/gedanken-vor-der-adoption">&nbsp;&nbsp;&nbsp;› Gedanken vor der Adoption</a>
+      <a routerLink="/vermittlung/vermittlungsablauf">&nbsp;&nbsp;&nbsp;› Vermittlungsablauf</a>
+      <a routerLink="/vermittlung/die-ersten-tage">&nbsp;&nbsp;&nbsp;› Die ersten Tage</a>
+      <a routerLink="/helfen">› Helfen</a>
+      <a routerLink="/helfen/mitgliedsantrag">&nbsp;&nbsp;&nbsp;› Mitgliedsantrag</a>
+      <a routerLink="/helfen/patenschaftsantrag">&nbsp;&nbsp;&nbsp;› Patenschaftsantrag</a>
+    </div>
+    <div class="sui flex-y gap-2">
+      <img class="para11" src="/assets/img/siegel-paragraph.png">
+    </div>
+    <div class="sui flex-y gap-2">
+      <h3>Soziale Netzwerke</h3>
+      <span class="sui flex-x ai-center gap-3"><a href="todo">
+          <icon type="facebook" size="larger" />
+        </a><a href="todo">
+          <icon type="instagram" size="large" />
+        </a></span>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    <div class="content">
+      <span>© Herzenshunde Griechenland e.V.</span>
+      <a routerLink="impressum">Impressum</a>
+      <a routerLink="todo">Datenschutzvereinbarung</a>
     </div>
   </div>
 </div>

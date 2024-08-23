@@ -1,29 +1,29 @@
-<nav class="sui desktop">
-    <img src="assets/img/herzenshunde-logo-header.svg">
-
+<nav #navDesktop class="sui desktop" [class.shown]="showHeader" [style.height]="desktopHeaderHeight + 'px'">
+    <a routerLink="/" routerLinkActive="router-link-active"  class="logo-link"><img src="assets/img/herzenshunde-logo-header.svg"></a>
+    
     @for(item of items; track $index) {
-
+        
         @if(item.link && !item.children || item.children?.length == 0) {
             <a [routerLink]="item.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"> {{item.label}}</a>
         }
-
+        
         @if(item.link && item.children) {
             <div class="dropdown-container" (mouseleave)="openedDropdownIndex = -1" [class.open]="openedDropdownIndex == $index">
                 <a [routerLink]="item.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }" ><button (mouseenter)="openedDropdownIndex = $index" class="unstyled dropdown-button">{{item.label}} v</button></a>
-              <div class="dropdown-content">
-                  <div class="triangle"></div>
-                <div class="entries">
-                    @for(child of item.children; track $index) {
-                        <a [routerLink]="child.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"> {{child.label}}</a>
-                    }
-                </div>
+                <div class="dropdown-content" [style.top]="desktopHeaderHeight">
+                    <div class="triangle"></div>
+                    <div class="entries">
+                        @for(child of item.children; track $index) {
+                            <a [routerLink]="child.link" [routerLinkActive]="'active'"  [routerLinkActiveOptions]="{ exact: true }"> {{child.label}}</a>
+                        }
+                    </div>
                 </div>
             </div>
         }
     }
 </nav>
 
-<nav class="sui mobile">
+<nav class="sui mobile" [class.shown]="showHeader">
     <div class="sui flex-x px-3 py-1">
         <button  (click)="burgerMenuOpen = !burgerMenuOpen" class="burgermenu-button sui unstyled">
           <img class="burger" src="/assets/img/burger.png">
