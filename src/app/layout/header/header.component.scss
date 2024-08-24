@@ -138,12 +138,14 @@ nav.mobile .burgermenu-content {
   flex-direction: column;
   position: absolute;
   z-index: 1;
-  background-color: $accent;
+  background-color: #fff;
   width: 100dvw;
   max-width: 100%;
   left: 0;
   top: 64px;
   text-align: center;
+  line-height: 1.7;
+  box-shadow: 0 10px 16px -12px #0003;
 }
 
 nav.mobile .burgermenu-content.open {
@@ -154,6 +156,9 @@ nav.mobile .burgermenu-content.open {
 nav.mobile .dropdown-container {
   .dropdown-button {
     cursor: pointer;
+    padding: 0 16px;
+    margin-left: 12px;
+    margin-right: -40px;
   }
 
   &.open .dropdown-content {
@@ -163,7 +168,7 @@ nav.mobile .dropdown-container {
   .dropdown-content {
     display: none;
     overflow: hidden;
-    background-color: $accent-h1;
+    background-color: $primary-bg;
     flex-direction: column;
     margin-left: -12px;
 
@@ -174,9 +179,5 @@ nav.mobile .dropdown-container {
 
   &.open .dropdown-content {
     pointer-events: all;
-  }
-
-  &:has(.active) {
-    color: $primary
   }
 }

@@ -139,9 +139,22 @@
         }
     }
 
-    @media (min-width: calc($breakpoint-mobile + 1px)) {
-        &.mobile {
-            display: none !important;
-        }
+
+  @media (max-width: $breakpoint-mobile) {
+    &.desktop {
+      display: none !important;
     }
+  }
+
+  @media (hover: none) {
+    &.desktop {
+      display: none !important;
+    }
+  }
+
+  @media (min-width: calc($breakpoint-mobile) + 1) and (hover: Hover) {
+      &.mobile {
+          display: none !important;
+      }
+  }
 }

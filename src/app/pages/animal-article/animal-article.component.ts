@@ -43,15 +43,8 @@ export const animalArticleResolver: ResolveFn<AnimalArticle | null> = (
     ]
 })
 export class AnimalArticleComponent {
-  activatedRoute = inject(ActivatedRoute);
   animalSv = inject(AnimalService);
   titleSv = inject(Title);
-
-  genderNames = new Map<string, string>([
-    ["male", "Rüde"],
-    ["female", "Hündin"],
-    ["other", "Anderes"],
-  ])
 
   article?: AnimalArticle;
 
@@ -63,7 +56,7 @@ export class AnimalArticleComponent {
         if(!animalArticle) {
           inject(Router).navigate(["404"]);
           return;
-        } 
+        }
         this.article = animalArticle;
         this.selectedCv = this.article!.preselectedAnimalId;
         this.titleSv.setTitle(`${this.getDefaultTitle()} | Herzenshunde Griechenland e.V.`);
@@ -85,7 +78,7 @@ export class AnimalArticleComponent {
     }
     return names.slice(0, -1).join(", ") + ` & ${names[names.length - 1]}`;
   }
-  
+
   getCtoText() {
     const names = this.article?.animals.map(animal => animal.name) ?? [];
     if (names.length == 1) {

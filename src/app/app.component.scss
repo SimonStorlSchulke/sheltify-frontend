@@ -16,3 +16,15 @@ main {
         padding-top: 63px;
     }
 }
+
+@media (max-width: $breakpoint-mobile) {
+  main {
+    padding-top: 63px;
+  }
+}
+
+@media (hover: none) {
+  main {
+    padding-top: 63px;
+  }
+}
