@@ -36,8 +36,8 @@ export type StrapiMedia = {
 
   export type StrapiFilter = {
     field: string,
-    operator?: 
-    "eq" | "eqi" | "ne" | "nei" 
+    operator?:
+    "eq" | "eqi" | "ne" | "nei"
     | "lt" | "lte" | "gt" | "gte" | "in"
     | "notIn" | "contains" | "notContains" | "containsi"
     | "notIn" | "contains" | "notContains" | "containsi"
@@ -61,6 +61,7 @@ export type Animal = {
     gender: "male" | "female" | "other";
     thumbnail?: StrapiMedia,
     description: string,
+    paten: string,
     emergency?: boolean,
     whereInGermany?: string,
     castrated?: boolean,
@@ -76,4 +77,3 @@ export type Animal = {
     updatedAt: string,  // for sorting
     }
   }
-  

@@ -42,7 +42,7 @@
   background-color: $primary-d1;
   color: #fff;
   font-size: 0.9rem;
-  
+
   .footer-top {
     display: grid;
     gap: 55px;
@@ -68,6 +68,11 @@
         padding-bottom: 50px;
         display: flex;
         gap: 60px;
+        position: relative;
+
+        > span {
+          position: absolute;
+        }
       }
     }
 
@@ -89,6 +94,15 @@
       margin-bottom: 50px;
       width: 220px;
     }
+}
+
+
+@media(max-width: 900px) {
+  .footer .footer-bottom .content > span {
+    bottom: 20px;
+    width: 100%;
+    text-align: center;
+  }
 }
 
 img {

@@ -61,6 +61,10 @@
             </div>
           </div>
 
+          @if(cAnimal.paten && cAnimal.paten.trim().length > 0) {
+            <h4 class="sui w-100 text-center text-sugar pate">Vielen Dank an {{cAnimal.paten}} für die Übernahme der Patenschaft für {{cAnimal.name}}!</h4>
+          }
+
           <div class="sui flex-x gap-3">
             <a [routerLink]="'/formulare/bewerbung'"><button class="cto">Jetzt bewerben</button></a>
             <a [routerLink]="'/helfen/patenschaftsantrag'"><button class="cto">Pate werden</button></a>
@@ -76,7 +80,7 @@
 
     <div class="sui flex-x gap-3">
       <a [routerLink]="'/formulare/bewerbung'"><button class="cto">Jetzt bewerben</button></a>
-      <a [routerLink]="'/formulare/patenschaftsantrag'"><button class="cto">Pate werden</button></a>
+      <a [routerLink]="'/helfen/patenschaftsantrag'"><button class="cto">Pate werden</button></a>
     </div>
   </div>
 } @else {

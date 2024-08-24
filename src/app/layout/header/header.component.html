@@ -13,7 +13,7 @@
       <div class="dropdown-container" (mouseleave)="openedDropdownIndex = -1"
            [class.open]="openedDropdownIndex == $index">
         <a [routerLink]="item.link" [routerLinkActive]="'active'" [routerLinkActiveOptions]="{ exact: true }">
-          <button (mouseenter)="openedDropdownIndex = $index" class="unstyled dropdown-button">{{ item.label }}v
+          <button (mouseenter)="openedDropdownIndex = $index" class="unstyled dropdown-button">{{ item.label }} v
           </button>
         </a>
         <div class="dropdown-content" [style.top]="desktopHeaderHeight">
