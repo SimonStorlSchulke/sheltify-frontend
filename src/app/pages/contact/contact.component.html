@@ -14,6 +14,7 @@
     <div class="sui flex-x gap-5">
       <div class="form-block">
         <input
+          (input)="onInput()"
           #messagerName
           type="text"
           name="name"
@@ -22,7 +23,7 @@
         />
       </div>
       <div class="form-block">
-        <input #messagerMail type="email" name="email" id="email" placeholder="Email*" />
+        <input (input)="onInput()" #messagerMail type="email" name="email" id="email" placeholder="Email*" />
       </div>
     </div>
 
@@ -39,12 +40,12 @@
 
   </form>
     <div class="sui flex-x ai-center">
-      <input type="checkbox" id="accept-dsgvo" name="accept-dsgvo">
+      <input #acceptDsgvo (click)="onInput()" type="checkbox" id="accept-dsgvo" name="accept-dsgvo">
       <label class="sui  pl-3" for="accept-dsgvo">
-        Ich habe die <a class="link" [routerLink]="'dsgvo'">Datenschutzerklärung</a> gelesen. Ich stimme zu, dass meine Angaben zur Kontaktaufnahme <br> und für Rückfragen dauerhaft gespeichert werden.
+        Ich habe die <a class="link" target="_blank" [routerLink]="'/dsgvo'">Datenschutzerklärung</a> gelesen. Ich stimme zu, dass meine Angaben zur Kontaktaufnahme <br> und für Rückfragen dauerhaft gespeichert werden.
       </label>
     </div>
-      <button (click)="send()" class="sui cto large">Jetzt senden</button>
+      <button [disabled]="!valid" (click)="send()" class="sui cto large">Jetzt senden</button>
 </section>
   <div class="contact  sui mb-4">
     <span>

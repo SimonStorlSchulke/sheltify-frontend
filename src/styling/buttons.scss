@@ -86,3 +86,8 @@ button.unstyled {
     background-color: inherit;
     color: inherit;
 }
+
+button:disabled {
+  pointer-events: none;
+  opacity: 0.5;
+}
