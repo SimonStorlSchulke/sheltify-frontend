@@ -26,7 +26,7 @@ export const contactResolver: ResolveFn<ContactData> = () => {
     pageData: inject(AnimalArticleService).getAndInsertAnimalLinks<{ hero: StrapiMedia, article: ArticleSection[], }>
     ("contact-page?populate[hero]=*&populate[article][populate]=*"),
     teamMembers: inject(StrapiService).get<TeamMember[]>
-    ("teammembers?populate=*"),
+    ("teammembers?populate=*&sort[0]=priority:desc"),
   })
 }
 

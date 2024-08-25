@@ -33,7 +33,7 @@
                   <span><strong>{{ isAdult() ? "Schulterhöhe" : "Geschätzte Endschulterhöhe" }}: </strong>ca. {{ cAnimal.shoulderHeightCm }}cm</span>
                 }
                 @if (cAnimal.weightKg != null) {
-                  <span><strong>{{ isAdult() ? "Gewicht" : "Geschätztes Endgewicht" }}: </strong>ca. {{ cAnimal.weightKg }}cm</span>
+                  <span><strong>{{ isAdult() ? "Gewicht" : "Geschätztes Endgewicht" }}: </strong>ca. {{ cAnimal.weightKg }}kg</span>
                 }
 
                 @if (cAnimal.diseases?.trim()) {
