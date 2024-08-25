@@ -1,6 +1,5 @@
 import { Component, Input, OnInit, inject } from '@angular/core';
-import { Animal, StrapiMedia } from '../../../shared/shared-types';
-import { StrapiService } from '../../../services/strapi.service';
+import { Animal } from '../../../shared/shared-types';
 import { Observable, map } from 'rxjs';
 import { AnimalTileComponent  } from '../../../shared/animal-tile/animal-tile.component';
 import { AsyncPipe } from '@angular/common';

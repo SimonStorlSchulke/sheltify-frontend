@@ -1,7 +1,7 @@
-import { inject, Injectable } from '@angular/core';
-import { StrapiService } from './strapi.service';
-import { HttpClient } from '@angular/common/http';
-import { catchError, firstValueFrom, map } from 'rxjs';
+import {inject, Injectable} from '@angular/core';
+import {StrapiService} from './strapi.service';
+import {HttpClient} from '@angular/common/http';
+import {catchError, firstValueFrom, map} from 'rxjs';
 
 export type FormMail = {
   subject: string,
@@ -30,7 +30,7 @@ export class MailformService {
     }
 
     let url = StrapiService.apiBaseUrl + "mailform/custom-post";
-    const status = await firstValueFrom(this.httpClient
+    return await firstValueFrom(this.httpClient
       .post(url, requestBody, {
         headers: headers,
       })
@@ -42,11 +42,6 @@ export class MailformService {
         catchError((error: any) => {
           return [error.status];
         })
-    ))
-    return status;
+      ));
   }
-
-  truncate(str: string, n: number): string {
-    return (str.length > n) ? str.slice(0, n - 1) + '...' : str;
-  };
 }

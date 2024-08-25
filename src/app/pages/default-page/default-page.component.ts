@@ -1,10 +1,9 @@
 import { Component, inject } from '@angular/core';
-import { ActivatedRoute, NavigationStart, Router, RouterLink } from '@angular/router';
+import { ActivatedRoute, Router, RouterLink } from '@angular/router';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { MemberApplicationComponent } from '../forms/member-application/member-application.component';
 import { SponsorhipApplicationComponent } from '../forms/sponsorship-application/sponsorship-application.component';
-import { filter } from 'rxjs';
 
 export type DefaultPageData = {
   id: number,

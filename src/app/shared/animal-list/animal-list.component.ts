@@ -1,9 +1,9 @@
 import { Component, DestroyRef, Input, OnInit, inject } from '@angular/core';
 import { AnimalService } from '../../services/animal.service';
 import { AsyncPipe } from '@angular/common';
-import { AnimalTileComponent } from '../../shared/animal-tile/animal-tile.component';
-import { Animal } from '../../shared/shared-types';
-import { BehaviorSubject, debounceTime, Observable, Subject } from 'rxjs';
+import { AnimalTileComponent } from '../animal-tile/animal-tile.component';
+import { Animal } from '../shared-types';
+import { BehaviorSubject, debounceTime, Observable } from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({

@@ -9,7 +9,7 @@ import { StrapiService } from '../../services/strapi.service';
 export class StrapiMediaPipe implements PipeTransform {
   strapiSv = inject(StrapiService);
   transform(
-    value?: StrapiMedia,
+    value?: StrapiMedia | null,
     ...args: ('thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'original' | 'video')[]
   ): string {
     if(args[0] == 'video') {

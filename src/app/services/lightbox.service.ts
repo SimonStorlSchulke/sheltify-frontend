@@ -7,10 +7,8 @@ import { Subject } from 'rxjs';
 })
 export class LightboxService {
 
-
   open$ = new Subject<{images: StrapiMedia[], startImgSrcs: string[], startIndex: number}>();
-  close$ = new Subject<void>();
-  
+
   openFullscreen(images: StrapiMedia[], startIndex: number, startImgSrcs: string[] = []) {
     this.open$.next({images, startImgSrcs, startIndex});
   }

@@ -40,7 +40,6 @@ export type StrapiMedia = {
     "eq" | "eqi" | "ne" | "nei"
     | "lt" | "lte" | "gt" | "gte" | "in"
     | "notIn" | "contains" | "notContains" | "containsi"
-    | "notIn" | "contains" | "notContains" | "containsi"
     | "notContainsi" | "null" | "notNull" | "between"
     | "startsWith" | "startsWithi" | "endsWith" | "endsWithi"
     | "or" | "and" | "not",
@@ -59,19 +58,19 @@ export type Animal = {
     publishedAt: string,
     name: string,
     gender: "male" | "female" | "other";
-    thumbnail?: StrapiMedia,
+    thumbnail?: StrapiMedia | null,
     description: string,
     paten: string,
     emergency?: boolean,
     whereInGermany?: string,
-    castrated?: boolean,
+    castrated?: boolean | null,
     shoulderHeightCm?: number,
-    weightKg?: number,
-    animalKind?: AnimalKind,
-    birthday?: string,
-    diseases?: string,
-    tolerating?: string,
-    suitedFor?: string,
+    weightKg?: number | null,
+    animalKind?: AnimalKind | null,
+    birthday?: string | null,
+    diseases?: string | null,
+    tolerating?: string | null,
+    suitedFor?: string | null,
     priority: number,
     animal_article?: {
     updatedAt: string,  // for sorting

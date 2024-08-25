@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, forkJoin, map, merge, of } from 'rxjs';
+import { Observable, forkJoin, map, of } from 'rxjs';
 import { StrapiService } from './strapi.service';
 import { Animal } from '../shared/shared-types';
 import { ArticleSection } from '../article/article.component';
@@ -18,7 +18,7 @@ export type AnimalArticle = {
 })
 export class AnimalArticleService extends StrapiService {
   private animalList?: { name: string; }[];
-  
+
   getArticleByAnimalName(name: string): Observable<AnimalArticle> {
     const path = `animal-articles?filters[animals][name][$eqi]=${name}&populate[sections][populate]=*&populate[animals][populate][thumbnail]=*&populate[animals][populate][animalKind][populate][icon]=*`;
     return this.getAndInsertAnimalLinks<AnimalArticle[]>(path).pipe(
@@ -54,7 +54,7 @@ export class AnimalArticleService extends StrapiService {
             `<a href='${this.getAnimalLink(animal.name)}'>${animal.name}</a>`,
           );
         }
-        
+
         // remove ~ signs from names that were not found in the animalList
         replacedString = replacedString.replace(/~([^~]*)~/g, '$1');
 

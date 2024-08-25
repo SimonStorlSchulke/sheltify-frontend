@@ -1,11 +1,10 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import { Component, Input, inject } from '@angular/core';
 import { StrapiRichTextPipe } from '../strapi-rich-text.pipe';
 import { StrapiMediaPipe } from '../strapi-image.pipe';
-import { GalleryItem, GalleryModule, ImageItem } from 'ng-gallery';
+import { GalleryModule } from 'ng-gallery';
 import { StrapiService } from '../../../services/strapi.service';
 import { RichTextNode } from '../../../services/blockRenderer';
 import { StrapiMedia } from '../../../shared/shared-types';
-import { LightboxService } from '../../../services/lightbox.service';
 import { StrapiMediaComponent } from '../../../shared/strapi-media/strapi-media.component';
 
 export type ArticleTextWithImageSection = {

@@ -1,5 +1,4 @@
-import { Component, Input, inject } from '@angular/core';
-import { StrapiService } from '../../../services/strapi.service';
+import { Component, Input } from '@angular/core';
 
 export type ButtonLinkSection = {
   __component: 'article-section.button-link';

@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, inject } from '@angular/core';
+import {Component, Input, inject, OnInit} from '@angular/core';
 import { BlogArticle } from '../../../blog/blog.component';
 import { Observable } from 'rxjs';
 import { StrapiService } from '../../../services/strapi.service';
@@ -20,7 +20,7 @@ export type ArticleBlogCardsSection = {
   templateUrl: './blog-cards.component.html',
   styleUrl: './blog-cards.component.scss'
 })
-export class BlogCardsComponent {
+export class BlogCardsComponent implements OnInit {
   @Input({required: true}) sectionData!: ArticleBlogCardsSection;
 
   blogs$?: Observable<BlogArticle[]>;

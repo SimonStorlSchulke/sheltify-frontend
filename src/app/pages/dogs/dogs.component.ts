@@ -5,7 +5,7 @@ import { HeroComponent } from '../../shared/hero/hero.component';
 import { Animal, StrapiMedia } from '../../shared/shared-types';
 import { ArticleComponent, ArticleSection } from '../../article/article.component';
 import { AnimalListComponent } from '../../shared/animal-list/animal-list.component';
-import { BehaviorSubject, Subject } from 'rxjs';
+import { BehaviorSubject } from 'rxjs';
 import { AnimalArticleService } from '../../services/animal-article.service';
 
 @Component({
@@ -16,7 +16,7 @@ import { AnimalArticleService } from '../../services/animal-article.service';
   styleUrl: './dogs.component.scss',
 })
 export class DogsComponent {
-  
+
   @ViewChild("searchInput") searchInput!: ElementRef<HTMLInputElement>;
 
   animalSv = inject(AnimalService);
@@ -119,7 +119,7 @@ export class DogsComponent {
       let fitsGender = !this.activeFilter('gender');
       if (this.isFilterActive('gender', 'male') && animal.gender == 'male') fitsGender = true;
       if (this.isFilterActive('gender', 'female') && animal.gender == 'female') fitsGender = true;
-      
+
 
       let fitsAge = !this.activeFilter('age');
       if (animal.birthday) {
@@ -146,7 +146,7 @@ export class DogsComponent {
       ["medium", "im Alter von 1-6 Jahren"],
       ["old", "ab 7 Jahren"],
     ]);
-    
+
     const gender = this.activeFilter("gender");
     const genderText = gender ? (gender == "male" ? "Rüden" : "Hündinnen") : "Hunde";
     const sizeText = sizeTexts.get(this.activeFilter("size") ?? "") ?? "";

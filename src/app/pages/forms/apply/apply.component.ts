@@ -1,6 +1,5 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 import { FormsComponent } from '../forms.component';
-import { MailformService } from '../../../services/mailform.service';
 import { FormsModule } from "@angular/forms";
 
 @Component({
@@ -11,8 +10,6 @@ import { FormsModule } from "@angular/forms";
   styleUrl: './apply.component.scss'
 })
 export class ApplyComponent  {
-  
-  animalName = "";
 
-  mailFormSv = inject(MailformService);
+  animalName = "";
 }

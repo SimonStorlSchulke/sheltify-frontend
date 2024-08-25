@@ -11,7 +11,7 @@
           @for (animal of article.animals; track animal.id) {
             <div class="tab sui p-3 text-sugar ai-center flex-x gap-2" [class.active]="selectedCv == $index" (click)="selectedCv = $index">
               <span>{{ article.animals.length > 1 ? animal.name : "Steckbrief" }}</span>
-              <img class="gender-icon" [src]="getGendericon(animal)" />
+              <img [alt]="animal.gender" class="gender-icon" [src]="getGendericon(animal)" />
             </div>
           }
         </div>

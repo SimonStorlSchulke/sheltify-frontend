@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import {Component, inject, OnInit} from '@angular/core';
 import { ActivatedRoute, ChildrenOutletContexts, NavigationEnd, Router, RouterOutlet } from '@angular/router';
 import { AsyncPipe } from '@angular/common';
 import { HeaderComponent } from "./layout/header/header.component";
@@ -15,7 +15,7 @@ import { AnimalService } from './services/animal.service';
     styleUrl: './app.component.scss',
     imports: [RouterOutlet, AsyncPipe, HeaderComponent, FooterComponent, LightboxComponent],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   title = 'sheltify-frontend';
 
   router = inject(Router);

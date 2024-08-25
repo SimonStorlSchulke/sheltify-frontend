@@ -18,12 +18,6 @@ export class AnimalService extends StrapiService {
       .subscribe(animals => this.allAnimalsData = animals);
   }
 
-  getAnimalByName(name: string): Observable<Animal> {
-    return this.get<Animal[]>(`animals?filters[name][$eqi]=${name}`).pipe(
-      map((animals) => animals[0]),
-    );
-  }
-
   /** returns list of animals from the given filters as query. Ordered by priority and modification date of the animals article */
   getAnimalList(filters: string = ''): Observable<Animal[]> {
     let url = `animals?pagination[pageSize]=500&populate[thumbnail]=*&populate[animal_article]=updatedAt${filters}`;

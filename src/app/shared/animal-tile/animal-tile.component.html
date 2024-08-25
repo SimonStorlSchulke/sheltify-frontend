@@ -7,9 +7,9 @@
     <div class="sui flex-x center ai-center name-row">
         <span class="sui text-sugar text-secondary text-center p-1 px-2">{{animal.name}}</span>
         @if(animal.gender == "male") {
-            <img class="gender-icon" src="assets/img/male.svg">
+            <img [alt]="animal.gender" class="gender-icon" src="assets/img/male.svg">
         } @else {
-            <img class="gender-icon" src="assets/img/female.svg">
+            <img [alt]="animal.gender" class="gender-icon" src="assets/img/female.svg">
         }
     </div>
 

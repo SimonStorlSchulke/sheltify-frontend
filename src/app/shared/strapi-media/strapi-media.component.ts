@@ -1,5 +1,5 @@
 import { Component, inject, Input } from '@angular/core';
-import { GalleryModule, ImageItem } from 'ng-gallery';
+import { GalleryModule } from 'ng-gallery';
 import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
 import { StrapiRichTextPipe } from '../../article/article-sections/strapi-rich-text.pipe';
 import { LightboxService } from '../../services/lightbox.service';
@@ -20,16 +20,4 @@ export class StrapiMediaComponent {
   @Input() imagePosition: string = "solo";
   strapiSv = inject(StrapiService);
   lightboxSv = inject(LightboxService);
-
-  get galleryImages() {
-    return  this.media!.map(
-      (strapiImage) =>
-        new ImageItem({
-          src: this.strapiSv.getImageFormatUrl(strapiImage, 'large'),
-          thumb: this.strapiSv.getImageFormatUrl(strapiImage, 'thumbnail'),
-          alt: strapiImage.alternativeText,
-        }),
-    );
-  }
-
 }

@@ -32,8 +32,6 @@ export class FormsComponent {
         mailHtml += `<strong>${this.sanitizer.sanitize(SecurityContext.HTML, question)}</strong><br><span>${this.sanitizer.sanitize(SecurityContext.HTML, answer)}</span><br><br> `;
       });
 
-    console.log(mailHtml)
-
     this.sentStatus = await this.mailFormSv.send({
       subject: this.subject,
       content: mailHtml,

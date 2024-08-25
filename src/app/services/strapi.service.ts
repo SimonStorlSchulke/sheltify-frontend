@@ -1,11 +1,7 @@
-import { Injectable, inject, isDevMode } from '@angular/core';
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { Injectable, inject } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { StrapiFilter, StrapiMedia } from '../shared/shared-types';
-
-export type StrapiSingleResponse<T> = {
-  data: T;
-};
 
 @Injectable({
   providedIn: 'root',

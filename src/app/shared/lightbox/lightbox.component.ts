@@ -1,4 +1,4 @@
-import { Component, ElementRef, HostListener, inject, Input, ViewChild } from '@angular/core';
+import {Component, ElementRef, HostListener, inject, Input, OnInit, ViewChild} from '@angular/core';
 import { LightboxService } from '../../services/lightbox.service';
 import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
 import { StrapiService } from '../../services/strapi.service';
@@ -11,7 +11,7 @@ import { StrapiMedia } from '../shared-types';
   templateUrl: './lightbox.component.html',
   styleUrl: './lightbox.component.scss'
 })
-export class LightboxComponent {
+export class LightboxComponent implements OnInit {
   @ViewChild("modal") dialogRef!: ElementRef<HTMLDialogElement>;
 
 
@@ -67,7 +67,7 @@ export class LightboxComponent {
       window.setTimeout(() => {
         this.currentSource = this.getSrc();
       }, 0
-      ) 
+      )
     } else {
       this.currentSource = this.getSrc();
     }
