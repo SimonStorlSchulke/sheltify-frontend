@@ -38,12 +38,14 @@ export const contactResolver: ResolveFn<ContactData> = () => {
 })
 export class ContactComponent {
   contactData!: ContactData;
-
   mailFormSv = inject(MailformService);
+
+  valid = false;
 
   @ViewChild("message") messageInput!: ElementRef<HTMLInputElement>;
   @ViewChild("messagerName") messagerNameInput!: ElementRef<HTMLInputElement>;
   @ViewChild("messagerMail") messagerMailInput!: ElementRef<HTMLTextAreaElement>;
+  @ViewChild("acceptDsgvo") acceptDsgvoInput!: ElementRef<HTMLInputElement>;
 
   constructor() {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())
@@ -53,16 +55,25 @@ export class ContactComponent {
   autogrow(area: HTMLTextAreaElement) {
     area.style.height = "50px";
     area.style.height = (area.scrollHeight) + "px";
+    this.onInput();
   }
 
   send() {
     const response = this.mailFormSv.send({
       subject: "Kontakformular",
       content: `<h2>Nachricht von ${this.messagerNameInput.nativeElement.value}<h2/>
-<p>mail: ${this.messagerMailInput.nativeElement.value}</p>
+<p>Mailaddresse: ${this.messagerMailInput.nativeElement.value}</p>
 <p>${this.messageInput.nativeElement.value}</p>
 `,
     })
     console.log(response);
+  }
+
+  onInput() {
+    this.valid = this.messageInput.nativeElement.value.trim() != "" &&
+      this.messagerNameInput.nativeElement.value.trim() != "" &&
+      this.messagerMailInput.nativeElement.checkValidity() &&
+      this.messagerMailInput.nativeElement.value != "" &&
+      this.acceptDsgvoInput.nativeElement.checked;
   }
 }
