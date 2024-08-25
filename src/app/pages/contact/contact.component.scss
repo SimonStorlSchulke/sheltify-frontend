@@ -39,7 +39,7 @@ textarea {
     -o-appearance: none;
     position: relative;
     margin-left: 4px;
-    
+
     &:checked::before {
       background-image: url("/assets/img/check.svg");
       content: "";
@@ -81,4 +81,9 @@ button {
   .wrapper {
     flex-direction: column;
   }
+}
+
+.errortext {
+  color: $cto;
+  padding: 16px 0;
 }

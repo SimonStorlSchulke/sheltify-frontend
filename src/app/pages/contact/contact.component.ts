@@ -9,6 +9,7 @@ import {TeamMember, TeammemberTileComponent} from './teammember-tile/teammember-
 import {forkJoin} from 'rxjs';
 import {AnimalArticleService} from '../../services/animal-article.service';
 import {MailformService} from "../../services/mailform.service";
+import {HttpStatusCode} from "@angular/common/http";
 
 
 export type ContactData = {
@@ -41,7 +42,7 @@ export class ContactComponent {
   mailFormSv = inject(MailformService);
 
   valid = false;
-  sent = false;
+  sentStatus = 0;
 
   @ViewChild("message") messageInput!: ElementRef<HTMLInputElement>;
   @ViewChild("messagerName") messagerNameInput!: ElementRef<HTMLInputElement>;
@@ -59,16 +60,14 @@ export class ContactComponent {
     this.onInput();
   }
 
-  send() {
-    const response = this.mailFormSv.send({
+  async send() {
+    this.sentStatus = await this.mailFormSv.send({
       subject: "Kontakformular",
       content: `<h2>Nachricht von ${this.messagerNameInput.nativeElement.value}<h2/>
 <p>Mailaddresse: ${this.messagerMailInput.nativeElement.value}</p>
 <p>${this.messageInput.nativeElement.value}</p>
 `,
     });
-    this.sent = true;
-    console.log(response);
   }
 
   onInput() {
@@ -78,4 +77,6 @@ export class ContactComponent {
       this.messagerMailInput.nativeElement.value != "" &&
       this.acceptDsgvoInput.nativeElement.checked;
   }
+
+  protected readonly HttpStatusCode = HttpStatusCode;
 }

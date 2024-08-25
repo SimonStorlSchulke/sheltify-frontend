@@ -3,7 +3,7 @@
 
 <div class="sui flex-x gap-6 wrapper">
 
-  @if(!sent) {
+  @if(sentStatus != HttpStatusCode.Ok) {
   <section class="form-container pt-5 sui wrapper bg-lightgreen p-5 mb-4 flex-y gap-5">
     <h2>Schreib uns!</h2>
     <form
@@ -48,6 +48,10 @@
       </label>
     </div>
     <button [disabled]="!valid" (click)="send()" class="sui cto large">Jetzt senden</button>
+    @if(sentStatus == HttpStatusCode.TooManyRequests) {
+      <p class="errortext">Sie können höchstens ein Formular alle 5 Minuten abschicken. Bitte versuchen sie es gleich noch
+        einmal.</p>
+    }
   </section>
   } @else {
     <div class="pt-5 sui rounded-3 wrapper bg-lightgreen p-5 mb-4 flex-y gap-5">
