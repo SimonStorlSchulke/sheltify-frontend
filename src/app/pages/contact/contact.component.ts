@@ -41,6 +41,7 @@ export class ContactComponent {
   mailFormSv = inject(MailformService);
 
   valid = false;
+  sent = false;
 
   @ViewChild("message") messageInput!: ElementRef<HTMLInputElement>;
   @ViewChild("messagerName") messagerNameInput!: ElementRef<HTMLInputElement>;
@@ -65,7 +66,8 @@ export class ContactComponent {
 <p>Mailaddresse: ${this.messagerMailInput.nativeElement.value}</p>
 <p>${this.messageInput.nativeElement.value}</p>
 `,
-    })
+    });
+    this.sent = true;
     console.log(response);
   }
 
