@@ -64,7 +64,7 @@ export class ContactComponent {
     this.sentStatus = await this.mailFormSv.send({
       subject: "Kontakformular",
       content: `<h2>Nachricht von ${this.messagerNameInput.nativeElement.value}<h2/>
-<p>Mailaddresse: ${this.messagerMailInput.nativeElement.value}</p>
+<p>MailAddrese: ${this.messagerMailInput.nativeElement.value}</p>
 <p>${this.messageInput.nativeElement.value}</p>
 `,
     });
