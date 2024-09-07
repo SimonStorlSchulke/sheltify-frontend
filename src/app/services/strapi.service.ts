@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { StrapiFilter, StrapiMedia } from '../shared/shared-types';
 
+let showDrafts = false;
+
 @Injectable({
   providedIn: 'root',
 })
@@ -21,6 +23,10 @@ export class StrapiService {
   };
 
   httpClient = inject(HttpClient);
+
+  enableDrafts() {
+    showDrafts = true;
+  }
 
   get<T>(path: string): Observable<T> {
     let url = decodeURIComponent(StrapiService.apiBaseUrl + path);
@@ -119,7 +125,7 @@ export class StrapiService {
   }
 
   addDraftsInDevMode(url: string): string {
-    if(!this.isDevEnv) return url;
+    if(!showDrafts) return url;
     return url + (url.includes("?") ? "&" : "?") + "publicationState=preview";
   }
 }

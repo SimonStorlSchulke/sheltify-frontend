@@ -40,9 +40,12 @@ export const contactResolver: ResolveFn<ContactData> = () => {
 export class ContactComponent {
   contactData!: ContactData;
   mailFormSv = inject(MailformService);
+  strapiSv = inject(StrapiService);
 
   valid = false;
   sentStatus = 0;
+
+  draftsText = false;
 
   @ViewChild("message") messageInput!: ElementRef<HTMLInputElement>;
   @ViewChild("messagerName") messagerNameInput!: ElementRef<HTMLInputElement>;
@@ -76,6 +79,15 @@ export class ContactComponent {
       this.messagerMailInput.nativeElement.checkValidity() &&
       this.messagerMailInput.nativeElement.value != "" &&
       this.acceptDsgvoInput.nativeElement.checked;
+
+      this.secretShowDrafts();
+  }
+
+  secretShowDrafts() {
+    if(this.messageInput.nativeElement.value.toLowerCase().includes("drafts zeigen bitte")) {
+      this.draftsText = true;
+      this.strapiSv.enableDrafts();
+    }
   }
 
   protected readonly HttpStatusCode = HttpStatusCode;
