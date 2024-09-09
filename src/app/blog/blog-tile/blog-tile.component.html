@@ -2,10 +2,12 @@
   @if(!blog.publishedAt) {
     <span class="draft">draft</span>
   }
-  <img
-    [alt]="blog.thumbnail?.alternativeText"
-    [src]="blog.thumbnail | strapiMedia: 'medium'"
-  />
+  @if(blog.thumbnail) {
+    <img
+      [alt]="blog.thumbnail?.alternativeText"
+      [src]="blog.thumbnail | strapiMedia: 'medium'"
+    />
+  }
   <div class="tile-content sui flex-y">
     <h3>{{ blog.title }}</h3>
     <span>{{ blog.description }}</span>

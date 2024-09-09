@@ -67,7 +67,7 @@ export class ContactComponent {
     this.sentStatus = await this.mailFormSv.send({
       subject: "Kontakformular",
       content: `<h2>Nachricht von ${this.messagerNameInput.nativeElement.value}<h2/>
-<p>MailAddrese: ${this.messagerMailInput.nativeElement.value}</p>
+<p>MailAdresse: ${this.messagerMailInput.nativeElement.value}</p>
 <p>${this.messageInput.nativeElement.value}</p>
 `,
     });
@@ -85,7 +85,6 @@ export class ContactComponent {
 
   secretShowDrafts() {
     if(this.messageInput.nativeElement.value.toLowerCase().includes("drafts zeigen bitte")) {
-      this.draftsText = true;
       this.strapiSv.enableDrafts();
     }
   }
