@@ -3,6 +3,7 @@ import { Animal } from '../shared-types';
 import { AnimalService } from '../../services/animal.service';
 import { NgIf } from '@angular/common';
 import { RouterLink } from '@angular/router';
+import {DogsService} from "../../pages/dogs/dogs.service";
 
 @Component({
   selector: 'app-animal-tile',
@@ -14,5 +15,8 @@ import { RouterLink } from '@angular/router';
 export class AnimalTileComponent {
 
   animalSv = inject(AnimalService);
+  dogsSv = inject(DogsService);
   @Input({required: true}) animal!: Animal;
+
+
 }

@@ -1,9 +1,9 @@
-import { Component, DestroyRef, Input, OnInit, inject } from '@angular/core';
+import {Component, DestroyRef, Input, OnInit, inject, Output, EventEmitter} from '@angular/core';
 import { AnimalService } from '../../services/animal.service';
 import { AsyncPipe } from '@angular/common';
 import { AnimalTileComponent } from '../animal-tile/animal-tile.component';
 import { Animal } from '../shared-types';
-import { BehaviorSubject, debounceTime, Observable } from 'rxjs';
+import {BehaviorSubject, debounceTime, Observable, tap} from 'rxjs';
 import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
 
 @Component({
@@ -19,6 +19,8 @@ export class AnimalListComponent implements OnInit {
   @Input() query$ = new BehaviorSubject<string>("");
   @Input() isVisibleFunction?: (animal: Animal) => boolean;
 
+  @Output() loaded = new EventEmitter<void>();
+
   protected animals$?: Observable<Animal[]>;
   private destroyRef = inject(DestroyRef);
 
@@ -30,6 +32,10 @@ export class AnimalListComponent implements OnInit {
   ngOnInit() {
     this.query$
     .pipe(debounceTime(300), takeUntilDestroyed(this.destroyRef))
-    .subscribe(query => this.animals$ = this.animalSv.getAnimalList(query) )
+    .subscribe(query => {
+      this.animals$ = this.animalSv.getAnimalList(query).pipe(
+        tap(() => this.loaded.emit())
+      );
+    })
   }
 }

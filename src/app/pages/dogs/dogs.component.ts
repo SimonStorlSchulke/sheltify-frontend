@@ -1,4 +1,4 @@
-import { Component, ElementRef, inject, ViewChild } from '@angular/core';
+import {AfterViewInit, Component, ElementRef, HostListener, inject, ViewChild} from '@angular/core';
 import { AnimalService } from '../../services/animal.service';
 import { AsyncPipe } from '@angular/common';
 import { HeroComponent } from '../../shared/hero/hero.component';
@@ -7,6 +7,7 @@ import { ArticleComponent, ArticleSection } from '../../article/article.componen
 import { AnimalListComponent } from '../../shared/animal-list/animal-list.component';
 import { BehaviorSubject } from 'rxjs';
 import { AnimalArticleService } from '../../services/animal-article.service';
+import {DogsService} from "./dogs.service";
 
 @Component({
   selector: 'app-dogs',
@@ -17,9 +18,18 @@ import { AnimalArticleService } from '../../services/animal-article.service';
 })
 export class DogsComponent {
 
+  onDogsLoaded() {
+    window.setTimeout(() => {
+      if(this.dogsSv.lastSelectedDogId != -1) {
+        document.getElementById("animal-card-" + this.dogsSv.lastSelectedDogId)?.scrollIntoView()
+      }
+    }, 10)
+  }
+
   @ViewChild("searchInput") searchInput!: ElementRef<HTMLInputElement>;
 
   animalSv = inject(AnimalService);
+  dogsSv = inject(DogsService);
 
   query$ = new BehaviorSubject<string>('');
 
@@ -28,46 +38,15 @@ export class DogsComponent {
     article: ArticleSection[];
   }>('dogs-page?populate=*');
 
-  filters = new Map<string, Map<string, boolean>>([
-    [
-      'inGermany',
-      new Map([
-        ['inGermany', false],
-      ]),
-    ],
-    [
-      'size',
-      new Map([
-        ['small', false],
-        ['medium', false],
-        ['large', false],
-      ]),
-    ],
-    [
-      'gender',
-      new Map([
-        ['male', false],
-        ['female', false],
-      ]),
-    ],
-    [
-      'age',
-      new Map([
-        ['young', false],
-        ['medium', false],
-        ['old', false],
-      ]),
-    ],
-  ]);
 
   toggleFilter(category: string, key: string) {
-    [...this.filters.get(category)!.keys()].forEach((cKey) => {
+    [...this.dogsSv.filters.get(category)!.keys()].forEach((cKey) => {
       if (cKey != key) {
-        this.filters.get(category)!.set(cKey, false);
+        this.dogsSv.filters.get(category)!.set(cKey, false);
       }
     });
-    const oldValue = this.filters.get(category)!.get(key)!;
-    this.filters.get(category)!.set(key, !oldValue);
+    const oldValue = this.dogsSv.filters.get(category)!.get(key)!;
+    this.dogsSv.filters.get(category)!.set(key, !oldValue);
     if (this.query$.value != '') {
       this.query$.next('');
     }
@@ -75,9 +54,9 @@ export class DogsComponent {
   }
 
   resetFilters() {
-    for (const category of this.filters.keys()) {
-      for (const key of this.filters.get(category)!.keys()) {
-        this.filters.get(category)!.set(key, false)
+    for (const category of this.dogsSv.filters.keys()) {
+      for (const key of this.dogsSv.filters.get(category)!.keys()) {
+        this.dogsSv.filters.get(category)!.set(key, false)
       }
     }
   }
@@ -94,12 +73,12 @@ export class DogsComponent {
   }
 
   isFilterActive(category: string, key: string) {
-    return this.filters.get(category)!.get(key);
+    return this.dogsSv.filters.get(category)!.get(key);
   }
 
   activeFilter(category: string) {
-    for (const key of this.filters.get(category)!.keys()) {
-      if (this.filters.get(category)?.get(key)) return key;
+    for (const key of this.dogsSv.filters.get(category)!.keys()) {
+      if (this.dogsSv.filters.get(category)?.get(key)) return key;
     }
     return null;
   }

@@ -28,7 +28,7 @@
                     <button (click)="toggleFilter('gender', 'male')" [class.active]="isFilterActive('gender', 'male')">Rüden</button>
                 </div>
             </div>
-            
+
             <div class="">
                 <div class="filter-selector">
                     <button (click)="toggleFilter('age', 'young')" [class.active]="isFilterActive('age', 'young')">Welpen</button>
@@ -39,7 +39,7 @@
         </div>
         <strong class="sui text-center">{{getExplainer()}}</strong>
 
-        <app-animal-list [query$]="query$" [isVisibleFunction]="getIsVisibleFunction()"/>
+        <app-animal-list [query$]="query$" [isVisibleFunction]="getIsVisibleFunction()" (loaded)="onDogsLoaded()"/>
     </div>
 
 </div>
