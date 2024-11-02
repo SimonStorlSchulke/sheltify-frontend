@@ -3,8 +3,7 @@ import { AnimalService } from '../../services/animal.service';
 import { AsyncPipe } from '@angular/common';
 import { AnimalTileComponent } from '../animal-tile/animal-tile.component';
 import { Animal } from '../shared-types';
-import {BehaviorSubject, debounceTime, Observable, tap} from 'rxjs';
-import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
+import {BehaviorSubject, debounceTime, Observable, switchMap, tap} from 'rxjs';
 
 @Component({
   selector: 'app-animal-list',
@@ -13,7 +12,7 @@ import { takeUntilDestroyed } from '@angular/core/rxjs-interop';
   templateUrl: './animal-list.component.html',
   styleUrl: './animal-list.component.scss'
 })
-export class AnimalListComponent implements OnInit {
+export class AnimalListComponent {
   protected animalSv = inject(AnimalService);
 
   @Input() query$ = new BehaviorSubject<string>("");
@@ -22,20 +21,18 @@ export class AnimalListComponent implements OnInit {
   @Output() loaded = new EventEmitter<void>();
 
   protected animals$?: Observable<Animal[]>;
-  private destroyRef = inject(DestroyRef);
 
   filterAnimals(animals: Animal[]) {
     if(!this.isVisibleFunction) return animals;
     return animals.filter((animal) => this.isVisibleFunction!(animal));
   }
 
-  ngOnInit() {
-    this.query$
-    .pipe(debounceTime(300), takeUntilDestroyed(this.destroyRef))
-    .subscribe(query => {
-      this.animals$ = this.animalSv.getAnimalList(query).pipe(
+  constructor() {
+    this.animals$ = this.query$.pipe(
+      debounceTime(300),
+      switchMap(query => this.animalSv.getAnimalList(query).pipe(
         tap(() => this.loaded.emit())
-      );
-    })
+      ))
+    );
   }
 }
