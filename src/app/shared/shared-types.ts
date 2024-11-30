@@ -74,5 +74,6 @@ export type Animal = {
     priority: number,
     animal_article?: {
     updatedAt: string,  // for sorting
+    status?: "vermittelbar" | "unvermittelbar" | "vermittelt";
     }
   }

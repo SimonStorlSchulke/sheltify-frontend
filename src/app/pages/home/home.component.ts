@@ -8,6 +8,7 @@ import { HeroComponent } from '../../shared/hero/hero.component';
 import { StrapiMedia } from '../../shared/shared-types';
 import { AnimalArticleService } from '../../services/animal-article.service';
 import { BlogTileComponent } from '../../blog/blog-tile/blog-tile.component';
+import { InfoPopupComponent } from '../../layout/info-popup/info-popup.component';
 
 export type HomeData = {
   hero: StrapiMedia,
@@ -22,7 +23,7 @@ export const homeResolver: ResolveFn<HomeData> = () => {
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [AsyncPipe, AnimalListComponent, ArticleComponent, HeroComponent, BlogTileComponent],
+  imports: [AsyncPipe, AnimalListComponent, ArticleComponent, HeroComponent, BlogTileComponent, InfoPopupComponent],
   templateUrl: './home.component.html',
   styleUrl: './home.component.scss'
 })

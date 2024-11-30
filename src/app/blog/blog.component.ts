@@ -14,6 +14,7 @@ export type BlogArticle = {
   description: string,
   artikel: ArticleSection[], //todo rename in strapi
   publishedAt: string,
+  showAsPopup?: boolean,
 }
 
 
