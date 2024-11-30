@@ -28,7 +28,7 @@ export class BlogCardsComponent implements OnInit {
   strapiSv = inject(StrapiService);
 
   ngOnInit() {
-    this.blogs$ = this.strapiSv.get<BlogArticle[]>(`blogs?populate[thumbnail]=*&pagination[pageSize]=${this.sectionData.amount}`);
+    this.blogs$ = this.strapiSv.get<BlogArticle[]>(`blogs?sort[1]=publishedAt:desc&populate[thumbnail]=*&pagination[pageSize]=${this.sectionData.amount}`);
   }
 
 }
