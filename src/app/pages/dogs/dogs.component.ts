@@ -18,9 +18,12 @@ import {DogsService} from "./dogs.service";
 })
 export class DogsComponent {
 
+  initialLoadDone = false;
+
   onDogsLoaded() {
     window.setTimeout(() => {
-      if(this.dogsSv.lastSelectedDogId != -1) {
+      if(!this.initialLoadDone && this.dogsSv.lastSelectedDogId != -1) {
+        this.initialLoadDone = true;
         document.getElementById("animal-card-" + this.dogsSv.lastSelectedDogId)?.scrollIntoView()
       }
     }, 10)
