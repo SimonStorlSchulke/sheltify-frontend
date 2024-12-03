@@ -1,4 +1,4 @@
-import {Component, DestroyRef, Input, OnInit, inject, Output, EventEmitter} from '@angular/core';
+import { Component, DestroyRef, Input, OnInit, inject, Output, EventEmitter, OnDestroy } from '@angular/core';
 import { AnimalService } from '../../services/animal.service';
 import { AsyncPipe } from '@angular/common';
 import { AnimalTileComponent } from '../animal-tile/animal-tile.component';
@@ -12,7 +12,7 @@ import {BehaviorSubject, debounceTime, Observable, switchMap, tap} from 'rxjs';
   templateUrl: './animal-list.component.html',
   styleUrl: './animal-list.component.scss'
 })
-export class AnimalListComponent {
+export class AnimalListComponent implements OnInit {
   protected animalSv = inject(AnimalService);
 
   @Input() query$ = new BehaviorSubject<string>("");
@@ -27,7 +27,7 @@ export class AnimalListComponent {
     return animals.filter((animal) => this.isVisibleFunction!(animal));
   }
 
-  constructor() {
+  ngOnInit() {
     this.animals$ = this.query$.pipe(
       debounceTime(300),
       switchMap(query => this.animalSv.getAnimalList(query).pipe(
