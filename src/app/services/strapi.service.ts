@@ -38,6 +38,21 @@ export class StrapiService {
       .pipe(map((obj) => flattenStrapiObject(obj)));
   }
 
+  getWithMeta<DataT, MetaT>(path: string): Observable<[DataT, MetaT]> {
+    let url = decodeURIComponent(StrapiService.apiBaseUrl + path);
+    url = this.addDraftsInDevMode(url);
+    return this.httpClient
+      .get(url, {
+        headers: StrapiService.headers,
+      })
+      .pipe(
+        map((obj) => {
+          const data = flattenStrapiObject(obj);
+          const meta = (obj as any)["meta"];
+          return [flattenStrapiObject(obj), meta]
+        }));
+  }
+
   get isDevEnv(): boolean {
     return window.location.origin.includes("//dev.") || window.location.origin.includes(":4200");
   }
@@ -168,4 +183,12 @@ function flattenStrapiObject(data: any) {
   }
 
   return data;
+}
+
+
+export type StrapiPagination = {
+    page: number
+    pageSize: number
+    pageCount: number
+    total: number
 }
