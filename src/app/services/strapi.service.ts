@@ -47,7 +47,6 @@ export class StrapiService {
       })
       .pipe(
         map((obj) => {
-          const data = flattenStrapiObject(obj);
           const meta = (obj as any)["meta"];
           return [flattenStrapiObject(obj), meta]
         }));

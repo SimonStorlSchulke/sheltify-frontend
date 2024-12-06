@@ -58,10 +58,10 @@ h1 .gender-icon {
 
       .cv-img {
         width: 320px;
-        min-width: 320px;
         height: 320px;
         object-fit: cover;
         border-radius: 16px;
+        max-width: calc(100dvw - 110px);;
       }
 
       .bubbles {
@@ -104,6 +104,7 @@ h1 .gender-icon {
   }
   .cv-description {
     grid-area: b;
+    max-width: calc(100% - 30px);
   }
   .cv-image-wrapper {
     grid-area: c;
