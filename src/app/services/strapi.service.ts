@@ -13,7 +13,7 @@ export class StrapiService {
 
   //This api key  offers read-only-access to the cms and is supposed to be public, so it's fine to put it here hardcoded.
   static readonly bearer =
-    'd2bd12e571c828a43fd7bfd45945eaafd1cc91a587b86083153a9bc259db9ec1a232fbe180169ec67f032dcefdfc4c75165805ba888c6d2e344884938ef0dfa500f4481ff81e10314faa72af4a90e0e2bcfa47fad18df9309cdf739d8af78467688bc3fd89372366c15bfbcd600701411d2ff94bc072a8723ffce9ac36d37779';
+    '6612d88a2c0b99340a0fc8d18cec7b31012bbf20c2b0545e35bea181775f1d7632630cba6e2831f907aaefac616727242a69a2ed5fdaf20a829de88013475beef3b425d64c53f2c86a59a0356b619136bc237754a616ba397763b463924f68fa88e69a5d3002f349f2a623d093bd9fdebc490a6f8cfd6a52157737dde1bcdfe0';
 
   static readonly apiBaseUrl = 'https://cms.herzenshunde-griechenland.de/api/';
   static readonly uploadsBaseUrl = 'https://cms.herzenshunde-griechenland.de';
