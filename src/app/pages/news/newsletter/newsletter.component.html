@@ -1,0 +1,11 @@
+<div class="sui wrapper my-4 flex-y gap-2 mb-6">
+
+  <h1>Newsletterarchiv</h1>
+
+  <span>Hier können sie alle bisher erschienenen Newsletter unseres Vereins herunterladen:<br><br></span>
+
+
+  @for (newsletter of pageData; track $index) {
+    <a class="link" [href]="uploadsUrl + newsletter.file.url">{{ newsletter.date | date: 'dd.MM.yyyy' }}</a>
+  }
+</div>
