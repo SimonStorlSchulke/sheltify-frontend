@@ -24,7 +24,7 @@ export type ContactData = {
 export const contactResolver: ResolveFn<ContactData> = () => {
   return forkJoin({
     pageData: inject(AnimalArticleService).getAndInsertAnimalLinks<{ hero: StrapiMedia, article: ArticleSection[], }>
-    ("contact-page?populate[hero]=*&populate[article][populate]=*"),
+    ("contact-page?populate[hero][populate]=*&populate[1]=article&populate[article][populate]=*"),
     teamMembers: inject(StrapiService).get<TeamMember[]>
     ("teammembers?populate=*&sort[0]=priority:desc"),
   })

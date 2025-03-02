@@ -30,12 +30,14 @@ export class AnimalCardsSectionComponent implements OnInit {
   animalSv = inject(AnimalService);
 
   ngOnInit() {
-    const animalIds = this.sectionData.animals.map(a => a.id);
+    const animalIds = this.sectionData.animals?.map(a => a.id) ?? [];
 
-    let query = "?populate=thumbnail";
+    let query = "?populate[0]=thumbnail";
+
     for (let i = 0; i < animalIds.length; i++) {
       query += `&filters[id][$in][${i}]=${animalIds[i]}`
     }
+
 
     this.animals$ = this.animalSv.get<Animal[]>("animals" + query)
       .pipe(map(unsortedAnimalsList => {
@@ -43,7 +45,7 @@ export class AnimalCardsSectionComponent implements OnInit {
 
         for (const id of animalIds) {
           const matchingAnimal = unsortedAnimalsList.find(a => a.id == id);
-          if(matchingAnimal) {
+          if (matchingAnimal) {
             sortedAnimals.push(matchingAnimal)
           }
         }

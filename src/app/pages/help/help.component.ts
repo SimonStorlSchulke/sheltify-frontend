@@ -13,7 +13,7 @@ export type HelpData = {
 }
 
 export const helpResolver: ResolveFn<HelpData> = () => {
-  return inject(StrapiService).get<HelpData>("help-page?populate[hero]=*&populate[article][populate]=*");
+  return inject(StrapiService).get<HelpData>("help-page?populate=*");
 }
 
 @Component({

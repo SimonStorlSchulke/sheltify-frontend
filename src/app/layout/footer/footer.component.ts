@@ -10,7 +10,7 @@ import { IconComponent } from "../../shared/icon/icon.component";
 import { PaypalButtonSectionComponent } from "../../article/article-sections/paypal-button-section/paypal-button-section.component";
 
 type FooterDataBannerData = {
-  id: number;
+  documentId: string;
   background: StrapiMedia;
   article: ArticleSection[];
 };
@@ -27,7 +27,7 @@ export class FooterComponent {
 
   footerData$ = this.strapiSv.get<FooterDataBannerData[]>("footer-banners").pipe(
     switchMap((footers) => {
-      const footerIds = footers.map((footerData) => footerData.id);
+      const footerIds = footers.map((footerData) => footerData.documentId);
       let randomId = footerIds[Math.floor(Math.random() * footerIds.length)];
       return this.strapiSv.get<FooterDataBannerData>(`footer-banners/${randomId}?populate=*`);
     }),

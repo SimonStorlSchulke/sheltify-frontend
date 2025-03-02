@@ -10,7 +10,7 @@ export class StrapiMediaPipe implements PipeTransform {
   strapiSv = inject(StrapiService);
   transform(
     value?: StrapiMedia | null,
-    ...args: ('thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'original' | 'video')[]
+    ...args: ('thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'video')[]
   ): string {
     if(args[0] == 'video') {
       return this.strapiSv.getVideoUrl(value!);

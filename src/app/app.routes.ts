@@ -28,6 +28,7 @@ import {
 } from './pages/default-page/default-page.component';
 import { DsgvoComponent } from './pages/dsgvo/dsgvo.component';
 import { NotFoundComponent } from './pages/404/404.component';
+import { NewsletterComponent, newsletterResolver } from './pages/news/newsletter/newsletter.component';
 
 function getSubPageResolver(collectionNamePlural: string) {
   const resolver: ResolveFn<DefaultPageData> = (
@@ -92,6 +93,12 @@ export const routes: Routes = [
     component: BlogComponent,
     data: { title: 'News & Wissen' },
     resolve: { articleData: blogArticleResolver },
+  },
+  {
+    path: 'newsletter',
+    component: NewsletterComponent,
+    data: { title: 'Newsletter' },
+    resolve: { newsData: newsletterResolver },
   },
   {
     path: 'kontakt',

@@ -20,7 +20,7 @@ export class AnimalArticleService extends StrapiService {
   private animalList?: { name: string; }[];
 
   getArticleByAnimalName(name: string): Observable<AnimalArticle> {
-    const path = `animal-articles?filters[animals][name][$eqi]=${name}&populate[sections][populate]=*&populate[animals][populate][thumbnail]=*&populate[animals][populate][animalKind][populate][icon]=*`;
+    const path = `animal-articles?filters[animals][name][$eqi]=${name}&populate[sections][populate]=*&populate[animals][populate][0]=thumbnail`;
     return this.getAndInsertAnimalLinks<AnimalArticle[]>(path).pipe(
       map((articles) => {
         return articles[0];
@@ -29,8 +29,8 @@ export class AnimalArticleService extends StrapiService {
   }
 
   getBlogArticle(id: number): Observable<BlogArticle> {
-    const path = `blogs/${id}?populate[artikel][populate]=*`;
-    return this.getAndInsertAnimalLinks<BlogArticle>(path);
+    const path = `blogs?filters[id][$eq]=${id}&populate[artikel][populate]=*`;
+    return this.getAndInsertAnimalLinks<BlogArticle[]>(path).pipe(map((articles) => articles[0]));
   }
 
   getAnimalLink(name: string) {

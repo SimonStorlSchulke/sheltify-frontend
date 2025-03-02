@@ -13,7 +13,7 @@ export type AboutData = {
 }
 
 export const aboutResolver: ResolveFn<AboutData> = () => {
-  return inject(AnimalArticleService).getAndInsertAnimalLinks<AboutData>("about-page?populate[hero]=*&populate[article][populate]=*");
+  return inject(AnimalArticleService).getAndInsertAnimalLinks<AboutData>("about-page?populate[hero][populate]=*&populate[1]=article&populate[article][populate]=*");
 }
 
 @Component({

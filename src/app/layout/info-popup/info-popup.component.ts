@@ -13,7 +13,7 @@ import { map } from 'rxjs';
   styleUrl: './info-popup.component.scss'
 })
 export class InfoPopupComponent {
-  newsData$ = inject(StrapiService).get<BlogArticle[]>("blogs?filters[showAsPopup]=true&sort[1]=publishedAt:desc&populate[thumbnail]=*")
+  newsData$ = inject(StrapiService).get<BlogArticle[]>("blogs?filters[showAsPopup]=true&sort[1]=publishedAt:desc&populate[0]=thumbnail")
     .pipe(map(news => news.filter(n => !this.storedHiddenIds.includes(n.id))));
 
 

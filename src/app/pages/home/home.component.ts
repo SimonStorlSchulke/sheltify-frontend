@@ -17,7 +17,7 @@ export type HomeData = {
 }
 
 export const homeResolver: ResolveFn<HomeData> = () => {
-  return inject(AnimalArticleService).getAndInsertAnimalLinks<HomeData>("home?populate[hero]=*&populate[article][populate]=*");
+  return inject(AnimalArticleService).getAndInsertAnimalLinks<HomeData>("home?populate[hero][populate]=*&populate[1]=article&populate[article][populate]=*");
 }
 
 @Component({

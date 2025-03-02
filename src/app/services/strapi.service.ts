@@ -2,6 +2,7 @@ import { Injectable, inject } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { StrapiFilter, StrapiMedia } from '../shared/shared-types';
+import { StrapiQueryBuilder } from './StrapiQueryBuilder';
 
 let showDrafts = false;
 
@@ -11,11 +12,14 @@ let showDrafts = false;
 export class StrapiService {
 
   //This api key  offers read-only-access to the cms and is supposed to be public, so it's fine to put it here hardcoded.
+  //static readonly bearer =
+  //  '8d9d5bd4f9c65a1dbbdd45d63653dfe9aedf6b6f99e4e7d5b06f847b2cd8a43d966d9a0260bfd860280efd9b605dc2c61a696034abcca869e4b302da6cf1a27d2a409945a5252bf44ce6016f6fc3a91c220f9f7e118f6571630a9a2a9e5df436f4d8d828392091937a16df4a5fbee918a04ba92da63362b77daea0cdbf1d09f3';
   static readonly bearer =
-    '8d9d5bd4f9c65a1dbbdd45d63653dfe9aedf6b6f99e4e7d5b06f847b2cd8a43d966d9a0260bfd860280efd9b605dc2c61a696034abcca869e4b302da6cf1a27d2a409945a5252bf44ce6016f6fc3a91c220f9f7e118f6571630a9a2a9e5df436f4d8d828392091937a16df4a5fbee918a04ba92da63362b77daea0cdbf1d09f3';
+    'f24653b17056d659a6cf3e10217f996163da5342f4a08ee2fe0829eaafba734bf606b8be2875617a5c2ba6e58f7550b8e28e82bb17311524f2150df4ebff6a756a27a05c1a140d264f37734093f985c3130c89b2ffc693d734c224730a7be1bef41a59b41444c4d6610240eacc395739edfeae15bedeece9d774134c831ae019';
 
-  static readonly apiBaseUrl = 'https://cms.herzenshunde-griechenland.de/api/';
-  static readonly uploadsBaseUrl = 'https://cms.herzenshunde-griechenland.de';
+  //static readonly apiBaseUrl = 'https://cms.herzenshunde-griechenland.de/api/';
+  static readonly apiBaseUrl = 'http://localhost:1337/api/';
+  static readonly uploadsBaseUrl = 'http://localhost:1337';
 
   static readonly headers = {
     'Content-Type': 'application/json',
@@ -27,6 +31,7 @@ export class StrapiService {
   enableDrafts() {
     showDrafts = true;
   }
+
 
   get<T>(path: string): Observable<T> {
     let url = decodeURIComponent(StrapiService.apiBaseUrl + path);
@@ -83,7 +88,7 @@ export class StrapiService {
 
   getImageFormatUrl(
     image: StrapiMedia | null | undefined,
-    size: 'thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'original',
+    size: 'thumbnail' | 'small' | 'medium' | 'large' | 'xlarge',
   ): string {
     if (image == null) {
       return 'https://herzenshunde-strapi-prod.azurewebsites.net/uploads/paw_e60a248111.svg';
@@ -123,9 +128,6 @@ export class StrapiService {
           image.formats.small?.url ??
           image.formats.thumbnail.url;
         break;
-      case 'original':
-        toReturn = image.url;
-        break;
     }
 
     return StrapiService.uploadsBaseUrl + toReturn;
@@ -133,7 +135,7 @@ export class StrapiService {
 
   getImageFormatUrls(
     images: StrapiMedia[],
-    size: 'thumbnail' | 'small' | 'medium' | 'large' | 'xlarge' | 'original',
+    size: 'thumbnail' | 'small' | 'medium' | 'large' | 'xlarge',
   ) {
     return images.map(img => this.getImageFormatUrl(img, size));
   }
@@ -151,11 +153,11 @@ function flattenStrapiObject(data: any) {
     Object.prototype.toString.call(data) === '[object Array]';
 
   function flatten(data: any) {
-    if (!data.attributes) return data;
+    if (!data) return data;
 
     return {
       id: data.id,
-      ...data.attributes,
+      ...data,
     };
   }
 

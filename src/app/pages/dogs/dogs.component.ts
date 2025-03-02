@@ -8,6 +8,7 @@ import { AnimalListComponent } from '../../shared/animal-list/animal-list.compon
 import { BehaviorSubject } from 'rxjs';
 import { AnimalArticleService } from '../../services/animal-article.service';
 import {DogsService} from "./dogs.service";
+import { StrapiQueryBuilder } from '../../services/StrapiQueryBuilder';
 
 @Component({
   selector: 'app-dogs',
@@ -66,7 +67,15 @@ export class DogsComponent {
 
   onSearchTyped(e: string) {
     if (e.length > 1) {
-      this.query$.next(`filters[$or][0][name][$contains]=${e}&filters[$or][1][description][$contains]=${e}`);
+
+      const query =
+        new StrapiQueryBuilder<Animal>()
+          .orFilter([
+            ["name", "contains", e],
+            ["description", "contains", e],
+          ]).buildParams();
+
+      this.query$.next(query);
       window.setTimeout(() => {
         this.resetFilters();
       }, 400);

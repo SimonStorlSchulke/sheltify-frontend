@@ -15,5 +15,5 @@ export const appConfig: ApplicationConfig = {
     })),
     provideAnimations(),
     importProvidersFrom(GalleryModule),
-    provideHttpClient()]
+    provideHttpClient()],
 };

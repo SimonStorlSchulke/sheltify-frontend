@@ -13,7 +13,7 @@ export type ConveyData = {
 }
 
 export const conveyResolver: ResolveFn<ConveyData> = () => {
-  return inject(AnimalArticleService).getAndInsertAnimalLinks<ConveyData>("convey?populate[hero]=*&populate[article][populate]=*");
+  return inject(AnimalArticleService).getAndInsertAnimalLinks<ConveyData>("convey?populate[hero][populate]=*&populate[1]=article&populate[article][populate]=*");
 }
 
 @Component({

@@ -34,6 +34,26 @@ export type StrapiMedia = {
     updatedAt: string
   }
 
+  export type StrapiFile = {
+    id: number
+    name: string
+    alternativeText: any
+    caption: any
+    width: any
+    height: any
+    formats: any
+    hash: string
+    ext: string
+    mime: string
+    size: number
+    url: string
+    previewUrl: any
+    provider: string
+    provider_metadata: any
+    createdAt: string
+    updatedAt: string
+  };
+
   export type StrapiFilter = {
     field: string,
     operator?:

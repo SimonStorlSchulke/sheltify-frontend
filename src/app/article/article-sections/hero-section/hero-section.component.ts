@@ -12,7 +12,7 @@ export type ArticleHeroSection = {
 @Component({
   selector: 'app-hero-section',
   standalone: true,
-  imports: [StrapiRichTextPipe, StrapiMediaPipe],
+  imports: [StrapiMediaPipe],
   templateUrl: './hero-section.component.html',
   styleUrl: './hero-section.component.scss'
 })

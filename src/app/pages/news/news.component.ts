@@ -9,13 +9,22 @@ import { forkJoin, lastValueFrom, map } from 'rxjs';
 import { BlogArticle } from '../../blog/blog.component';
 import { BlogTileComponent } from '../../blog/blog-tile/blog-tile.component';
 import { AnimalArticleService } from '../../services/animal-article.service';
+import { StrapiQueryBuilder } from '../../services/StrapiQueryBuilder';
 
 const pageSize = 10;
 
 export const newsResolver: ResolveFn<NewsData> = () => {
   return forkJoin({
-    pageData: inject(AnimalArticleService).getAndInsertAnimalLinks<NewsData>("news-page?populate[hero]=*&populate[article][populate]=*"),
-    newsData: inject(StrapiService).getWithMeta<BlogArticle[], {pagination: StrapiPagination}>("blogs?sort[1]=publishedAt:desc&populate[thumbnail]=*&pagination[page]=1&pagination[pageSize]=" + pageSize),
+    pageData: inject(AnimalArticleService).getAndInsertAnimalLinks<NewsData>(new StrapiQueryBuilder<NewsData>("news-page")
+      .populate("hero")
+      .populate("article", true)
+      .buildUrl()),
+    newsData: inject(StrapiService).getWithMeta<BlogArticle[], {pagination: StrapiPagination}>(new StrapiQueryBuilder<BlogArticle>("blogs")
+      .sort(["publishedAt", "desc"])
+      .populate("thumbnail")
+      .pagination(pageSize)
+      .buildUrl()),
+
   }).pipe(map(data => {
     data.pageData.news = data.newsData[0];
     data.pageData.pagination = data.newsData[1].pagination;
@@ -72,7 +81,7 @@ export class NewsComponent {
 
     this.activePage = pageNumber;
 
-    lastValueFrom(this.strapiSv.getWithMeta<BlogArticle[], {pagination: StrapiPagination}>("blogs?populate[thumbnail]=*" + filterQuery + this.getPaginationQuery(this.activePage)))
+    lastValueFrom(this.strapiSv.getWithMeta<BlogArticle[], {pagination: StrapiPagination}>("blogs?populate[0]=thumbnail" + filterQuery + this.getPaginationQuery(this.activePage)))
       .then(news => {
         this.pageData.news = news[0];
         this.pageData.pagination = news[1].pagination;
@@ -85,7 +94,7 @@ export class NewsComponent {
 
   showAll() {
     this.activeFilter = "";
-    lastValueFrom(this.strapiSv.getWithMeta<BlogArticle[], {pagination: StrapiPagination}>("blogs?populate[thumbnail]=*" + this.getPaginationQuery(0)))
+    lastValueFrom(this.strapiSv.getWithMeta<BlogArticle[], {pagination: StrapiPagination}>("blogs?populate[0]=thumbnail" + this.getPaginationQuery(0)))
       .then(news => {
         this.pageData.news = news[0];
         this.pageData.pagination = news[1].pagination;

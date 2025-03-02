@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { StrapiService } from '../../../services/strapi.service';
 import { BlogTileComponent } from '../../../blog/blog-tile/blog-tile.component';
 import { AsyncPipe } from '@angular/common';
+import { StrapiQueryBuilder } from '../../../services/StrapiQueryBuilder';
 
 export type ArticleBlogCardsSection = {
   __component: 'article-section.news-cards';
@@ -28,7 +29,13 @@ export class BlogCardsComponent implements OnInit {
   strapiSv = inject(StrapiService);
 
   ngOnInit() {
-    this.blogs$ = this.strapiSv.get<BlogArticle[]>(`blogs?sort[1]=publishedAt:desc&populate[thumbnail]=*&pagination[pageSize]=${this.sectionData.amount}`);
+    this.blogs$ = this.strapiSv.get<BlogArticle[]>(
+      new StrapiQueryBuilder<BlogArticle>("blogs")
+        .sort(["publishedAt", "desc"])
+        .populate("thumbnail")
+        .pagination(this.sectionData.amount)
+        .buildUrl()
+    );
   }
 
 }
