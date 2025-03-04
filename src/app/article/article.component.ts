@@ -1,4 +1,4 @@
-import { AfterViewInit, Component, ElementRef, Input, ViewChild, ViewChildren, HostListener } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, Input, ViewChild, ViewChildren, ChangeDetectionStrategy, HostListener } from '@angular/core';
 import { ArticleTextSection, TextSectionComponent } from './article-sections/text-section/text-section.component';
 import { ArticleTextWithImageSection, TextImageSectionComponent } from './article-sections/text-image-section/text-image-section.component';
 import { ArticleHeroSection, HeroSectionComponent } from './article-sections/hero-section/hero-section.component';
@@ -10,6 +10,7 @@ import { ArticleBlogCardsSection, BlogCardsComponent } from './article-sections/
 import { ArticleCounterSection, CounterSectionComponent } from './article-sections/counter-section/counter-section.component';
 import { ArticlePaypalButtonSection, PaypalButtonSectionComponent } from './article-sections/paypal-button-section/paypal-button-section.component';
 import { Subject, throttleTime } from 'rxjs';
+import { ArticleHtmlSection, HtmlSectionComponent } from './article-sections/html-section/html-section.component';
 
 export type ArticleSection =
   | ArticleTextSection
@@ -22,7 +23,8 @@ export type ArticleSection =
   | ArticleImageSection
   | SectionStartSection
   | ArticlePaypalButtonSection
-  | ArticleCounterSection;
+  | ArticleCounterSection
+  | ArticleHtmlSection;
 
 
 
@@ -48,9 +50,11 @@ export type ArticleRowStartSection = {
     BlogCardsComponent,
     CounterSectionComponent,
     PaypalButtonSectionComponent,
+    HtmlSectionComponent,
   ],
   templateUrl: './article.component.html',
   styleUrl: './article.component.scss',
+  changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class ArticleComponent implements AfterViewInit {
   @Input({ required: true }) sections!: ArticleSection[];
@@ -62,14 +66,14 @@ export class ArticleComponent implements AfterViewInit {
 
   constructor() {
   }
-  
+
   ngAfterViewInit() {
     const rowStartTags = (this.articleElement.nativeElement as HTMLElement).querySelectorAll<HTMLElement>('.article-rows');
     rowStartTags.forEach((rowStart) => {
       const columns: number = +rowStart.getAttribute('data-columns')!;
       rowStart.append(...this.getNextNSiblings(rowStart.parentElement!, columns));
     });
-    
+
     this.animate$.pipe(throttleTime(75)).subscribe(() => {
       this.animateFn();
     })
