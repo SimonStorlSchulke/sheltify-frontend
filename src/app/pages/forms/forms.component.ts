@@ -28,7 +28,9 @@ export class FormsComponent {
     Array.from(document.querySelectorAll(".form-block"))
       .forEach(formBlock => {
         const question = formBlock.querySelector("label")?.innerText ?? "";
-        const answer = formBlock.querySelector("input")?.value || '(keine Antwort)';
+        let input: HTMLTextAreaElement | HTMLInputElement | null = formBlock.querySelector("input");
+        if (!input) input = formBlock.querySelector("textarea");
+        const answer = input?.value || '(keine Antwort)';
         mailHtml += `<strong>${this.sanitizer.sanitize(SecurityContext.HTML, question)}</strong><br><span>${this.sanitizer.sanitize(SecurityContext.HTML, answer)}</span><br><br> `;
       });
 
