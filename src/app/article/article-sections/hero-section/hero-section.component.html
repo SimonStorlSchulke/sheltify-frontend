@@ -1,6 +1,6 @@
 <section class="{{ sectionData.__component }}">
   <img
-    [alt]="sectionData.hero?.alternativeText"
+    [alt]="sectionData.hero?.alternativeText | altText"
     [src]="sectionData.hero | strapiMedia: 'xlarge'"
   />
 </section>

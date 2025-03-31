@@ -1,4 +1,5 @@
 import {Component, ElementRef, HostListener, inject, Input, OnInit, ViewChild} from '@angular/core';
+import { AltTextPipe } from 'app/pipes/alt-text.pipe';
 import { LightboxService } from '../../services/lightbox.service';
 import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
 import { StrapiService } from '../../services/strapi.service';
@@ -7,7 +8,7 @@ import { StrapiMedia } from '../shared-types';
 @Component({
   selector: 'app-lightbox',
   standalone: true,
-  imports: [StrapiMediaPipe],
+  imports: [StrapiMediaPipe, AltTextPipe],
   templateUrl: './lightbox.component.html',
   styleUrl: './lightbox.component.scss'
 })

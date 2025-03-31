@@ -7,7 +7,7 @@
         @if(media[0] | strapiMedia; as imgSrc) {
           <img
           class="sui rounded-2 media-container c-pointer"
-          [alt]="media[0].alternativeText"
+          [alt]="media[0].alternativeText | altText"
           [src]="imgSrc"
           (click)="lightboxSv.openFullscreen(media, 0, [imgSrc])"
           />
@@ -22,7 +22,7 @@
               @for (image of media; track $index) {
                   <img
                   class="sui rounded-2 c-pointer"
-                  [alt]="image.alternativeText"
+                  [alt]="image.alternativeText | altText"
                   [src]="imgs[$index]"
                   (click)="lightboxSv.openFullscreen(media, $index, imgs)"
                   />

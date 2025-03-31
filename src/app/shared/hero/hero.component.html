@@ -1,5 +1,5 @@
 <div class="hero">
-    <img [alt]="images[0].alternativeText || 'Titelbild'" [src]="images[0] ?? '' | strapiMedia: 'xlarge'"/>
+    <img [alt]="(images[0].alternativeText || 'Titelbild') | altText" [src]="images[0] ?? '' | strapiMedia: 'xlarge'"/>
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320">
       <path
         fill="#eeeeee"

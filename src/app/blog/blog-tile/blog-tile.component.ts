@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { AltTextPipe } from 'app/pipes/alt-text.pipe';
 import { BlogArticle } from '../blog.component';
 import { StrapiMediaPipe } from '../../article/article-sections/strapi-image.pipe';
 import { DatePipe } from '@angular/common';
@@ -7,7 +8,7 @@ import { RouterLink } from '@angular/router';
 @Component({
   selector: 'app-blog-tile',
   standalone: true,
-  imports: [StrapiMediaPipe, DatePipe, RouterLink],
+  imports: [StrapiMediaPipe, DatePipe, RouterLink, AltTextPipe],
   templateUrl: './blog-tile.component.html',
   styleUrl: './blog-tile.component.scss'
 })

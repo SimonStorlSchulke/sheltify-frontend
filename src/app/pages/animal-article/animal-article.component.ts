@@ -1,4 +1,5 @@
 import { Component, inject } from '@angular/core';
+import { AltTextPipe } from 'app/pipes/alt-text.pipe';
 import { map } from 'rxjs';
 import { AsyncPipe, NgIf } from '@angular/common';
 import { AnimalArticle, AnimalArticleService } from '../../services/animal-article.service';
@@ -31,16 +32,17 @@ export const animalArticleResolver: ResolveFn<AnimalArticle | null> = (
     standalone: true,
     templateUrl: './animal-article.component.html',
     styleUrl: './animal-article.component.scss',
-    imports: [
-        AsyncPipe,
-        MarkdownPipe,
-        TextSectionComponent,
-        TextImageSectionComponent,
-        ArticleComponent,
-        StrapiMediaPipe,
-        RouterLink,
-        NgIf,
-    ]
+  imports: [
+    AsyncPipe,
+    MarkdownPipe,
+    TextSectionComponent,
+    TextImageSectionComponent,
+    ArticleComponent,
+    StrapiMediaPipe,
+    RouterLink,
+    NgIf,
+    AltTextPipe,
+  ]
 })
 export class AnimalArticleComponent {
   animalSv = inject(AnimalService);

@@ -4,7 +4,7 @@
   }
   @if(blog.thumbnail) {
     <img
-      [alt]="blog.thumbnail?.alternativeText"
+      [alt]="blog.thumbnail?.alternativeText | altText"
       [src]="blog.thumbnail | strapiMedia: 'medium'"
     />
   }
