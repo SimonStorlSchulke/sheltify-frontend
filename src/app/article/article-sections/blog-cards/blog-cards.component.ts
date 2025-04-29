@@ -31,7 +31,7 @@ export class BlogCardsComponent implements OnInit {
   ngOnInit() {
     this.blogs$ = this.strapiSv.get<BlogArticle[]>(
       new StrapiQueryBuilder<BlogArticle>("blogs")
-        .sort(["publishedAt", "desc"])
+        .sort(["createdAt", "desc"])
         .populate("thumbnail")
         .pagination(this.sectionData.amount)
         .buildUrl()

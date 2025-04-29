@@ -9,11 +9,13 @@ import { DatePipe } from '@angular/common';
 export type BlogArticle = {
   id: number,
   title: string,
+  path: string,
   type: string,
   thumbnail?: StrapiMedia,
   description: string,
   artikel: ArticleSection[], //todo rename in strapi
   publishedAt: string,
+  createdAt: string,
   showAsPopup?: boolean,
 }
 
@@ -21,8 +23,8 @@ export type BlogArticle = {
 export const blogArticleResolver: ResolveFn<BlogArticle>  = (
   route: ActivatedRouteSnapshot,
 ) => {
-  const id = route.paramMap.get('id')!;  //todo null savety
-  return inject(AnimalArticleService).getBlogArticle(+id);
+  const path = route.paramMap.get('path')!;  //todo null savety
+  return inject(AnimalArticleService).getBlogArticle(path);
 }
 
 
@@ -40,7 +42,6 @@ export class BlogComponent {
   constructor() {
     inject(ActivatedRoute).data.pipe(takeUntilDestroyed())
     .subscribe( ({ articleData }) => {
-      console.log(articleData)
         this.article = articleData;
       }
     );

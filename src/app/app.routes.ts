@@ -89,7 +89,7 @@ export const routes: Routes = [
     resolve: { newsData: newsResolver },
   },
   {
-    path: 'news/:id',
+    path: 'news/:path',
     component: BlogComponent,
     data: { title: 'News & Wissen' },
     resolve: { articleData: blogArticleResolver },

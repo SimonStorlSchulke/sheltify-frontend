@@ -1,4 +1,4 @@
-<a class="blogtile" [routerLink]="'/news/' + blog.id">
+<a class="blogtile" [routerLink]="'/news/' + blog.path">
   @if(!blog.publishedAt) {
     <span class="draft">draft</span>
   }

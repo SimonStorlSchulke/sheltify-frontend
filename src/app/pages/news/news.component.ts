@@ -20,7 +20,7 @@ export const newsResolver: ResolveFn<NewsData> = () => {
       .populate("article", true)
       .buildUrl()),
     newsData: inject(StrapiService).getWithMeta<BlogArticle[], {pagination: StrapiPagination}>(new StrapiQueryBuilder<BlogArticle>("blogs")
-      .sort(["publishedAt", "desc"])
+      .sort(["createdAt", "desc"])
       .populate("thumbnail")
       .pagination(pageSize)
       .buildUrl()),
