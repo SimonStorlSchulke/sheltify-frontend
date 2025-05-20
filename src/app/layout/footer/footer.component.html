@@ -1,3 +1,4 @@
+
 @if (footerData$ | async; as footerData) {
   <div class="banner"
        style="background-image: linear-gradient(90deg, #0006, #0002), url({{footerData.background | strapiMedia : 'xlarge'}});">
@@ -8,6 +9,7 @@
 
 <div class="footer sui flex-y">
   <div class="footer-top">
+
     <a routerLink="/">
       <img alt="herzenshunde-logo" class="sui flex-y gap-2" src="assets/img/herzenshunde_weiß.svg"/>
     </a>
@@ -31,9 +33,14 @@
         </a>
         <a aria-label="Unsere Instagram Seite" href="https://www.instagram.com/herzenshunde_griechenland/">
           <icon type="instagram" size="large"/>
-        </a></span>
+        </a>
+        <a aria-label="Unsere TikTok Seite" href="https://www.tiktok.com/@herzenshundegriechenland">
+          <icon type="tiktok" size="large"/>
+        </a>
+      </span>
 
     </div>
+
     <div class="sui flex-y gap-2">
       <h3>Sitemap</h3>
       <a routerLink="/">› Home</a>

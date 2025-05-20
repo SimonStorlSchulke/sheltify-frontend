@@ -6,4 +6,5 @@ export type IconName =
  "male" |
  "phone" |
  "facebook" |
+ "tiktok"|
  "instagram";
