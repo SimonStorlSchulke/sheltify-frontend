@@ -7,13 +7,15 @@ import { Title } from '@angular/platform-browser';
 import { filter, map } from 'rxjs';
 import { LightboxComponent } from './shared/lightbox/lightbox.component';
 import { AnimalService } from './services/animal.service';
+import { CookiebannerComponent } from './cookiebanner/cookiebanner.component';
+import { CookiebannerService } from './cookiebanner/cookiebanner.service';
 
 @Component({
     selector: 'app-root',
     standalone: true,
     templateUrl: './app.component.html',
     styleUrl: './app.component.scss',
-    imports: [RouterOutlet, AsyncPipe, HeaderComponent, FooterComponent, LightboxComponent],
+    imports: [RouterOutlet, AsyncPipe, HeaderComponent, FooterComponent, LightboxComponent, CookiebannerComponent],
 })
 export class AppComponent implements OnInit{
   title = 'sheltify-frontend';
@@ -22,6 +24,7 @@ export class AppComponent implements OnInit{
   titleSv = inject(Title);
   contexts = inject(ChildrenOutletContexts);
   animalSv = inject(AnimalService);
+  cookiebannerSv = inject(CookiebannerService);
 
   ngOnInit() {
     this.router.events

@@ -1,0 +1,30 @@
+:host {
+    background-color: #0003;
+    position: fixed;
+    width: 100dvw;
+    height: 100dvh;
+    top: 0;
+    z-index: 20000;
+    overflow: hidden;
+
+    &.block {
+        background-color: transparent;
+        height: auto;
+        width: auto;
+        position: unset;
+        top: unset;
+
+        .banner {
+            position: unset;
+        }
+    }
+}
+
+.banner {
+    overflow: hidden;
+    background-color: #fff;
+    box-shadow: 2px 4px 12px #0002;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
